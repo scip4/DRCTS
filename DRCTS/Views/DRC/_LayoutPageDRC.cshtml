@@ -30,6 +30,8 @@
     <script src="https://www.transportation.gov/sites/dot.gov/files/js/js_pPpC2pWsmHUKboy8OYA-9E5C6FfVKXxZPkOVDcQKcrs.js"></script>
     <script src="https://www.transportation.gov/sites/dot.gov/files/js/js_1laR-7cTy8flhiykBJ9ymUsrmDhAzMBGtr-ZI2Vm9Fk.js"></script>
     @Styles.Render("~/Content/fontawesome")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body class="html not-front not-logged-in one-sidebar sidebar-first page-node page-node- page-node-88 node-type-article section-drc">
     <!--[if lt IE 8]>
@@ -100,6 +102,13 @@
                                                                 <li class="menu-10207 last"><a href="/areas-of-focus" title="" class="menu-minipanel menu-minipanel-10207">Areas of Focus</a></li>
                                                             </ul>
                             -->
+                            <ul id="main-menu" class="links inline clearfix">
+                                <li class="menu-10244 first">@Html.ActionLink("DRC", "Index", "DRC")</li>
+                                <li class="menu-10197">@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
+                                <li class="menu-10207 last">@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                            </ul>
+
+                            
                             <ul id="main-menu" class="links inline clearfix">
                                 <li>
                                     @Html.Partial("_LoginPartial")
@@ -200,6 +209,17 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('.MyTable').DataTable();
+    });
+
+
+    </script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>
 
