@@ -1,7 +1,6 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
-namespace DRCTS
+namespace IdentitySample
 {
     public class BundleConfig
     {
@@ -24,8 +23,20 @@ namespace DRCTS
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootswatch/cerulean/bootstrap.css",
                       "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/Swatch").Include(
+                     "~/Content/bootswatch/cerulean/bootstrap.css",
+                      "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/Swatch-SP").Include(
+                     "~/Content/bootswatch/darkly/bootstrap.css",
+                      "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/fontawesome").Include("~/Content/font-awesome.css"));
+            bundles.Add(new StyleBundle("~/Content/DataTables").Include(
+                                          "~/Content/DataTables/jquery.dataTables.css"));
+            bundles.Add(new ScriptBundle("~/bundles/DataTables").Include(
+                     "~/Scripts/DataTables/jquery.dataTables.js"));
+
         }
     }
 }

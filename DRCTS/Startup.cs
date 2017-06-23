@@ -1,8 +1,6 @@
-﻿using Microsoft.Owin;
-using Owin;
+﻿using Owin;
 
-[assembly: OwinStartupAttribute(typeof(DRCTS.Startup))]
-namespace DRCTS
+namespace IdentitySample
 {
     public partial class Startup
     {

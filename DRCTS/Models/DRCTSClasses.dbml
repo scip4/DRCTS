@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DOCRTS_test" Class="DRCTSClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=hq-mp-dot-05.ost.dot.gov;Initial Catalog=DOCRTS_test;Persist Security Info=True;User ID=iComp_462" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DefaultConnection" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.LastAccess" Method="LastAccess">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="NVarChar(256)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ApplicationAccounts" Method="ApplicationAccounts">
+    <Parameter Name="app" Type="System.String" DbType="NVarChar(20)" />
+    <ElementType Name="ApplicationAccountsResult">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="Role" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LastAccess" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LockoutEndDateUtc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ApplicationRoles" Method="ApplicationRoles">
+    <Parameter Name="app" Type="System.String" DbType="NVarChar(20)" />
+    <ElementType Name="ApplicationRolesResult">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="deleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UnlockUser" Method="UnlockUser">
+    <Parameter Name="ID" Parameter="iD" Type="System.String" DbType="NVarChar(128)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
