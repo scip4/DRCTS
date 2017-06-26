@@ -144,51 +144,78 @@
                                     <div id="page-subNavMenu">
 
                                         <section class="region region-sidebar-first column sidebar">
+                                            <!--  <div id="section_nav" class="accordion_menu">
+              <ul class="menu">
+                  <li><i class="fa fa-home fa-3x"></i>Disability</li>
+
+                      <li>@Html.ActionLink("Home", "Index1", "DRC")</li>
+                                  <li>@Html.ActionLink("Home", "Index3", "DRC")</li>
+
+
+
+
+              </ul>
+          </div>
+          -->
                                             <div id="section_nav" class="accordion_menu">
                                                 <ul class="menu">
-                                                    <li><i class="fa fa-home fa-3x"></i>Disability</li>
-                                                   
-                                                        <li>@Html.ActionLink("Home", "Index1", "DRC")</li>
-                                                                    <li>@Html.ActionLink("Home", "Index3", "DRC")</li>
-                                                   
-
-
-
-                                                </ul>
-                                            </div>
-                                            <!--     <div id="section_nav" class="accordion_menu">
-                                                <ul class="menu">
-                                                    <li class="menu__item is-leaf first leaf"><a href="/drc" title="" class="menu__link active">Disability Resource Center</a></li>
-                                                    <li class="menu__item is-expanded expanded">
-                                                        <a href="/" title="" class="menu__link">Reasonable Accommodations</a><ul class="menu">
-                                                            <li class="menu__item is-leaf first leaf"><a href="/drc/reasonable-accommodations" title="" class="menu__link">Accommodation Requests</a></li>
-                                                            <li class="menu__item is-leaf leaf"><a href="/drc/request-interpreter" title="" class="menu__link">Request an Interpreter</a></li>
-                                                            <li class="menu__item is-leaf last leaf"><a href="/drc/personal-assistance-as-reasonable-accommodation" title="" class="menu__link">Personal Assistance as a Reasonable Accommodation</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="menu__item is-expanded expanded">
-                                                        <a href="/" title="" class="menu__link">Employment Opportunities</a><ul class="menu">
-                                                            <li class="menu__item is-leaf first leaf"><a href="/drc/employment-people-disabilities" title="" class="menu__link">Employment of People with Disabilities </a></li>
-                                                            <li class="menu__item is-leaf last leaf"><a href="/drc/current-non-competitive-vacancies" title="" class="menu__link">Current Non-Competitive Vacancies </a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="menu__item is-leaf leaf"><a href="/drc/consumer-outreach-education" title="" class="menu__link">Consumer Outreach and Education</a></li>
-                                                    <li class="menu__item is-expanded last expanded">
-                                                        <a href="/" title="" class="menu__link">About DRC</a><ul class="menu">
-                                                            <li class="menu__item is-leaf first leaf"><a href="/drc/about-us" title="" class="menu__link">About Us</a></li>
-                                                            <li class="menu__item is-leaf leaf"><a href="/drc/handbook" title="" class="menu__link">Handbook</a></li>
-                                                            <li class="menu__item is-leaf leaf"><a href="/drc/document-library" title="" class="menu__link">Document Library</a></li>
-                                                            <li class="menu__item is-leaf last leaf"><a href="/drc/success-stories" title="" class="menu__link">Success Stories</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </div>-->
+                                                    
+                                                        <li>
+                                                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                                                            <ul class="nav nav-second-level">
+                                                                <li>
+                                                                    <a href="flot.html">Flot Charts</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="morris.html">Morris.js Charts</a>
+                                                                </li>
+                                                            </ul>
+                                                            <!-- /.nav-second-level -->
+                                                        </li>
+                                                        <li>
+                                                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                    <!--     <div id="section_nav" class="accordion_menu">
+                    <ul class="menu">
+                        <li class="menu__item is-leaf first leaf"><a href="/drc" title="" class="menu__link active">Disability Resource Center</a></li>
+                        <li class="menu__item is-expanded expanded">
+                            <a href="/" title="" class="menu__link">Reasonable Accommodations</a><ul class="menu">
+                                <li class="menu__item is-leaf first leaf"><a href="/drc/reasonable-accommodations" title="" class="menu__link">Accommodation Requests</a></li>
+                                <li class="menu__item is-leaf leaf"><a href="/drc/request-interpreter" title="" class="menu__link">Request an Interpreter</a></li>
+                                <li class="menu__item is-leaf last leaf"><a href="/drc/personal-assistance-as-reasonable-accommodation" title="" class="menu__link">Personal Assistance as a Reasonable Accommodation</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu__item is-expanded expanded">
+                            <a href="/" title="" class="menu__link">Employment Opportunities</a><ul class="menu">
+                                <li class="menu__item is-leaf first leaf"><a href="/drc/employment-people-disabilities" title="" class="menu__link">Employment of People with Disabilities </a></li>
+                                <li class="menu__item is-leaf last leaf"><a href="/drc/current-non-competitive-vacancies" title="" class="menu__link">Current Non-Competitive Vacancies </a></li>
+                            </ul>
+                        </li>
+                        <li class="menu__item is-leaf leaf"><a href="/drc/consumer-outreach-education" title="" class="menu__link">Consumer Outreach and Education</a></li>
+                        <li class="menu__item is-expanded last expanded">
+                            <a href="/" title="" class="menu__link">About DRC</a><ul class="menu">
+                                <li class="menu__item is-leaf first leaf"><a href="/drc/about-us" title="" class="menu__link">About Us</a></li>
+                                <li class="menu__item is-leaf leaf"><a href="/drc/handbook" title="" class="menu__link">Handbook</a></li>
+                                <li class="menu__item is-leaf leaf"><a href="/drc/document-library" title="" class="menu__link">Document Library</a></li>
+                                <li class="menu__item is-leaf last leaf"><a href="/drc/success-stories" title="" class="menu__link">Success Stories</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>-->
                                         </section>
                                     </div>
                                 </nav>
 
                                 <div id="panel-content" class="content-container clearfix article">
-                                    oklkfgmblfkg
+                                    
                                     <div>
                                         @RenderBody()
 
