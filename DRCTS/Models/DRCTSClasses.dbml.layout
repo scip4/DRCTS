@@ -1,4 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DRCTSClasses">
   <DataContextMoniker Name="/DRCTSClassesDataContext" />
+  <nestedChildShapes>
+    <classShape Id="cac3ca94-0e6a-49ce-9b74-505321eae87d" absoluteBounds="3.75, 2.5, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/DRCTSClassesDataContext/OACode" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8d3deb1c-d6b2-4e27-b9e2-5d029622d1f6" absoluteBounds="3.765, 2.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="376b70e9-766b-4d62-9058-9f9420ab1758" absoluteBounds="0.5, 0.625, 2, 6.9630354817708326">
+      <DataClassMoniker Name="/DRCTSClassesDataContext/tDRCRequest" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d38a1c07-ea4e-4431-b0b4-7279ea99c1e7" absoluteBounds="0.51499999999999968, 1.085, 1.9700000000000002, 6.403035481770833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
 </ordesignerObjectsDiagram>

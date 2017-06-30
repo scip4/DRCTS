@@ -3,10 +3,12 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="shortcut icon" href="https://www.transportation.gov/sites/dot.gov/themes/dot/favicon.ico" type="image/vnd.microsoft.icon" />
     <title>@ViewBag.Title</title>
      @Styles.Render("~/Content/css")
-    
+    @Styles.Render("~/Content/metis")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/docs.css" rel="stylesheet" />
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -19,21 +21,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
+                <a class="navbar-brand" href="#">DRC</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
+                   
+               
+                    <li>@Html.Partial("_PartialIndex")</li>
                 </ul>
+
+                @Html.Partial("_LoginPartial")
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -46,16 +44,55 @@
         <div class="row">
 
             <div class="col-md-3">
-                <p class="lead">Shop Name</p>
+                <p class="lead">DRC App Name</p>
                 <div class="list-group">
-                    <a href="#" class="list-group-item active">Category 1</a>
+                   <!-- <a href="#" class="list-group-item active">Category 1</a>
                     <a href="#" class="list-group-item">Category 2</a>
-                    <a href="#" class="list-group-item">Category 3</a>
+                    <a href="#" class="list-group-item">Category 3</a> -->
+                    <ul class="nav" id="side-menu">
+
+                        <li >
+                            <a href="index.html" class="list-group-item"><i class="fa fa-home fa-fw"></i> Home</a>
+                        </li>
+                        <li >
+                            <a href="forms.html" class="list-group-item"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                        </li>
+                        <li>
+                            <a href="#" class="list-group-item"><i class="fa fa-table fa-fw"></i> Reports<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li class="list-group-item">
+                                    <a href="flot.html" >Flot Charts</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="morris.html" >Morris.js Charts</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <!-- <li>
+            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Reports</a>
+        </li>-->
+                        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li>
+                                <a href="#" class="list-group-item"><i class="fa fa-sun-o fa-fw"></i> Admin<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li class="list-group-item">@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
+                                    <li class="list-group-item">@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+
+
+
+
+
                 </div>
             </div>
 
             <div class="col-md-9">
-
+                <!--
                 <div class="thumbnail">
                     <img class="img-responsive" src="http://placehold.it/800x300" alt="">
                     <div class="caption-full">
@@ -74,14 +111,40 @@
                     </div>
                  
                 </div>
-                </div>
+                
+            -->
+            @RenderBody()
+            </div>
             </div>
         </div>
     
                 <div>
-                    @RenderBody()
+                    
                 </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/metis")
+    @Scripts.Render("~/bundles/startmin")
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('.MyTable').DataTable();
+    });
+
+
+    </script>
+    @if (Request.IsAuthenticated)
+    {
+        <script type="text/javascript">
+        var global_sess_expirationSeconds = @Session.Timeout*60;
+        var global_sess_warningSeconds = @System.Configuration.ConfigurationManager.AppSettings["SessionWarningDelaySecond"].ToString();
+        var global_LogoutUrl = "javascript:document.getElementById('logoutForm').submit()";
+        var global_sess_resetPage = '@Url.Action("Index", "JS")';
+        </script>
+    }
+    <script src="~/Scripts/session.warning.js"></script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>

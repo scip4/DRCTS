@@ -4,10 +4,12 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-   <!-- @Styles.Render("~/Content/css")-->
-    @Styles.Render("~/Content/swatch-sp")
+    
+    @Styles.Render("~/Content/Swatch-SP")
+    @Styles.Render("~/Content/startmin")
+    @Styles.Render("~/Content/metis")
     @Scripts.Render("~/bundles/modernizr")
-
+    <link href="~/Content/docs.css" rel="stylesheet" />
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -25,9 +27,10 @@
                     <li><i class="fa fa-home"></i>@Html.ActionLink("Home", "Index", "DRC")</li>
                     <li><i class="fa fa-file"></i>@Html.ActionLink("DRC Form", "Index3", "DRC")</li>
                     <li><i class="fa fa-file-excel-o"></i>@Html.ActionLink("DRC Reports", "Contact", "DRC")</li>
-
+                   <li>@Html.Partial("_PartialIndex")</li>
 
                 </ul>
+               
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
@@ -41,7 +44,9 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
-    
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/metis")
+    @Scripts.Render("~/bundles/startmin")
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
 
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
@@ -52,6 +57,16 @@
 
 
     </script>
+    @if (Request.IsAuthenticated)
+    {
+        <script type="text/javascript">
+        var global_sess_expirationSeconds = @Session.Timeout*60;
+        var global_sess_warningSeconds = @System.Configuration.ConfigurationManager.AppSettings["SessionWarningDelaySecond"].ToString();
+        var global_LogoutUrl = "javascript:document.getElementById('logoutForm').submit()";
+        var global_sess_resetPage = '@Url.Action("Index", "JS")';
+        </script>
+    }
+    <script src="~/Scripts/session.warning.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

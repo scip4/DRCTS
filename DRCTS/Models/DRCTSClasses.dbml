@@ -1,5 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DOCRTS_test" Class="DRCTSClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=hq-mp-dot-05.ost.dot.gov;Initial Catalog=DOCRTS_test;Persist Security Info=True;User ID=iComp_462" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DefaultConnection" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=hq-mp-dot-05.ost.dot.gov;Initial Catalog=DOCRTS_test;User ID=iComp_462" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DefaultConnection" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.OACodes" Member="OACodes">
+    <Type Name="OACode">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="[OA CODES]" Member="OA_CODES" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tDRCRequests" Member="tDRCRequests">
+    <Type Name="tDRCRequest">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OA" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CaseID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="EmployeeID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="EmployeeLastName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EmployeeFirstName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Position" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Grade" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="EmployeePhone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="EmployeeEmail" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Disability" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SupervisorLastName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="SupervisorFirstName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="SupervisorPhone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DateRequestReceived" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="COWADate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="QuarterReceived" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="DateCompleted" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DateFulfilled" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DRCRequestType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DRCStatus" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="OC" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="Source" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="RequestedMD715" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="EndMD715" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="AnalystAssigned" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="TFToday" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TFReportDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ReportInOut" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.LastAccess" Method="LastAccess">
     <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="NVarChar(256)" />
     <Return Type="System.Int32" />
@@ -26,6 +68,10 @@
     </ElementType>
   </Function>
   <Function Name="dbo.UnlockUser" Method="UnlockUser">
+    <Parameter Name="ID" Parameter="iD" Type="System.String" DbType="NVarChar(128)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.LockUser" Method="LockUser">
     <Parameter Name="ID" Parameter="iD" Type="System.String" DbType="NVarChar(128)" />
     <Return Type="System.Int32" />
   </Function>

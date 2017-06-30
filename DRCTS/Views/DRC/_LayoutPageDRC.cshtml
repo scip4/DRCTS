@@ -31,7 +31,9 @@
     <script src="https://www.transportation.gov/sites/dot.gov/files/js/js_1laR-7cTy8flhiykBJ9ymUsrmDhAzMBGtr-ZI2Vm9Fk.js"></script>
     @Styles.Render("~/Content/fontawesome")
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/metis")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/docs.css" rel="stylesheet" />
 </head>
 <body class="html not-front not-logged-in one-sidebar sidebar-first page-node page-node- page-node-88 node-type-article section-drc">
     <!--[if lt IE 8]>
@@ -41,130 +43,136 @@
         <a href="#content-start" class="element-invisible element-focusable">Jump to content</a>
     </p>
 
-    <div id="page-bg-container"></div>
+    <div id="page-bg-container">
+<!-- Site Notification Bar -->
+        <div class="page-site-notification-wrapper">
+           
+        </div>
+        <!-- /#Site Notification -->
+        
+        <div id="page-wrapper">
+            <div id="page">
 
-    <!-- Site Notification Bar -->
-    <div class="page-site-notification-wrapper">
-    </div>
-    <!-- /#Site Notification -->
-    <div id="page-wrapper">
-        <div id="page">
+                <!-- pulls the header in from its own file  -->
+                <header id="header" class="page">
+                    <div class="section">
+                        <div class="accent accent-tl"></div>
+                        <div class="accent accent-tr"></div>
+                        <div class="accent accent-bl"></div>
+                        <div class="accent accent-br"></div>
+                        <div id="icons-and-search" class="clearfix">
+                            <div class="header__region region region-header">
+                                <div id="block-search-form" class="block block-search first last odd" role="search">
 
-            <!-- pulls the header in from its own file  -->
-            <header id="header" class="page">
-                <div class="section">
-                    <div class="accent accent-tl"></div>
-                    <div class="accent accent-tr"></div>
-                    <div class="accent accent-bl"></div>
-                    <div class="accent accent-br"></div>
-                    <div id="icons-and-search" class="clearfix">
-                        <div class="header__region region region-header">
-                            <div id="block-search-form" class="block block-search first last odd" role="search">
-
-
-                                <form action="//search.usa.gov/search" method="get" id="search-block-form" accept-charset="UTF-8">
-                                    <div>
-                                        <div class="container-inline">
-                                            <h2 class="element-invisible">Search form</h2>
-                                            <div class="form-item form-type-textfield form-item-search-block-form">
-                                                <label class="element-invisible" for="edit-search-block-form--2">GO </label>
-                                                <input class="usagov-search-autocomplete ui-autocomplete-input ui-corner-all form-text" autocomplete="off" type="text" name="query" placeholder="Search DOT site" type="text" id="edit-search-block-form--2" value="" size="15" maxlength="128" />
+                                    @Html.Partial("_PartialIndex")
+                                    <form action="//search.usa.gov/search" method="get" id="search-block-form" accept-charset="UTF-8">
+                                        <div>
+                                            <div class="container-inline">
+                                                <h2 class="element-invisible">Search form</h2>
+                                                <div class="form-item form-type-textfield form-item-search-block-form">
+                                                    <label class="element-invisible" for="edit-search-block-form--2">GO </label>
+                                                    <input class="usagov-search-autocomplete ui-autocomplete-input ui-corner-all form-text" autocomplete="off" type="text" name="query" placeholder="Search DOT site" type="text" id="edit-search-block-form--2" value="" size="15" maxlength="128" />
+                                                </div>
+                                                <div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="GO" class="form-submit" /></div><input type="hidden" name="affiliate" value="usdot" />
                                             </div>
-                                            <div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="GO" class="form-submit" /></div><input type="hidden" name="affiliate" value="usdot" />
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div id="logo-sitename" class="clearfix">
+                        <div id="logo-sitename" class="clearfix">
 
 
 
 
 
-                        <a aria-hidden="true" id="home-page-logo_desktop" href="/" title="Home" rel="home" id="logo"><img src="/img/logo.png" alt="US Department of Transportation"></img></a>
-                        <a aria-hidden="true" id="home-page-logo_mobile" href="/" title="Home" rel="home" id="logo"><img src="/sites/dot.gov/themes/dot/images/mobile_logo_small.png" alt="US Department of Transportation"></img></a>
+                            <a aria-hidden="true" id="home-page-logo_desktop" href="/" title="Home" rel="home" id="logo"><img src="/img/logo.png" alt="US Department of Transportation"></img></a>
+                            <a aria-hidden="true" id="home-page-logo_mobile" href="/" title="Home" rel="home" id="logo"><img src="/sites/dot.gov/themes/dot/images/mobile_logo_small.png" alt="US Department of Transportation"></img></a>
 
 
 
-                    </div>
-
-                    <nav id="navigation">
-                        <div class="section clearfix">
-
-                            <h2 class="element-invisible">Main menu</h2>
-
-                            <!--
-                                                            <ul id="main-menu" class="links inline clearfix">
-                                                                <li class="menu-10244 first"><a href="/about" title="" class="menu-minipanel menu-minipanel-10244">About DOT</a></li>
-                                                                <li class="menu-10197"><a href="/our-activities" title="" class="menu-minipanel menu-minipanel-10197">Our Activities</a></li>
-                                                                <li class="menu-10207 last"><a href="/areas-of-focus" title="" class="menu-minipanel menu-minipanel-10207">Areas of Focus</a></li>
-                                                            </ul>
-                            -->
-                            <ul id="main-menu" class="links inline clearfix">
-                                <li class="menu-10244 first">@Html.ActionLink("DRC", "Index", "DRC")</li>
-                                <li class="menu-10197">@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
-                                <li class="menu-10207 last">@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
-                            </ul>
-
-                            
-                            <ul id="main-menu" class="links inline clearfix">
-                                <li>
-                                    @Html.Partial("_LoginPartial")
-                                </li>
-
-                            </ul>
                         </div>
-                    </nav><!-- /.section, /#navigation -->
 
-                </div>
-            </header><!-- /.section, /#header -->
+                        <nav id="navigation">
+                            <div class="section clearfix">
 
-            <a name="content-start"></a>
+                                <h2 class="element-invisible">Main menu</h2>
 
-            <div id="main-wrapper">
+                                <!--
+                                                                <ul id="main-menu" class="links inline clearfix">
+                                                                    <li class="menu-10244 first"><a href="/about" title="" class="menu-minipanel menu-minipanel-10244">About DOT</a></li>
+                                                                    <li class="menu-10197"><a href="/our-activities" title="" class="menu-minipanel menu-minipanel-10197">Our Activities</a></li>
+                                                                    <li class="menu-10207 last"><a href="/areas-of-focus" title="" class="menu-minipanel menu-minipanel-10207">Areas of Focus</a></li>
+                                                                </ul>
+                                -->
+                                <!--<ul id="main-menu" class="links inline clearfix">
+                                    <li class="menu-10244 first">@Html.ActionLink("DRC", "Index", "DRC")</li>
+                                    <li class="menu-10197">@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
+                                    <li class="menu-10207 last">@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                                </ul>-->
 
-                <div id="main" class="clearfix with-navigation">
+                                <ul>
+                                    <li>@Html.Partial("_LoginPartial2")</li>
+                                    
 
-                    <div id="content" class="column">
-                        <section class="section">
+                                </ul>
+                               
+                                
+                                
 
-                            <!--  <div class="pre-content">
+                            </div>
+                        </nav><!-- /.section, /#navigation -->
 
+                    </div>
+                </header><!-- /.section, /#header -->
 
-                            hgnghnghn
+                <a name="content-start"></a>
 
+                <div id="main-wrapper">
 
-                                                            </div>-->
+                    <div id="main" class="clearfix with-navigation">
 
-                            <div id="panel-wrapper" class="clearfix with-sidebar">
+                        <div id="content" class="column">
+                            <section class="section">
 
-                                <nav id="page-subnav" class="subNavMenu">
-                                    <div id="page-subNavMenu">
-
-                                        <section class="region region-sidebar-first column sidebar">
-                                            <!--  <div id="section_nav" class="accordion_menu">
-              <ul class="menu">
-                  <li><i class="fa fa-home fa-3x"></i>Disability</li>
-
-                      <li>@Html.ActionLink("Home", "Index1", "DRC")</li>
-                                  <li>@Html.ActionLink("Home", "Index3", "DRC")</li>
-
-
+                                <!--  <div class="pre-content">
 
 
-              </ul>
-          </div>
-          -->
-                                            <div id="section_nav" class="accordion_menu">
-                                                <ul class="menu">
-                                                    
+                                hgnghnghn
+
+
+                                                                </div>-->
+
+                                <div id="panel-wrapper" class="clearfix with-sidebar">
+
+                                    <nav id="page-subnav" class="subNavMenu">
+                                        <div id="page-subNavMenu">
+
+                                            <section class="region region-sidebar-first column sidebar">
+                                                <!--  <div id="section_nav" class="accordion_menu">
+                                                    <ul class="menu">
+                                                        <li><i class="fa fa-home fa-3x"></i>Disability</li>
+
+                                                            <li>@Html.ActionLink("Home", "Index1", "DRC")</li>
+                                                                        <li>@Html.ActionLink("Home", "Index3", "DRC")</li>
+
+
+
+
+                                                    </ul>
+                                                </div>
+                                                -->
+                                                <div id="section_nav" class="accordion_menu">
+                                                    <ul class="nav" id="side-menu">
+
                                                         <li>
-                                                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                                                            <a href="index.html"><i class="fa fa-home fa-fw"></i> Home</a>
                                                         </li>
                                                         <li>
-                                                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                                                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-table fa-fw"></i> Reports<span class="fa arrow"></span></a>
                                                             <ul class="nav nav-second-level">
                                                                 <li>
                                                                     <a href="flot.html">Flot Charts</a>
@@ -175,67 +183,127 @@
                                                             </ul>
                                                             <!-- /.nav-second-level -->
                                                         </li>
-                                                        <li>
-                                                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
+                                                        <!-- <li>
+                                                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Reports</a>
+                                                        </li>-->
+                                                        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                                                    {
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-sun-o fa-fw"></i> Admin<span class="fa arrow"></span></a>
+                                                                <ul class="nav nav-second-level">
+                                                                    <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
+                                                                    <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                                                                </ul>
+                                                            </li>
+                                                                }
+                                                    </ul>
+
+
+
+                                                    <!--New-->
+                                                    <!--
+                                                    <div class="navbar-default4 sidebar" role="navigation">
+                                                        <div class="sidebar-nav4 navbar-collapse4">
+
+                                                            <ul class="nav4" id="side-menuw">
+
+                                                                <li class="sidebar-search">
+                                                                    <div class="input-group custom-search-form">
+                                                                        <input type="text" class="form-control" placeholder="Search...">
+                                                                        <span class="input-group-btn">
+                                                                            <button class="btn btn-primary" type="button">
+                                                                                <i class="fa fa-search"></i>
+                                                                            </button>
+                                                                        </span>
+                                                                    </div>
+                                                                </li>
+
+                                                                <li>
+                                                                    <a href="#" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+                                                                    <ul class="nav nav-second-level">
+                                                                        <li>
+                                                                            <a href="#">Second Level Item</a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#">Third Level <span class="fa arrow"></span></a>
+                                                                            <ul class="nav nav-third-level">
+                                                                                <li>
+                                                                                    <a href="#">Third Level Item</a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                            </ul>
+
+                                                        </div>
+                                                    </div>
+                                                    -->
+                                                    <!--New Stop-->
+
+
+
+
+                                                </div>
+                                                <!--     <div id="section_nav" class="accordion_menu">
+                                                    <ul class="menu">
+                                                        <li class="menu__item is-leaf first leaf"><a href="/drc" title="" class="menu__link active">Disability Resource Center</a></li>
+                                                        <li class="menu__item is-expanded expanded">
+                                                            <a href="/" title="" class="menu__link">Reasonable Accommodations</a><ul class="menu">
+                                                                <li class="menu__item is-leaf first leaf"><a href="/drc/reasonable-accommodations" title="" class="menu__link">Accommodation Requests</a></li>
+                                                                <li class="menu__item is-leaf leaf"><a href="/drc/request-interpreter" title="" class="menu__link">Request an Interpreter</a></li>
+                                                                <li class="menu__item is-leaf last leaf"><a href="/drc/personal-assistance-as-reasonable-accommodation" title="" class="menu__link">Personal Assistance as a Reasonable Accommodation</a></li>
+                                                            </ul>
                                                         </li>
-                                                        <li>
-                                                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                                                        <li class="menu__item is-expanded expanded">
+                                                            <a href="/" title="" class="menu__link">Employment Opportunities</a><ul class="menu">
+                                                                <li class="menu__item is-leaf first leaf"><a href="/drc/employment-people-disabilities" title="" class="menu__link">Employment of People with Disabilities </a></li>
+                                                                <li class="menu__item is-leaf last leaf"><a href="/drc/current-non-competitive-vacancies" title="" class="menu__link">Current Non-Competitive Vacancies </a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="menu__item is-leaf leaf"><a href="/drc/consumer-outreach-education" title="" class="menu__link">Consumer Outreach and Education</a></li>
+                                                        <li class="menu__item is-expanded last expanded">
+                                                            <a href="/" title="" class="menu__link">About DRC</a><ul class="menu">
+                                                                <li class="menu__item is-leaf first leaf"><a href="/drc/about-us" title="" class="menu__link">About Us</a></li>
+                                                                <li class="menu__item is-leaf leaf"><a href="/drc/handbook" title="" class="menu__link">Handbook</a></li>
+                                                                <li class="menu__item is-leaf leaf"><a href="/drc/document-library" title="" class="menu__link">Document Library</a></li>
+                                                                <li class="menu__item is-leaf last leaf"><a href="/drc/success-stories" title="" class="menu__link">Success Stories</a></li>
+                                                            </ul>
                                                         </li>
                                                     </ul>
-                                                </div>
-                                                    <!--     <div id="section_nav" class="accordion_menu">
-                    <ul class="menu">
-                        <li class="menu__item is-leaf first leaf"><a href="/drc" title="" class="menu__link active">Disability Resource Center</a></li>
-                        <li class="menu__item is-expanded expanded">
-                            <a href="/" title="" class="menu__link">Reasonable Accommodations</a><ul class="menu">
-                                <li class="menu__item is-leaf first leaf"><a href="/drc/reasonable-accommodations" title="" class="menu__link">Accommodation Requests</a></li>
-                                <li class="menu__item is-leaf leaf"><a href="/drc/request-interpreter" title="" class="menu__link">Request an Interpreter</a></li>
-                                <li class="menu__item is-leaf last leaf"><a href="/drc/personal-assistance-as-reasonable-accommodation" title="" class="menu__link">Personal Assistance as a Reasonable Accommodation</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu__item is-expanded expanded">
-                            <a href="/" title="" class="menu__link">Employment Opportunities</a><ul class="menu">
-                                <li class="menu__item is-leaf first leaf"><a href="/drc/employment-people-disabilities" title="" class="menu__link">Employment of People with Disabilities </a></li>
-                                <li class="menu__item is-leaf last leaf"><a href="/drc/current-non-competitive-vacancies" title="" class="menu__link">Current Non-Competitive Vacancies </a></li>
-                            </ul>
-                        </li>
-                        <li class="menu__item is-leaf leaf"><a href="/drc/consumer-outreach-education" title="" class="menu__link">Consumer Outreach and Education</a></li>
-                        <li class="menu__item is-expanded last expanded">
-                            <a href="/" title="" class="menu__link">About DRC</a><ul class="menu">
-                                <li class="menu__item is-leaf first leaf"><a href="/drc/about-us" title="" class="menu__link">About Us</a></li>
-                                <li class="menu__item is-leaf leaf"><a href="/drc/handbook" title="" class="menu__link">Handbook</a></li>
-                                <li class="menu__item is-leaf leaf"><a href="/drc/document-library" title="" class="menu__link">Document Library</a></li>
-                                <li class="menu__item is-leaf last leaf"><a href="/drc/success-stories" title="" class="menu__link">Success Stories</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>-->
-                                        </section>
-                                    </div>
-                                </nav>
+                                                </div>-->
+                                            </section>
+                                        </div>
+                                    </nav>
 
-                                <div id="panel-content" class="content-container clearfix article">
-                                    
-                                    <div>
-                                        @RenderBody()
+                                    <div id="panel-content" class="content-container clearfix article">
 
+                                        <div>
+                                            @RenderBody()
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </section>
+                            </section>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
-
-
 
 
 
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/metis")
+    @Scripts.Render("~/bundles/startmin")
+    
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
 
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
@@ -246,6 +314,16 @@
 
 
     </script>
+@if (Request.IsAuthenticated)
+{
+    <script type="text/javascript">
+        var global_sess_expirationSeconds = @Session.Timeout*60;
+        var global_sess_warningSeconds = @System.Configuration.ConfigurationManager.AppSettings["SessionWarningDelaySecond"].ToString();
+        var global_LogoutUrl = "javascript:document.getElementById('logoutForm').submit()";
+        var global_sess_resetPage = '@Url.Action("Index", "JS")';
+    </script>
+}
+    <script src="~/Scripts/session.warning.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

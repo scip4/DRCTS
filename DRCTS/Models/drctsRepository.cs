@@ -29,5 +29,25 @@ namespace DRCTS.Models
             await Task.Delay(1000);
             return dc.ApplicationRoles("DRC").ToList();
         }
+        public void UnlockUser(string id)
+        {
+            dc.UnlockUser(id);
+        }
+        public void LockUser(string id)
+        {
+            dc.LockUser(id);
+        }
+         public IQueryable<OACode> code1()
+        {
+            return dc.OACodes;
+        }
+        public void addRequest(tDRCRequest req)
+        {
+            dc.tDRCRequests.InsertOnSubmit(req);
+        }
+        public void Save()
+        {
+            dc.SubmitChanges();
+        }
     }
 }

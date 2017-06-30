@@ -20,6 +20,13 @@ textarea {
 .field-validation-error {
     color: #b94a48;
 }
+a.my-class { color: black; }
+
+a.my-class:active { color: black; }
+a.my-class:link { color: black; }
+a.my-class:visited { color: black; }
+
+input.myCss {width: 50em;}
 
 .field-validation-valid {
     display: none;

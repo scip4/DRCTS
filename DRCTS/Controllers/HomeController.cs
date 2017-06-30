@@ -1,6 +1,10 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
-namespace IdentitySample.Controllers
+namespace SessionTimeout.Controllers
 {
     public class HomeController : Controller
     {
@@ -9,10 +13,9 @@ namespace IdentitySample.Controllers
             return View();
         }
 
-        [Authorize]
         public ActionResult About()
         {
-            ViewBag.Message = "Your app description page.";
+            ViewBag.Message = "Your application description page.";
 
             return View();
         }
@@ -22,6 +25,14 @@ namespace IdentitySample.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult logout()
+        {
+            Session.Clear();
+            Session.Abandon();
+
+            return RedirectToAction("Index");
         }
     }
 }

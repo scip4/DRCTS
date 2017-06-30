@@ -30,6 +30,9 @@ namespace DRCTS.Models
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InserttDRCRequest(tDRCRequest instance);
+    partial void UpdatetDRCRequest(tDRCRequest instance);
+    partial void DeletetDRCRequest(tDRCRequest instance);
     #endregion
 		
 		public DRCTSClassesDataContext() : 
@@ -62,6 +65,22 @@ namespace DRCTS.Models
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<OACode> OACodes
+		{
+			get
+			{
+				return this.GetTable<OACode>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tDRCRequest> tDRCRequests
+		{
+			get
+			{
+				return this.GetTable<tDRCRequest>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.LastAccess")]
 		public int LastAccess([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserName", DbType="NVarChar(256)")] string userName)
 		{
@@ -88,6 +107,864 @@ namespace DRCTS.Models
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD);
 			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.LockUser")]
+		public int LockUser([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="NVarChar(128)")] string iD)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD);
+			return ((int)(result.ReturnValue));
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.OACodes")]
+	public partial class OACode
+	{
+		
+		private int _ID;
+		
+		private string _OA_CODES;
+		
+		public OACode()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[OA CODES]", Storage="_OA_CODES", DbType="NVarChar(255)")]
+		public string OA_CODES
+		{
+			get
+			{
+				return this._OA_CODES;
+			}
+			set
+			{
+				if ((this._OA_CODES != value))
+				{
+					this._OA_CODES = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tDRCRequests")]
+	public partial class tDRCRequest : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _OA;
+		
+		private string _CaseID;
+		
+		private string _EmployeeID;
+		
+		private string _EmployeeLastName;
+		
+		private string _EmployeeFirstName;
+		
+		private string _Position;
+		
+		private string _Grade;
+		
+		private string _EmployeePhone;
+		
+		private string _EmployeeEmail;
+		
+		private string _Disability;
+		
+		private string _SupervisorLastName;
+		
+		private string _SupervisorFirstName;
+		
+		private string _SupervisorPhone;
+		
+		private string _Description;
+		
+		private System.Nullable<System.DateTime> _DateRequestReceived;
+		
+		private System.Nullable<System.DateTime> _COWADate;
+		
+		private string _QuarterReceived;
+		
+		private System.Nullable<System.DateTime> _DateCompleted;
+		
+		private System.Nullable<System.DateTime> _DateFulfilled;
+		
+		private string _DRCRequestType;
+		
+		private string _DRCStatus;
+		
+		private string _OC;
+		
+		private string _Source;
+		
+		private string _RequestedMD715;
+		
+		private string _EndMD715;
+		
+		private string _AnalystAssigned;
+		
+		private string _TFToday;
+		
+		private System.Nullable<System.DateTime> _TFReportDate;
+		
+		private string _ReportInOut;
+		
+		private string _Notes;
+		
+		private string _Comments;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnOAChanging(string value);
+    partial void OnOAChanged();
+    partial void OnCaseIDChanging(string value);
+    partial void OnCaseIDChanged();
+    partial void OnEmployeeIDChanging(string value);
+    partial void OnEmployeeIDChanged();
+    partial void OnEmployeeLastNameChanging(string value);
+    partial void OnEmployeeLastNameChanged();
+    partial void OnEmployeeFirstNameChanging(string value);
+    partial void OnEmployeeFirstNameChanged();
+    partial void OnPositionChanging(string value);
+    partial void OnPositionChanged();
+    partial void OnGradeChanging(string value);
+    partial void OnGradeChanged();
+    partial void OnEmployeePhoneChanging(string value);
+    partial void OnEmployeePhoneChanged();
+    partial void OnEmployeeEmailChanging(string value);
+    partial void OnEmployeeEmailChanged();
+    partial void OnDisabilityChanging(string value);
+    partial void OnDisabilityChanged();
+    partial void OnSupervisorLastNameChanging(string value);
+    partial void OnSupervisorLastNameChanged();
+    partial void OnSupervisorFirstNameChanging(string value);
+    partial void OnSupervisorFirstNameChanged();
+    partial void OnSupervisorPhoneChanging(string value);
+    partial void OnSupervisorPhoneChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnDateRequestReceivedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateRequestReceivedChanged();
+    partial void OnCOWADateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCOWADateChanged();
+    partial void OnQuarterReceivedChanging(string value);
+    partial void OnQuarterReceivedChanged();
+    partial void OnDateCompletedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateCompletedChanged();
+    partial void OnDateFulfilledChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateFulfilledChanged();
+    partial void OnDRCRequestTypeChanging(string value);
+    partial void OnDRCRequestTypeChanged();
+    partial void OnDRCStatusChanging(string value);
+    partial void OnDRCStatusChanged();
+    partial void OnOCChanging(string value);
+    partial void OnOCChanged();
+    partial void OnSourceChanging(string value);
+    partial void OnSourceChanged();
+    partial void OnRequestedMD715Changing(string value);
+    partial void OnRequestedMD715Changed();
+    partial void OnEndMD715Changing(string value);
+    partial void OnEndMD715Changed();
+    partial void OnAnalystAssignedChanging(string value);
+    partial void OnAnalystAssignedChanged();
+    partial void OnTFTodayChanging(string value);
+    partial void OnTFTodayChanged();
+    partial void OnTFReportDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnTFReportDateChanged();
+    partial void OnReportInOutChanging(string value);
+    partial void OnReportInOutChanged();
+    partial void OnNotesChanging(string value);
+    partial void OnNotesChanged();
+    partial void OnCommentsChanging(string value);
+    partial void OnCommentsChanged();
+    #endregion
+		
+		public tDRCRequest()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OA", DbType="VarChar(20)")]
+		public string OA
+		{
+			get
+			{
+				return this._OA;
+			}
+			set
+			{
+				if ((this._OA != value))
+				{
+					this.OnOAChanging(value);
+					this.SendPropertyChanging();
+					this._OA = value;
+					this.SendPropertyChanged("OA");
+					this.OnOAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CaseID", DbType="VarChar(20)")]
+		public string CaseID
+		{
+			get
+			{
+				return this._CaseID;
+			}
+			set
+			{
+				if ((this._CaseID != value))
+				{
+					this.OnCaseIDChanging(value);
+					this.SendPropertyChanging();
+					this._CaseID = value;
+					this.SendPropertyChanged("CaseID");
+					this.OnCaseIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeID", DbType="VarChar(20)")]
+		public string EmployeeID
+		{
+			get
+			{
+				return this._EmployeeID;
+			}
+			set
+			{
+				if ((this._EmployeeID != value))
+				{
+					this.OnEmployeeIDChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeID = value;
+					this.SendPropertyChanged("EmployeeID");
+					this.OnEmployeeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeLastName", DbType="VarChar(50)")]
+		public string EmployeeLastName
+		{
+			get
+			{
+				return this._EmployeeLastName;
+			}
+			set
+			{
+				if ((this._EmployeeLastName != value))
+				{
+					this.OnEmployeeLastNameChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeLastName = value;
+					this.SendPropertyChanged("EmployeeLastName");
+					this.OnEmployeeLastNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeFirstName", DbType="VarChar(50)")]
+		public string EmployeeFirstName
+		{
+			get
+			{
+				return this._EmployeeFirstName;
+			}
+			set
+			{
+				if ((this._EmployeeFirstName != value))
+				{
+					this.OnEmployeeFirstNameChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeFirstName = value;
+					this.SendPropertyChanged("EmployeeFirstName");
+					this.OnEmployeeFirstNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Position", DbType="VarChar(50)")]
+		public string Position
+		{
+			get
+			{
+				return this._Position;
+			}
+			set
+			{
+				if ((this._Position != value))
+				{
+					this.OnPositionChanging(value);
+					this.SendPropertyChanging();
+					this._Position = value;
+					this.SendPropertyChanged("Position");
+					this.OnPositionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Grade", DbType="VarChar(20)")]
+		public string Grade
+		{
+			get
+			{
+				return this._Grade;
+			}
+			set
+			{
+				if ((this._Grade != value))
+				{
+					this.OnGradeChanging(value);
+					this.SendPropertyChanging();
+					this._Grade = value;
+					this.SendPropertyChanged("Grade");
+					this.OnGradeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeePhone", DbType="VarChar(20)")]
+		public string EmployeePhone
+		{
+			get
+			{
+				return this._EmployeePhone;
+			}
+			set
+			{
+				if ((this._EmployeePhone != value))
+				{
+					this.OnEmployeePhoneChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeePhone = value;
+					this.SendPropertyChanged("EmployeePhone");
+					this.OnEmployeePhoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeEmail", DbType="VarChar(50)")]
+		public string EmployeeEmail
+		{
+			get
+			{
+				return this._EmployeeEmail;
+			}
+			set
+			{
+				if ((this._EmployeeEmail != value))
+				{
+					this.OnEmployeeEmailChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeEmail = value;
+					this.SendPropertyChanged("EmployeeEmail");
+					this.OnEmployeeEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Disability", DbType="VarChar(50)")]
+		public string Disability
+		{
+			get
+			{
+				return this._Disability;
+			}
+			set
+			{
+				if ((this._Disability != value))
+				{
+					this.OnDisabilityChanging(value);
+					this.SendPropertyChanging();
+					this._Disability = value;
+					this.SendPropertyChanged("Disability");
+					this.OnDisabilityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupervisorLastName", DbType="VarChar(20)")]
+		public string SupervisorLastName
+		{
+			get
+			{
+				return this._SupervisorLastName;
+			}
+			set
+			{
+				if ((this._SupervisorLastName != value))
+				{
+					this.OnSupervisorLastNameChanging(value);
+					this.SendPropertyChanging();
+					this._SupervisorLastName = value;
+					this.SendPropertyChanged("SupervisorLastName");
+					this.OnSupervisorLastNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupervisorFirstName", DbType="VarChar(20)")]
+		public string SupervisorFirstName
+		{
+			get
+			{
+				return this._SupervisorFirstName;
+			}
+			set
+			{
+				if ((this._SupervisorFirstName != value))
+				{
+					this.OnSupervisorFirstNameChanging(value);
+					this.SendPropertyChanging();
+					this._SupervisorFirstName = value;
+					this.SendPropertyChanged("SupervisorFirstName");
+					this.OnSupervisorFirstNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupervisorPhone", DbType="VarChar(20)")]
+		public string SupervisorPhone
+		{
+			get
+			{
+				return this._SupervisorPhone;
+			}
+			set
+			{
+				if ((this._SupervisorPhone != value))
+				{
+					this.OnSupervisorPhoneChanging(value);
+					this.SendPropertyChanging();
+					this._SupervisorPhone = value;
+					this.SendPropertyChanged("SupervisorPhone");
+					this.OnSupervisorPhoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(MAX)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateRequestReceived", DbType="Date")]
+		public System.Nullable<System.DateTime> DateRequestReceived
+		{
+			get
+			{
+				return this._DateRequestReceived;
+			}
+			set
+			{
+				if ((this._DateRequestReceived != value))
+				{
+					this.OnDateRequestReceivedChanging(value);
+					this.SendPropertyChanging();
+					this._DateRequestReceived = value;
+					this.SendPropertyChanged("DateRequestReceived");
+					this.OnDateRequestReceivedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_COWADate", DbType="Date")]
+		public System.Nullable<System.DateTime> COWADate
+		{
+			get
+			{
+				return this._COWADate;
+			}
+			set
+			{
+				if ((this._COWADate != value))
+				{
+					this.OnCOWADateChanging(value);
+					this.SendPropertyChanging();
+					this._COWADate = value;
+					this.SendPropertyChanged("COWADate");
+					this.OnCOWADateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuarterReceived", DbType="VarChar(10)")]
+		public string QuarterReceived
+		{
+			get
+			{
+				return this._QuarterReceived;
+			}
+			set
+			{
+				if ((this._QuarterReceived != value))
+				{
+					this.OnQuarterReceivedChanging(value);
+					this.SendPropertyChanging();
+					this._QuarterReceived = value;
+					this.SendPropertyChanged("QuarterReceived");
+					this.OnQuarterReceivedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCompleted", DbType="Date")]
+		public System.Nullable<System.DateTime> DateCompleted
+		{
+			get
+			{
+				return this._DateCompleted;
+			}
+			set
+			{
+				if ((this._DateCompleted != value))
+				{
+					this.OnDateCompletedChanging(value);
+					this.SendPropertyChanging();
+					this._DateCompleted = value;
+					this.SendPropertyChanged("DateCompleted");
+					this.OnDateCompletedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateFulfilled", DbType="Date")]
+		public System.Nullable<System.DateTime> DateFulfilled
+		{
+			get
+			{
+				return this._DateFulfilled;
+			}
+			set
+			{
+				if ((this._DateFulfilled != value))
+				{
+					this.OnDateFulfilledChanging(value);
+					this.SendPropertyChanging();
+					this._DateFulfilled = value;
+					this.SendPropertyChanged("DateFulfilled");
+					this.OnDateFulfilledChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DRCRequestType", DbType="VarChar(50)")]
+		public string DRCRequestType
+		{
+			get
+			{
+				return this._DRCRequestType;
+			}
+			set
+			{
+				if ((this._DRCRequestType != value))
+				{
+					this.OnDRCRequestTypeChanging(value);
+					this.SendPropertyChanging();
+					this._DRCRequestType = value;
+					this.SendPropertyChanged("DRCRequestType");
+					this.OnDRCRequestTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DRCStatus", DbType="VarChar(20)")]
+		public string DRCStatus
+		{
+			get
+			{
+				return this._DRCStatus;
+			}
+			set
+			{
+				if ((this._DRCStatus != value))
+				{
+					this.OnDRCStatusChanging(value);
+					this.SendPropertyChanging();
+					this._DRCStatus = value;
+					this.SendPropertyChanged("DRCStatus");
+					this.OnDRCStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OC", DbType="NVarChar(5)")]
+		public string OC
+		{
+			get
+			{
+				return this._OC;
+			}
+			set
+			{
+				if ((this._OC != value))
+				{
+					this.OnOCChanging(value);
+					this.SendPropertyChanging();
+					this._OC = value;
+					this.SendPropertyChanged("OC");
+					this.OnOCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Source", DbType="VarChar(20)")]
+		public string Source
+		{
+			get
+			{
+				return this._Source;
+			}
+			set
+			{
+				if ((this._Source != value))
+				{
+					this.OnSourceChanging(value);
+					this.SendPropertyChanging();
+					this._Source = value;
+					this.SendPropertyChanged("Source");
+					this.OnSourceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestedMD715", DbType="VarChar(10)")]
+		public string RequestedMD715
+		{
+			get
+			{
+				return this._RequestedMD715;
+			}
+			set
+			{
+				if ((this._RequestedMD715 != value))
+				{
+					this.OnRequestedMD715Changing(value);
+					this.SendPropertyChanging();
+					this._RequestedMD715 = value;
+					this.SendPropertyChanged("RequestedMD715");
+					this.OnRequestedMD715Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndMD715", DbType="NChar(10)")]
+		public string EndMD715
+		{
+			get
+			{
+				return this._EndMD715;
+			}
+			set
+			{
+				if ((this._EndMD715 != value))
+				{
+					this.OnEndMD715Changing(value);
+					this.SendPropertyChanging();
+					this._EndMD715 = value;
+					this.SendPropertyChanged("EndMD715");
+					this.OnEndMD715Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AnalystAssigned", DbType="VarChar(20)")]
+		public string AnalystAssigned
+		{
+			get
+			{
+				return this._AnalystAssigned;
+			}
+			set
+			{
+				if ((this._AnalystAssigned != value))
+				{
+					this.OnAnalystAssignedChanging(value);
+					this.SendPropertyChanging();
+					this._AnalystAssigned = value;
+					this.SendPropertyChanged("AnalystAssigned");
+					this.OnAnalystAssignedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TFToday", DbType="VarChar(10)")]
+		public string TFToday
+		{
+			get
+			{
+				return this._TFToday;
+			}
+			set
+			{
+				if ((this._TFToday != value))
+				{
+					this.OnTFTodayChanging(value);
+					this.SendPropertyChanging();
+					this._TFToday = value;
+					this.SendPropertyChanged("TFToday");
+					this.OnTFTodayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TFReportDate", DbType="Date")]
+		public System.Nullable<System.DateTime> TFReportDate
+		{
+			get
+			{
+				return this._TFReportDate;
+			}
+			set
+			{
+				if ((this._TFReportDate != value))
+				{
+					this.OnTFReportDateChanging(value);
+					this.SendPropertyChanging();
+					this._TFReportDate = value;
+					this.SendPropertyChanged("TFReportDate");
+					this.OnTFReportDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReportInOut", DbType="VarChar(10)")]
+		public string ReportInOut
+		{
+			get
+			{
+				return this._ReportInOut;
+			}
+			set
+			{
+				if ((this._ReportInOut != value))
+				{
+					this.OnReportInOutChanging(value);
+					this.SendPropertyChanging();
+					this._ReportInOut = value;
+					this.SendPropertyChanged("ReportInOut");
+					this.OnReportInOutChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="VarChar(MAX)")]
+		public string Notes
+		{
+			get
+			{
+				return this._Notes;
+			}
+			set
+			{
+				if ((this._Notes != value))
+				{
+					this.OnNotesChanging(value);
+					this.SendPropertyChanging();
+					this._Notes = value;
+					this.SendPropertyChanged("Notes");
+					this.OnNotesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comments", DbType="VarChar(MAX)")]
+		public string Comments
+		{
+			get
+			{
+				return this._Comments;
+			}
+			set
+			{
+				if ((this._Comments != value))
+				{
+					this.OnCommentsChanging(value);
+					this.SendPropertyChanging();
+					this._Comments = value;
+					this.SendPropertyChanged("Comments");
+					this.OnCommentsChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	

@@ -58,7 +58,8 @@ namespace IdentitySample.Controllers
         // GET: /Users/
         public async Task<ActionResult> Index()
         {
-            return View(await UserManager.Users.ToListAsync());
+            //return View(await UserManager.Users.ToListAsync());
+            return View(await drcRepo.UserDRC());
         }
 
         public async Task<ActionResult> Index2()
@@ -84,7 +85,7 @@ namespace IdentitySample.Controllers
 
         //
         // GET: /Users/Create
-        public async Task<ActionResult> Create()
+       public async Task<ActionResult> Create()
         {
             //Get the list of Roles
             ViewBag.RoleId = new SelectList(await RoleManager.Roles.ToListAsync(), "Name", "Name");
@@ -184,8 +185,38 @@ namespace IdentitySample.Controllers
             return View();
         }
 
+        public async Task<ActionResult> LockUser(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var user = await UserManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
 
+            drcRepo.LockUser(id);
+            return RedirectToAction("Index");
+            //return View(await drcRepo.UserDRC());
+        }
+        public async Task<ActionResult> UnLockUser(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var user = await UserManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
 
+            drcRepo.UnlockUser(id);
+            return RedirectToAction("Index");
+            //return View(await drcRepo.UserDRC());
+        }
         //
         // GET: /Users/Edit/1
         public async Task<ActionResult> Edit(string id)

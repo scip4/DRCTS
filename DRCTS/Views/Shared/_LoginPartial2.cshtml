@@ -1,0 +1,40 @@
+﻿
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul id="main-menu" class="links inline clearfix">
+           <!-- <li class="menu-10244 first">
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li class="menu-10197"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>-->
+            <li class="dropdown menu-10244 first">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> @User.Identity.GetUserName() <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li> @Html.ActionLink("User Profile", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @style = "color:#000000;" })</li>
+
+                    <li class="divider"></li>
+                    <li>
+                        <a href="javascript:document.getElementById('logoutForm').submit()" style="color: black"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+            </li>
+           
+
+
+
+        </ul>
+    }
+}
+else
+{
+    <ul id="main-menu" class="links inline clearfix">
+       <!-- <li class="menu-10197">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li> -->
+        <li class="menu-10207 last">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}
