@@ -1,0 +1,187 @@
+﻿@model IEnumerable<DRCTS.Models.ServiceReportResult>
+@{
+    var total = Model.Sum(a => a.Total);
+    var faa = Model.Sum(a => a.FAA);
+
+}
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    table, td, th {
+        border: 1px solid black;
+    }
+    .tfo {
+  
+  font-weight: bolder;
+  color: black;
+  font: bold;
+}
+    .spider {
+background-color: lightblue;
+  color: black;
+  font: bold;
+    }
+</style>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FAA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FHWA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FMCSA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FRA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FTA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MARAD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NHTSA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OIG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OST)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHMSA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RITA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SLSDC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USCG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VOLPE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th>Percentage</th>
+       
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServiceType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FAA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FHWA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FMCSA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FRA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FTA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MARAD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NHTSA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OIG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OST)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PHMSA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RITA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SLSDC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USCG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VOLPE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+        <td>@{ var percentComplete = (int)(100 * item.Total) / total;
+        }
+        @percentComplete %</td>
+    </tr>
+}
+    <tfoot>
+        <tr class="tfo">
+            <td>Total</td>
+            <td>@faa</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+
+        </tr>
+        <tr class="spider">
+            <td>Percent of all Requests</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+
+        </tr>
+    </tfoot>
+</table>

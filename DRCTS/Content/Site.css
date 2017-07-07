@@ -15,7 +15,7 @@ select,
 textarea {
     max-width: 280px;
 }
-
+  
 /* styles for validation helpers */
 .field-validation-error {
     color: #b94a48;
@@ -31,6 +31,46 @@ input.myCss {width: 50em;}
 .field-validation-valid {
     display: none;
 }
+  
+.myTextArea {
+    max-width: 580px;
+}
+ 
+textarea.myTextArea {
+    width: 580px;
+}
+.divTable{
+	display: table;
+	width: 100%;
+}
+.divTableRow {
+	display: table-row;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+}
+.divTableCell, .divTableHead {
+	border: 1px solid #999999;
+	display: table-cell;
+	padding: 3px 10px;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
+}
+
+
+
 
 input.input-validation-error {
     border: 1px solid #b94a48;

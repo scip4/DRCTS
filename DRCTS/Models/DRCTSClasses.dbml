@@ -6,6 +6,42 @@
       <Column Name="[OA CODES]" Member="OA_CODES" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.ANALYSTCODES" Member="ANALYSTCODEs">
+    <Type Name="ANALYSTCODE">
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ANALYSTCODES" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DisbCodes" Member="DisbCodes">
+    <Type Name="DisbCode">
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DISABCODES" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.STATUSCODES" Member="STATUSCODEs">
+    <Type Name="STATUSCODE">
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="STATUSCODES" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RTCodes" Member="RTCodes">
+    <Type Name="RTCode">
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RequestTypeCodes" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NOTECODES" Member="NOTECODEs">
+    <Type Name="NOTECODE">
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NOTECODES" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MD715Codes" Member="MD715Codes">
+    <Type Name="MD715Code">
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MD715Codes" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.tDRCRequests" Member="tDRCRequests">
     <Type Name="tDRCRequest">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -40,6 +76,11 @@
       <Column Name="ReportInOut" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="Comments" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="deleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Purchasing" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="PRNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.LastAccess" Method="LastAccess">
@@ -74,5 +115,45 @@
   <Function Name="dbo.LockUser" Method="LockUser">
     <Parameter Name="ID" Parameter="iD" Type="System.String" DbType="NVarChar(128)" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UserAccounts" Method="UserAccounts">
+    <Parameter Name="app" Type="System.String" DbType="NVarChar(20)" />
+    <ElementType Name="UserAccountsResult">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.OpenUserRequests" Method="OpenUserRequests">
+    <Parameter Name="app" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="username" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="OpenUserRequestsResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OA" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CaseID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="EmployeeLastName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Disability" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DRCStatus" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ServiceReport" Method="ServiceReport">
+    <ElementType Name="ServiceReportResult">
+      <Column Name="ServiceType" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="FAA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FHWA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FMCSA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FRA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FTA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MARAD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NHTSA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OIG" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OST" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PHMSA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RITA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SLSDC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="STB" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="USCG" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VOLPE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Total" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
   </Function>
 </Database>

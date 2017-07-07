@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     
-    @Styles.Render("~/Content/Swatch-SP")
-    @Styles.Render("~/Content/startmin")
-    @Styles.Render("~/Content/metis")
+    
+   @Styles.Render("~/Content/fontawesome")
+       @Styles.Render("~/Content/Swatch-SP")
+        @Styles.Render("~/Content/startmin")
+    @Styles.Render("~/Content/metis") 
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/textarea.css" rel="stylesheet" />
     <link href="~/Content/docs.css" rel="stylesheet" />
 </head>
 <body>
@@ -24,9 +27,17 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><i class="fa fa-home"></i>@Html.ActionLink("Home", "Index", "DRC")</li>
-                    <li><i class="fa fa-file"></i>@Html.ActionLink("DRC Form", "Index3", "DRC")</li>
-                    <li><i class="fa fa-file-excel-o"></i>@Html.ActionLink("DRC Reports", "Contact", "DRC")</li>
+                   <!-- <li><i class="fa fa-home"></i>@Html.ActionLink("Home", "Index", "DRC")</li>
+                    <li><i class="fa fa-file"></i>@Html.ActionLink("DRC Form", "AddRequest", "DRC")</li>
+                    <li><i class="fa fa-file-excel-o"></i>@Html.ActionLink("DRC Reports", "Contact", "DRC")</li> -->
+                    <li><a href="@Url.Action("Index", "DRC")"><i class="fa fa-home fa-fw"></i> Home</a></li>
+                    <li>
+                        <a href="@Url.Action("AddRequest", "DRC")"><i class="fa fa-edit fa-fw"></i> Form</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-table fa-fw"></i> Reports<span class="fa arrow"></span></a>
+                        
+                    </li>
                    <li>@Html.Partial("_PartialIndex")</li>
 
                 </ul>
@@ -39,7 +50,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - DOT Dept. Of Civil Rights</p>
         </footer>
     </div>
 

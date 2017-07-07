@@ -16,6 +16,7 @@
     <link type="text/css" rel="stylesheet" href="https://www.transportation.gov/sites/dot.gov/files/css/css_XmvlLVj5pJrbJGiEO79AZ5m3zlxqOTw81EUfMUyRsKc.css" media="all" />
     <link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:800,700,600,500,400,300,200,100" media="all" />
     <link type="text/css" rel="stylesheet" href="https://www.transportation.gov/sites/dot.gov/files/css/css_Icf1c9Vp5-Z4RY9kbNg8US1T9FHD1-Z7_Mniu-Ywk8w.css" media="all" />
+    <!--<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">-->
     <script src="https://www.transportation.gov/sites/dot.gov/files/js/js_6Rbdg5DBW6SHXNvCi1ua3ic5VrlaQOTaoDc8ZkwWxkk.js"></script>
     <script src="https://www.transportation.gov/sites/dot.gov/files/js/js_PSyrF8f5cdEIvH1tg5nTJpNL-0rQN9VYg0Q4NGD9wg4.js"></script>
     <script src="https://www.transportation.gov/sites/dot.gov/files/js/js_gRnPdYhQK4BfSaWMc7XAXQebkkg4og9bDXmCup2BTNA.js"></script>
@@ -31,9 +32,12 @@
     <script src="https://www.transportation.gov/sites/dot.gov/files/js/js_1laR-7cTy8flhiykBJ9ymUsrmDhAzMBGtr-ZI2Vm9Fk.js"></script>
     @Styles.Render("~/Content/fontawesome")
     @Styles.Render("~/Content/css")
+    
     @Styles.Render("~/Content/metis")
     @Scripts.Render("~/bundles/modernizr")
+   
     <link href="~/Content/docs.css" rel="stylesheet" />
+    <link href="~/Content/textarea.css" rel="stylesheet" />
 </head>
 <body class="html not-front not-logged-in one-sidebar sidebar-first page-node page-node- page-node-88 node-type-article section-drc">
     <!--[if lt IE 8]>
@@ -65,7 +69,7 @@
                                 <div id="block-search-form" class="block block-search first last odd" role="search">
 
                                     @Html.Partial("_PartialIndex")
-                                    <form action="//search.usa.gov/search" method="get" id="search-block-form" accept-charset="UTF-8">
+                                 <!--   <form action="//search.usa.gov/search" method="get" id="search-block-form" accept-charset="UTF-8">
                                         <div>
                                             <div class="container-inline">
                                                 <h2 class="element-invisible">Search form</h2>
@@ -76,7 +80,7 @@
                                                 <div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="GO" class="form-submit" /></div><input type="hidden" name="affiliate" value="usdot" />
                                             </div>
                                         </div>
-                                    </form>
+                                    </form> -->
                                 </div>
                             </div>
                         </div>
@@ -166,19 +170,19 @@
                                                     <ul class="nav" id="side-menu">
 
                                                         <li>
-                                                            <a href="index.html"><i class="fa fa-home fa-fw"></i> Home</a>
+                                                            <a href="@Url.Action("Index", "DRC")"><i class="fa fa-home fa-fw"></i> Home</a>
                                                         </li>
                                                         <li>
-                                                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                                                            <a href="@Url.Action("AddRequest", "DRC")"><i class="fa fa-edit fa-fw"></i> Form</a>
                                                         </li>
                                                         <li>
                                                             <a href="#"><i class="fa fa-table fa-fw"></i> Reports<span class="fa arrow"></span></a>
                                                             <ul class="nav nav-second-level">
                                                                 <li>
-                                                                    <a href="flot.html">Flot Charts</a>
+                                                                @Html.ActionLink("Test Report 1", "ReportTest", "DRC")
                                                                 </li>
                                                                 <li>
-                                                                    <a href="morris.html">Morris.js Charts</a>
+                                                                    @Html.ActionLink("Test Report 2", "SummaryReport", "DRC")
                                                                 </li>
                                                             </ul>
                                                             <!-- /.nav-second-level -->
@@ -304,8 +308,8 @@
     @Scripts.Render("~/bundles/metis")
     @Scripts.Render("~/bundles/startmin")
     
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
-
+   <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
+       
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
     <script type="text/javascript">
     $(document).ready(function () {

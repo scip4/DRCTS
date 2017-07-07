@@ -73,6 +73,54 @@ namespace DRCTS.Models
 			}
 		}
 		
+		public System.Data.Linq.Table<ANALYSTCODE> ANALYSTCODEs
+		{
+			get
+			{
+				return this.GetTable<ANALYSTCODE>();
+			}
+		}
+		
+		public System.Data.Linq.Table<DisbCode> DisbCodes
+		{
+			get
+			{
+				return this.GetTable<DisbCode>();
+			}
+		}
+		
+		public System.Data.Linq.Table<STATUSCODE> STATUSCODEs
+		{
+			get
+			{
+				return this.GetTable<STATUSCODE>();
+			}
+		}
+		
+		public System.Data.Linq.Table<RTCode> RTCodes
+		{
+			get
+			{
+				return this.GetTable<RTCode>();
+			}
+		}
+		
+		public System.Data.Linq.Table<NOTECODE> NOTECODEs
+		{
+			get
+			{
+				return this.GetTable<NOTECODE>();
+			}
+		}
+		
+		public System.Data.Linq.Table<MD715Code> MD715Codes
+		{
+			get
+			{
+				return this.GetTable<MD715Code>();
+			}
+		}
+		
 		public System.Data.Linq.Table<tDRCRequest> tDRCRequests
 		{
 			get
@@ -114,6 +162,27 @@ namespace DRCTS.Models
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD);
 			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UserAccounts")]
+		public ISingleResult<UserAccountsResult> UserAccounts([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(20)")] string app)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), app);
+			return ((ISingleResult<UserAccountsResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.OpenUserRequests")]
+		public ISingleResult<OpenUserRequestsResult> OpenUserRequests([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(20)")] string app, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string username)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), app, username);
+			return ((ISingleResult<OpenUserRequestsResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ServiceReport")]
+		public ISingleResult<ServiceReportResult> ServiceReport()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<ServiceReportResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -157,6 +226,276 @@ namespace DRCTS.Models
 				if ((this._OA_CODES != value))
 				{
 					this._OA_CODES = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ANALYSTCODES")]
+	public partial class ANALYSTCODE
+	{
+		
+		private System.Nullable<int> _ID;
+		
+		private string _ANALYSTCODES;
+		
+		public ANALYSTCODE()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int")]
+		public System.Nullable<int> ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ANALYSTCODES", DbType="NVarChar(255)")]
+		public string ANALYSTCODES
+		{
+			get
+			{
+				return this._ANALYSTCODES;
+			}
+			set
+			{
+				if ((this._ANALYSTCODES != value))
+				{
+					this._ANALYSTCODES = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DisbCodes")]
+	public partial class DisbCode
+	{
+		
+		private System.Nullable<int> _ID;
+		
+		private string _DISABCODES;
+		
+		public DisbCode()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int")]
+		public System.Nullable<int> ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DISABCODES", DbType="NVarChar(255)")]
+		public string DISABCODES
+		{
+			get
+			{
+				return this._DISABCODES;
+			}
+			set
+			{
+				if ((this._DISABCODES != value))
+				{
+					this._DISABCODES = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.STATUSCODES")]
+	public partial class STATUSCODE
+	{
+		
+		private System.Nullable<int> _ID;
+		
+		private string _STATUSCODES;
+		
+		public STATUSCODE()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int")]
+		public System.Nullable<int> ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATUSCODES", DbType="NVarChar(255)")]
+		public string STATUSCODES
+		{
+			get
+			{
+				return this._STATUSCODES;
+			}
+			set
+			{
+				if ((this._STATUSCODES != value))
+				{
+					this._STATUSCODES = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.RTCodes")]
+	public partial class RTCode
+	{
+		
+		private System.Nullable<int> _ID;
+		
+		private string _RequestTypeCodes;
+		
+		public RTCode()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int")]
+		public System.Nullable<int> ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestTypeCodes", DbType="NVarChar(255)")]
+		public string RequestTypeCodes
+		{
+			get
+			{
+				return this._RequestTypeCodes;
+			}
+			set
+			{
+				if ((this._RequestTypeCodes != value))
+				{
+					this._RequestTypeCodes = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.NOTECODES")]
+	public partial class NOTECODE
+	{
+		
+		private System.Nullable<int> _ID;
+		
+		private string _NOTECODES;
+		
+		public NOTECODE()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int")]
+		public System.Nullable<int> ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NOTECODES", DbType="NVarChar(255)")]
+		public string NOTECODES
+		{
+			get
+			{
+				return this._NOTECODES;
+			}
+			set
+			{
+				if ((this._NOTECODES != value))
+				{
+					this._NOTECODES = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MD715Codes")]
+	public partial class MD715Code
+	{
+		
+		private System.Nullable<int> _ID;
+		
+		private string _MD715Codes;
+		
+		public MD715Code()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int")]
+		public System.Nullable<int> ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MD715Codes", DbType="NVarChar(255)")]
+		public string MD715Codes
+		{
+			get
+			{
+				return this._MD715Codes;
+			}
+			set
+			{
+				if ((this._MD715Codes != value))
+				{
+					this._MD715Codes = value;
 				}
 			}
 		}
@@ -232,6 +571,16 @@ namespace DRCTS.Models
 		
 		private string _Comments;
 		
+		private System.Nullable<bool> _deleted;
+		
+		private string _CreatedBy;
+		
+		private string _Purchasing;
+		
+		private string _PRNumber;
+		
+		private string _UpdatedBy;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -300,6 +649,16 @@ namespace DRCTS.Models
     partial void OnNotesChanged();
     partial void OnCommentsChanging(string value);
     partial void OnCommentsChanged();
+    partial void OndeletedChanging(System.Nullable<bool> value);
+    partial void OndeletedChanged();
+    partial void OnCreatedByChanging(string value);
+    partial void OnCreatedByChanged();
+    partial void OnPurchasingChanging(string value);
+    partial void OnPurchasingChanged();
+    partial void OnPRNumberChanging(string value);
+    partial void OnPRNumberChanged();
+    partial void OnUpdatedByChanging(string value);
+    partial void OnUpdatedByChanged();
     #endregion
 		
 		public tDRCRequest()
@@ -947,6 +1306,106 @@ namespace DRCTS.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_deleted", DbType="Bit")]
+		public System.Nullable<bool> deleted
+		{
+			get
+			{
+				return this._deleted;
+			}
+			set
+			{
+				if ((this._deleted != value))
+				{
+					this.OndeletedChanging(value);
+					this.SendPropertyChanging();
+					this._deleted = value;
+					this.SendPropertyChanged("deleted");
+					this.OndeletedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedBy", DbType="VarChar(50)")]
+		public string CreatedBy
+		{
+			get
+			{
+				return this._CreatedBy;
+			}
+			set
+			{
+				if ((this._CreatedBy != value))
+				{
+					this.OnCreatedByChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedBy = value;
+					this.SendPropertyChanged("CreatedBy");
+					this.OnCreatedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Purchasing", DbType="VarChar(10)")]
+		public string Purchasing
+		{
+			get
+			{
+				return this._Purchasing;
+			}
+			set
+			{
+				if ((this._Purchasing != value))
+				{
+					this.OnPurchasingChanging(value);
+					this.SendPropertyChanging();
+					this._Purchasing = value;
+					this.SendPropertyChanged("Purchasing");
+					this.OnPurchasingChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRNumber", DbType="VarChar(50)")]
+		public string PRNumber
+		{
+			get
+			{
+				return this._PRNumber;
+			}
+			set
+			{
+				if ((this._PRNumber != value))
+				{
+					this.OnPRNumberChanging(value);
+					this.SendPropertyChanging();
+					this._PRNumber = value;
+					this.SendPropertyChanged("PRNumber");
+					this.OnPRNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdatedBy", DbType="VarChar(50)")]
+		public string UpdatedBy
+		{
+			get
+			{
+				return this._UpdatedBy;
+			}
+			set
+			{
+				if ((this._UpdatedBy != value))
+				{
+					this.OnUpdatedByChanging(value);
+					this.SendPropertyChanging();
+					this._UpdatedBy = value;
+					this.SendPropertyChanged("UpdatedBy");
+					this.OnUpdatedByChanged();
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1177,6 +1636,480 @@ namespace DRCTS.Models
 				if ((this._deleted != value))
 				{
 					this._deleted = value;
+				}
+			}
+		}
+	}
+	
+	public partial class UserAccountsResult
+	{
+		
+		private string _Id;
+		
+		private string _Name;
+		
+		public UserAccountsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="NVarChar(128) NOT NULL", CanBeNull=false)]
+		public string Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(MAX)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+	}
+	
+	public partial class OpenUserRequestsResult
+	{
+		
+		private int _ID;
+		
+		private string _OA;
+		
+		private string _CaseID;
+		
+		private string _EmployeeLastName;
+		
+		private string _Disability;
+		
+		private string _DRCStatus;
+		
+		public OpenUserRequestsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OA", DbType="VarChar(20)")]
+		public string OA
+		{
+			get
+			{
+				return this._OA;
+			}
+			set
+			{
+				if ((this._OA != value))
+				{
+					this._OA = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CaseID", DbType="VarChar(20)")]
+		public string CaseID
+		{
+			get
+			{
+				return this._CaseID;
+			}
+			set
+			{
+				if ((this._CaseID != value))
+				{
+					this._CaseID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeLastName", DbType="VarChar(50)")]
+		public string EmployeeLastName
+		{
+			get
+			{
+				return this._EmployeeLastName;
+			}
+			set
+			{
+				if ((this._EmployeeLastName != value))
+				{
+					this._EmployeeLastName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Disability", DbType="VarChar(50)")]
+		public string Disability
+		{
+			get
+			{
+				return this._Disability;
+			}
+			set
+			{
+				if ((this._Disability != value))
+				{
+					this._Disability = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DRCStatus", DbType="VarChar(20)")]
+		public string DRCStatus
+		{
+			get
+			{
+				return this._DRCStatus;
+			}
+			set
+			{
+				if ((this._DRCStatus != value))
+				{
+					this._DRCStatus = value;
+				}
+			}
+		}
+	}
+	
+	public partial class ServiceReportResult
+	{
+		
+		private string _ServiceType;
+		
+		private System.Nullable<int> _FAA;
+		
+		private System.Nullable<int> _FHWA;
+		
+		private System.Nullable<int> _FMCSA;
+		
+		private System.Nullable<int> _FRA;
+		
+		private System.Nullable<int> _FTA;
+		
+		private System.Nullable<int> _MARAD;
+		
+		private System.Nullable<int> _NHTSA;
+		
+		private System.Nullable<int> _OIG;
+		
+		private System.Nullable<int> _OST;
+		
+		private System.Nullable<int> _PHMSA;
+		
+		private System.Nullable<int> _RITA;
+		
+		private System.Nullable<int> _SLSDC;
+		
+		private System.Nullable<int> _STB;
+		
+		private System.Nullable<int> _USCG;
+		
+		private System.Nullable<int> _VOLPE;
+		
+		private System.Nullable<int> _Total;
+		
+		public ServiceReportResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceType", DbType="VarChar(2)")]
+		public string ServiceType
+		{
+			get
+			{
+				return this._ServiceType;
+			}
+			set
+			{
+				if ((this._ServiceType != value))
+				{
+					this._ServiceType = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FAA", DbType="Int")]
+		public System.Nullable<int> FAA
+		{
+			get
+			{
+				return this._FAA;
+			}
+			set
+			{
+				if ((this._FAA != value))
+				{
+					this._FAA = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FHWA", DbType="Int")]
+		public System.Nullable<int> FHWA
+		{
+			get
+			{
+				return this._FHWA;
+			}
+			set
+			{
+				if ((this._FHWA != value))
+				{
+					this._FHWA = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FMCSA", DbType="Int")]
+		public System.Nullable<int> FMCSA
+		{
+			get
+			{
+				return this._FMCSA;
+			}
+			set
+			{
+				if ((this._FMCSA != value))
+				{
+					this._FMCSA = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FRA", DbType="Int")]
+		public System.Nullable<int> FRA
+		{
+			get
+			{
+				return this._FRA;
+			}
+			set
+			{
+				if ((this._FRA != value))
+				{
+					this._FRA = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FTA", DbType="Int")]
+		public System.Nullable<int> FTA
+		{
+			get
+			{
+				return this._FTA;
+			}
+			set
+			{
+				if ((this._FTA != value))
+				{
+					this._FTA = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MARAD", DbType="Int")]
+		public System.Nullable<int> MARAD
+		{
+			get
+			{
+				return this._MARAD;
+			}
+			set
+			{
+				if ((this._MARAD != value))
+				{
+					this._MARAD = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NHTSA", DbType="Int")]
+		public System.Nullable<int> NHTSA
+		{
+			get
+			{
+				return this._NHTSA;
+			}
+			set
+			{
+				if ((this._NHTSA != value))
+				{
+					this._NHTSA = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OIG", DbType="Int")]
+		public System.Nullable<int> OIG
+		{
+			get
+			{
+				return this._OIG;
+			}
+			set
+			{
+				if ((this._OIG != value))
+				{
+					this._OIG = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OST", DbType="Int")]
+		public System.Nullable<int> OST
+		{
+			get
+			{
+				return this._OST;
+			}
+			set
+			{
+				if ((this._OST != value))
+				{
+					this._OST = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PHMSA", DbType="Int")]
+		public System.Nullable<int> PHMSA
+		{
+			get
+			{
+				return this._PHMSA;
+			}
+			set
+			{
+				if ((this._PHMSA != value))
+				{
+					this._PHMSA = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RITA", DbType="Int")]
+		public System.Nullable<int> RITA
+		{
+			get
+			{
+				return this._RITA;
+			}
+			set
+			{
+				if ((this._RITA != value))
+				{
+					this._RITA = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SLSDC", DbType="Int")]
+		public System.Nullable<int> SLSDC
+		{
+			get
+			{
+				return this._SLSDC;
+			}
+			set
+			{
+				if ((this._SLSDC != value))
+				{
+					this._SLSDC = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STB", DbType="Int")]
+		public System.Nullable<int> STB
+		{
+			get
+			{
+				return this._STB;
+			}
+			set
+			{
+				if ((this._STB != value))
+				{
+					this._STB = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USCG", DbType="Int")]
+		public System.Nullable<int> USCG
+		{
+			get
+			{
+				return this._USCG;
+			}
+			set
+			{
+				if ((this._USCG != value))
+				{
+					this._USCG = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VOLPE", DbType="Int")]
+		public System.Nullable<int> VOLPE
+		{
+			get
+			{
+				return this._VOLPE;
+			}
+			set
+			{
+				if ((this._VOLPE != value))
+				{
+					this._VOLPE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Int")]
+		public System.Nullable<int> Total
+		{
+			get
+			{
+				return this._Total;
+			}
+			set
+			{
+				if ((this._Total != value))
+				{
+					this._Total = value;
 				}
 			}
 		}

@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevMagicFake, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevMagicFake.1.0.0.0\lib\net40\DevMagicFake.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -406,7 +410,9 @@
     <Content Include="Content\metisMenu.css" />
     <Content Include="Content\metisMenu.min.css" />
     <Content Include="Content\morris.css" />
+    <Content Include="Content\Reports.css" />
     <Content Include="Content\startmin.css" />
+    <Content Include="Content\textarea.css" />
     <Content Include="Content\timeline.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -621,6 +627,12 @@
     <Content Include="Views\Shared\_LoginPartial3.cshtml" />
     <Content Include="Views\Account\_LoginLayout.cshtml" />
     <Content Include="Views\DRC\AddRequest.cshtml" />
+    <Content Include="Views\DRC\UserTasks.cshtml" />
+    <Content Include="Views\DRC\ReportsTest.cshtml" />
+    <Content Include="Views\DRC\EditRequest.cshtml" />
+    <Content Include="Views\DRC\Edit.cshtml" />
+    <Content Include="Views\DRC\ServiceReport.cshtml" />
+    <Content Include="Views\DRC\SummaryReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
