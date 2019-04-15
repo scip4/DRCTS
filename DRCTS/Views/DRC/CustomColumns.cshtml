@@ -1,0 +1,23 @@
+﻿@model IEnumerable<DRCTS.Models.CheckModel>
+
+<fieldset>
+    <legend>Items already checked are visable by default</legend>
+    <table class="table">
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.CheckBoxFor(modelItem => item.Checked, new { @class = "toggle-vis", @data_column = item.Id, @id = Html.DisplayFor(modelItem => item.Id) })
+                </td>
+                <td>
+                    @Html.Label(@Html.DisplayFor(modelItem => item.Name).ToString(), new { @for = Html.DisplayFor(modelItem => item.Id) })
+                </td>
+
+
+            </tr>
+        }
+
+    </table>
+</fieldset>

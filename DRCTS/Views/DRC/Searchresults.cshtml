@@ -1,0 +1,302 @@
+﻿@model IEnumerable<DRCTS.Models.ResultsResult>
+
+@{
+    ViewBag.Title = "Search results";
+}
+
+<div class="container col-lg-12 col-md-12">
+    <h1>@ViewBag.Header</h1>
+    <div class="row">
+        <div id="dialog" title="Columns for @ViewBag.Header Results" class="modal">
+           
+                <div class="wrap8per5 col-md-12 col-sm-6">
+                    <a href="#" class="list-group-item active"> <label for="checkall">Select all columns</label><input title="toggle all" type="checkbox" id="checkall" class="pull-right"></a>
+                    <div style="height:350px;  overflow: scroll; overflow-x: hidden;">
+                        
+                        <div id="checkboxes" class="list-group list-group-item-text">
+                            @Html.Action("CustomColumns", "DRC")
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+
+
+            <div class="col-lg-11 col-md-11 col-sm-11">
+                <div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="panel-title pull-left">
+                                <i class="fa fa-table"></i> <a href="#" id="search" aria-label="Add/Remove columns" onclick="mpop()">Add or remove columns</a>
+                            </div>
+                            <div class="panel-title pull-right"><button type="button" class="btn btn-info btn-sm" onclick="saveFile()" data-toggle="modal" data-target="#cost"><i class="fa fa-file-excel-o"></i> Export Results</button></div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div style="overflow-x:auto">
+                            <div class="panel-body">
+                                @Html.Partial("CustomRView")
+                            </div>
+                            <div class="panel-footer">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+
+
+
+
+<div class="row col-md-12">
+    <div class="col-md-2">
+        
+    </div>
+   
+
+
+    <div class="row">
+        
+
+
+
+    </div>
+</div>
+    @section tables {
+
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
+
+        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+        <script type="text/javascript">
+            function toggleChecked(status) {
+               // var table = $('.MyTable').DataTable({
+               //     "paging": false
+               // });
+                $("#checkboxes input").each(function () {
+                    // Set the checked status of each to match the 
+                    // checked status of the check all checkbox:
+                    $(this).prop("checked", status);
+                    var column = $('.MyTable').DataTable().column($(this).attr('data-column'));
+                    //alert($(this).attr('data-column'));
+                    // alert($(this).attr("id") + "     activetest: " + $(this).attr("active"));
+                    var chk = $(this).attr('data-column');
+                    if ((chk != null) && ($(this).attr('data-column') != "0") ){
+                        if ($(this).is(':checked')) {
+                            column.visible(true);
+                        } else {
+                            column.visible(false);
+                        }
+                        //column.visible(!column.visible());
+                        //alert($(this).attr('data-column'));
+                    }
+                    
+                    //toggleVis($that);
+                });
+            }
+            function saveFile2() {
+                var ExportButtons = $(".MyTable")[0];
+                //var ExportButtons2 = $("#status")[0];
+                // var instance = new TableExport([ExportButtons, ExportButtons2]
+                $(".MyTable").tableExport([ExportButtons], {
+                    headers: true,                              // (Boolean), display table headers (th or td elements) in the <thead>, (default: true)
+                    footers: true,                              // (Boolean), display table footers (th or td elements) in the <tfoot>, (default: false)
+                    formats: ['xlsx'],            // (String[]), filetype(s) for the export, (default: ['xlsx', 'csv', 'txt'])
+                    filename: 'id',                             // (id, String), filename for the downloaded file, (default: 'id')
+                    bootstrap: true,
+                    exportButtons: false, // (Boolean), style buttons using bootstrap, (default: false)
+                    position: 'bottom',                         // (top, bottom), position of the caption element relative to table, (default: 'bottom')
+                    ignoreRows: null,                           // (Number, Number[]), row indices to exclude from the exported file(s) (default: null)
+                    ignoreCols: null,                           // (Number, Number[]), column indices to exclude from the exported file(s) (default: null)
+                    ignoreCSS: '.tableexport-ignore',           // (selector, selector[]), selector(s) to exclude cells from the exported file(s) (default: '.tableexport-ignore')
+                    emptyCSS: '.tableexport-empty',             // (selector, selector[]), selector(s) to replace cells with an empty string in the exported file(s) (default: '.tableexport-empty')
+                    trimWhitespace: true
+                });
+            }
+            function saveFile() {
+               // alert("step 2");
+               /* $('.MyTable').DataTable({
+                    destroy: true,
+                    pageLength: 1000
+                });*/
+               // toggleStart();
+                var table = $('.MyTable').tableToJSON();
+                /*var table2 = $("#DisabilityReport").tableToJSON();
+                var table3 = $("#StatusReport").tableToJSON();
+                var table4 = $("#MD715Report").tableToJSON();*/
+                //alert(JSON.stringify(table));
+                var data1 = table;
+                /* var data2 = table2;
+                 var data3 = table3;
+                 var data4 = table4;*/
+                var today = new Date();
+                var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate() + today.getHours() + today.getMinutes();
+                var opts = [{
+                    sheetid: 'Search Results',
+                    headers: true,
+                    column: { style: { Font: { Bold: "6" } } },
+                    rows: { 1: { style: { Font: { Color: "#FF0077" } } } },
+                    cells: {
+                        1: {
+                            1: {
+                                style: { Font: { Color: "#00FFFF" } }
+                            }
+                        }
+                    }
+                }];
+                var res = alasql('SELECT INTO XLSX("SearchResults' + "-" + date + '.xlsx",?) FROM ?',
+                                 [opts, [data1]]);
+                /*alert("step 3");
+                $('.MyTable').DataTable({
+                    destroy: true
+                });
+                toggleStart();*/
+            }
+            function mpop() {
+                // alert("test");
+                $("#dialog").dialog({
+                    modal: true,
+                    resizable: false
+                });
+            };
+            function paging() {
+
+                var test = $('.MyTable').DataTable();
+                test.paging(true);
+               /* var table = $('.MyTable').DataTable(
+                    {
+                        "order": [[0, "desc"]],
+                        "paging": true
+                    }
+                );*/
+            }
+            function toggleStart() {
+                var table = $('.MyTable').DataTable(
+                    {
+                        "order": [[0, "desc"]],
+                        "paging": false
+                    }
+                );
+                $("#checkboxes input").each(function () {
+                    // Set the checked status of each to match the 
+                    // checked status of the check all checkbox:
+                    //$(this).prop("checked", status);
+                    var column = table.column($(this).attr('data-column'));
+                    //alert($(this).attr('data-column'));
+                    // alert($(this).attr("id") + "     activetest: " + $(this).attr("active"));
+                    var chk = $(this).attr('data-column');
+                    if ((chk != null) && ($(this).attr('data-column') != "0")) {
+                        if ($(this).is(':checked')) {
+                            column.visible(true);
+                        } else {
+                            column.visible(false);
+                        }
+                        //column.visible(!column.visible());
+                        //alert($(this).attr('data-column'));
+                    }
+
+                    //toggleVis($that);
+                });
+            }
+           /* function toggleVis(e) {
+                var table = $('.MyTable').DataTable();
+                var column = table.column(e).attr('data-column'));
+                column.visible(!column.visible());
+            }*/
+            $(document).ready(function () {
+                //alert("step 1");
+                var bootstrapButton = $.fn.button.noConflict() // return $.fn.button to previously assigned value
+                $.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the Bootstrap functionalit
+
+                toggleStart();
+                var table = $('.MyTable').DataTable();
+                
+
+                $('.toggle-vis').click(function () {
+                    // if ($(this).is(':checked')) alert("checked");
+                    var column = $('.MyTable').DataTable().column($(this).attr('data-column'));
+                    $that = $(this);
+                    //alert($(this).attr("id") + "     active: " + column);
+                    /*if ($(this).attr("active") == null) {
+                        // Toggle the visibility
+                        $that.addClass('active');
+                       // alert($(this).attr("id") + "     active: " + $(this).attr("active"));
+                    } else {
+                        $that.removeClass('active');
+                    }*/
+                    if ($(this).is(':checked')) {
+                        column.visible(true);
+                    } else {
+                        column.visible(false);
+                    }
+                });
+                var checkAllBox = $("#checkall");
+
+                //Set the default value of the global checkbox to true:
+                checkAllBox.prop('checked', false);
+
+                // Attach the call to toggleChecked to the
+                // click event of the global checkbox:
+                checkAllBox.click(function () {
+                    var status = checkAllBox.prop('checked');
+                   // alert(status);
+                    toggleChecked(status);
+                });
+                /*   $('.toggle-vis').on('click', function (e) {
+                       e.preventDefault();
+                       alert($(this).attr("id"));
+                       $that = $(this);
+                       $("#test").prop('checked', true);
+
+                       // Get the column API object
+                       var column = table.column($(this).attr('data-column'));
+
+                       // Toggle the visibility
+                       column.visible(!column.visible());
+                      // $(".list-group list-group-item").removeClass("active");
+                       //$that.parent().find('a').removeClass('active');
+                       //$that.addClass('active');
+                   });*/
+
+                $('.all').click(function (e) {
+                    e.stopPropagation();
+                    var $this = $(this);
+
+                    if ($this.is(":checked")) {
+                       // alert($this);
+                        $('#item_checked').prop("checked", true);
+                        $this.parents('.list-group').find("[type=checkbox]").prop("checked", true);
+                    }
+                    else {
+                        $this.parents('.list-group').find("[type=checkbox]").prop("checked", false);
+                        $this.prop("checked", false);
+                    }
+                });
+
+                $('[type=checkbox]').click(function (e) {
+                    e.stopPropagation();
+                });
+
+                /* toggle checkbox when list group item is clicked */
+                $('toggle-vis').click(function (e) {
+
+                    e.stopPropagation();
+
+                    var $this = $(this).find("[type=checkbox]");
+                    if ($this.is(":checked")) {
+                        $this.prop("checked", false);
+                    }
+                    else {
+                        $this.prop("checked", true);
+                    }
+
+                    if ($this.hasClass("all")) {
+                        $this.trigger('click');
+                    }
+                });
+            });
+
+
+        </script>
+    }

@@ -4,13 +4,28 @@
     ViewBag.Title = "CreateUser";
 }
 
-
-@Html.Partial("UserForm");
-
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="row">
+    <div class="col-md-10">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2>Disability Resource Center - New Users</h2>
+            </div>
+            <div class="panel-body">
+                <p>
+                    Use this page to new users for the application.
+                </p>
+            </div>
+            <!--<div class="panel-footer">
+                Panel Footer
+            </div>-->
+        </div>
+    </div>
 </div>
+<br />
+@Html.Partial("UserForm")
+
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

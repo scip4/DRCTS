@@ -1,25 +1,53 @@
 ﻿<!DOCTYPE html>
 
-<html>
+<html lang="en">
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="shortcut icon" href="https://www.transportation.gov/sites/dot.gov/themes/dot/favicon.ico" type="image/vnd.microsoft.icon" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/fontawesome")
-    @Styles.Render("~/Content/Swatch")
+  
+    @Styles.Render("~/Content/Swatch-SP")
     @Styles.Render("~/Content/startmin")
     @Styles.Render("~/Content/metis")
+    @Styles.Render("~/Content/calendar")
     @Scripts.Render("~/bundles/modernizr")
-    
-    <!--<link href="~/Content/textarea.css"  type="text/css" rel="stylesheet" />-->
+    <link href="~/Content/docs.css" rel="stylesheet" />
+    <link href="~/Content/textarea.css"  type="text/css" rel="stylesheet" />
+    <style type="text/css" media="screen">
+        #Reports li,  li {
+           
+            list-style-type: none;
+           
+        }
+        .current {
+font-weight: bold;
+background-color: #cc33ff;
+}
+        .navhead {
+    font-size: medium
+        }
+    </style>
 </head>
 <body>
     <div id="wrapper">
 
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            @if (Request.IsAuthenticated)
+            {
+                <script type="text/javascript">
+        var global_sess_expirationSeconds = @Session.Timeout*60;
+        var global_sess_warningSeconds = @System.Configuration.ConfigurationManager.AppSettings["SessionWarningDelaySecond"].ToString();
+        var global_LogoutUrl = "javascript:document.getElementById('logoutForm').submit()";
+         var global_sess_resetPage = '@Url.Action("Index", "JS")';
+                </script>
+            }
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">DRC App name</a>
+                <a aria-hidden="true" id="home-page-logo_desktop" href="/DRCTracking" title="Home" rel="home" id="logo"><img src="~/img/logo.png" alt="US Department of Transportation" /></a>
+        
+               
+           
             </div>
 
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -35,98 +63,123 @@
             </ul>-->
 
             <!-- Top Navigation: Right Menu -->
-            <ul class="nav navbar-right navbar-top-links">
-                <li>@Html.Partial("_PartialIndex")</li>
-               <!-- <li class="dropdown navbar-inverse">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-bell fa-fw"></i> <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu dropdown-alerts">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-comment fa-fw"></i> New Comment
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>See All Alerts</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> secondtruth <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li>
-                            <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
-                    </ul>
-                </li>-->
-            </ul>
             @Html.Partial("_LoginPartial3")
+            <ul class="nav navbar-right navbar-top-links">
+                <li> </li>
+                <li class="dropdown">
+                    <a  href="https://www.transportation.gov/drc/disability-resource-center">
+                        <span style="color:white;">Disability Resource Center</span>
+                    </a></li>
+                    <!--<li>@Html.Partial("_PartialIndex")</li> -->
+                    <!--  <li class="dropdown navbar-inverse">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <i class="fa fa-bell fa-fw"></i> <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu dropdown-alerts">
+                  <li>
+                      <a href="#">
+                          <div>
+                              <i class="fa fa-comment fa-fw"></i> New Comment
+                              <span class="pull-right text-muted small">4 minutes ago</span>
+                          </div>
+                      </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                      <a class="text-center" href="#">
+                          <strong>See All Alerts</strong>
+                          <i class="fa fa-angle-right"></i>
+                      </a>
+                  </li>
+              </ul>
+          </li> -->
+                    <!--  <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <i class="fa fa-user fa-fw"></i> secondtruth <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu dropdown-user">
+                  <li>
+                      <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                  </li>
+                  <li>
+                      <a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                      <a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                  </li>
+              </ul>
+          </li>-->
+
+</ul>
+           
             <!-- Sidebar -->
             <div class="navbar-default1 sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
-
-                    <ul class="nav" id="side-menu">
-                     <!--   <li class="sidebar-search">
+@if (Request.IsAuthenticated)
+{<nav aria-label="main_menu">
+                    
+                        <ul class="nav" id="side-menu">
+                            <li class="sidebar-search">
+                                @using (Html.BeginForm( "QuickSearch", "DRC", FormMethod.Post))
+                            {
                             <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
+                                <input type="text" aria-label="Search By CaseID" class="form-control" name="qSearch" placeholder="Search by CaseID">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-primary" type="button">
+
+                                    <button class="btn btn-primary" aria-label="Quick Search submit button" type="submit">
                                         <i class="fa fa-search"></i>
                                     </button>
                                 </span>
                             </div>
-                        </li>-->
-                        <li>
-                            <a href="index.html"><i class="fa fa-home fa-fw"></i> Home</a>
-                        </li>
-                        <li >
-                           
-                            <a href="@Url.Action("AddRequest", "DRC")"><i class="fa fa-edit fa-fw"></i> Form</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-table fa-fw"></i> Reports<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">Flot Charts</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Morris.js Charts</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <!-- <li>
-        <a href="tables.html"><i class="fa fa-table fa-fw"></i> Reports</a>
-    </li>-->
-                        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-                        {
-                            <li>
-                                <a href="#"><i class="fa fa-sun-o fa-fw"></i> Admin<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
-                                    <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
-                                </ul>
+                            }
+                                <div> <h2 class="navhead">Site Navigation</h2></div>
                             </li>
-                        }
-                    </ul>
+                            <li>
 
+                                <a href="@Url.Action("Index", "DRC")"><i class="fa fa-home fa-fw"></i> Home</a>
+
+                            </li>
+                            <li>
+
+                                <a href="@Url.Action("Add_Request", "DRC")"><i class="fa fa-edit fa-fw"></i> Form</a>
+
+                            </li>
+                            <li>
+
+
+                                <a href="@Url.Action("SearchForm", "DRC")"><i class="fa fa-search fa-fw"></i> Advanced Search</a>
+
+                            </li>
+                            <li>
+                                <a href="#" aria-expanded="false" id="Reports" onclick="toggle('lreports', 'Reports')"><i class="fa fa-table fa-fw"></i> Reports<span class="fa arrow"></span></a>
+                                <ul id="lreports" class="nav nav-second-level" aria-label="sub menu for reports">
+                                    <li>
+                                        @Html.ActionLink("Quarterly & Annual Report", "Summary_Report", "DRC")
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Analyst Caseload", "Analyst_Report", "DRC")
+                                    </li>
+
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+                            <!-- <li>
+                                <a href="tables.html"><i class="fa fa-table fa-fw"></i> Reports</a>
+                            </li>-->
+                            @if (Request.IsAuthenticated && User.IsInRole("DRCAdmin"))
+                        {
+                        <li>
+                            <a href="#"><i class="fa fa-sun-o fa-fw"></i> Admin<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>@Html.ActionLink("Roles", "Index", "RolesAdmin")</li>
+                                <li>@Html.ActionLink("Users", "Index", "UsersAdmin")</li>
+                            </ul>
+                        </li>
+                        }
+                        </ul>
+                    </nav>
+}
                 </div>
             </div>
         </nav>
@@ -143,9 +196,10 @@
                     </div>
                 </div>... Your content goes here ... -->
                 <div>
+                   
                     @RenderBody()
                 </div>
-
+              
             </div>
         </div>
 
@@ -153,18 +207,109 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    
     @Scripts.Render("~/bundles/metis")
     @Scripts.Render("~/bundles/startmin")
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
-
-    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+   @Scripts.Render("~/bundles/calendar")
+    @Scripts.Render("~/bundles/inputmask")
+    <script src="https://cdn.jsdelivr.net/alasql/0.3/alasql.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/masking-input.js" data-autoinit="true"></script>
+   
+    
+   
+    <!-- https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js-->
     <script type="text/javascript">
-    $(document).ready(function () {
-        $('.MyTable').DataTable();
-    });
+       $(document).ready(function() {
+            /*$(window).keydown(function(event){
+                if(event.keyCode == 13) {
+                    event.preventDefault();
+                    return true;
+                }
+            });
+           */
+            $("#AddForm").not("Button").keydown(function(event) {
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    return false;
+                }
+            });
 
 
+
+       });
+       function navPage(id) {
+           var n = document.getElementById(id);
+           if (id == "p1") {
+               //$('#l1').attr( 'aria-current', 'page' );
+               //$('#l2').removeAttr('aria-current'); 
+               document.getElementById("l1").setAttribute('aria-current', 'page');
+               document.getElementById("l2").setAttribute('aria-current', 'false');
+               navPageCurrent(id);
+               navPageOff("p2", "p3", "p4");
+           } else if (id == "p2") {
+               document.getElementById("l2").setAttribute('aria-current', 'page');
+               document.getElementById("l1").setAttribute('aria-current', 'false');
+               navPageCurrent(id);
+               navPageOff("p1", "p3", "p4");
+           } else if (id =="p3") {
+               navPageCurrent(id);
+               navPageOff("p2", "p1", "p4");
+           } else if (id = "p4") {
+               navPageCurrent(id);
+               navPageOff("p2", "p3", "p1");
+           }
+
+       };
+       function navPageCurrent(id) {
+           document.getElementById(id).innerHTML = "Current Page";
+       }
+       function navPageOff(id1,id2,id3) {
+          // alert("test");
+           document.getElementById(id1).innerHTML = "";
+           document.getElementById(id2).innerHTML = "";
+           document.getElementById(id3).innerHTML = "";
+           
+       }
+        function toggle(id, id2) {
+            var n = document.getElementById(id);
+            var k = document.getElementById(id2);
+
+            if (k.getAttribute('aria-expanded') == 'false') {
+                k.setAttribute('aria-expanded', 'true');
+                //alert("Should open " + document.getElementById(id2).getAttribute('aria-expanded'));
+            } else {
+                k.setAttribute('aria-expanded', 'false');
+              //  alert("Should close " + document.getElementById(id2).getAttribute('aria-expanded'));
+            }
+
+            /*if (n.style.display == '')
+            {
+                
+                
+                alert(n.style.display + "part 1 before set " + document.getElementById(id2).getAttribute('aria-expanded'));
+                n.style.display = 'none';
+                document.getElementById(id2).setAttribute('aria-expanded', 'false');
+                alert(n.style.display + "   First11" +  document.getElementById(id2).getAttribute('aria-expanded')   );
+            }
+            if (n.style.display != 'none')
+            {
+                alert(n.style.display + "part 2 before set");
+                n.style.display = 'none';
+                document.getElementById(id2).setAttribute('aria-expanded', 'false');
+                alert(n.style.display + "   First"   );
+            }
+            else
+            {
+                n.style.display = '';
+                document.getElementById(id2).setAttribute('aria-expanded', 'true');
+                alert(n.style.display + "      Last");
+            }*/
+        }
     </script>
+    <script src="~/Scripts/session.warning.js"></script>
     @RenderSection("scripts", required: false)
+    @RenderSection("crip", required: false)
+    @RenderSection("tables", required: false)
+    @RenderSection("nSearch", required: false)
 </body>
 </html>

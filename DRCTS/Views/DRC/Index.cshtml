@@ -1,13 +1,31 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-   
+    var message = TempData["Rm"] ?? string.Empty;
+
 }
+@using Microsoft.AspNet.Identity
+<!--<h1 class="page-header">DRC Tracking System</h1>
 
-<h1 class="page-header">DRC Tracking System</h1>
-
+<br />-->
+<div class="row">
+<div class="col-md-10">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+           <h1> Disability Resource Center Tracking System</h1>
+        </div>
+        <div class="panel-body">
+            <p>Welcome to the DRC Tracking System. This system provides the ability to create, track, manage, and report on requests for accommodation cases.
+            On this page you can view all requests assigned to <b>@User.Identity.GetUserName()</b> and the totals for all open requests and all new requests entered in the system. 
+            </p>
+        </div>
+        <!--<div class="panel-footer">
+            Panel Footer
+        </div>-->
+    </div>
+</div>
+    </div>
 <br />
-
  
 <div class="row">
     <div class="col-md-5">
@@ -15,21 +33,22 @@
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
-                        <i class="fa fa-comments fa-5x"></i>
+                 <i class="fa fa-comments fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">26</div>
                         <div>Total Open Requests</div>
+                        <div class="huge" aria-label="Total open Requests value">@ViewBag.open</div>
+                        
                     </div>
                 </div>
             </div>
-            <a href="#">
-                <div class="panel-footer">
-                    <span class="pull-left">This is the number of open cases assigned to you</span>
-                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                    <div class="clearfix"></div>
-                </div>
-            </a>
+            <a href="@Url.Action("All_Open_Requests", "DRC")" aria-label="Link to All open Requests">
+    <div class="panel-footer">
+        <span class="pull-left">This is the number of open cases in the system</span>
+        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+        <div class="clearfix"></div>
+    </div>
+</a>
         </div>
     </div>
     <div class="col-md-5">
@@ -40,12 +59,13 @@
                         <i class="fa fa-tasks fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">12</div>
                         <div>New Requests</div>
+                        <div class="huge" aria-label="New Requests value">@ViewBag.newR</div>
+                        
                     </div>
                 </div>
             </div>
-            <a href="#">
+            <a href="@Url.Action("Unassigned_Requests", "DRC")" aria-label="Link to new Requests">
                 <div class="panel-footer">
                     <span class="pull-left">This is the number of open cases that have not been assigned</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -57,13 +77,66 @@
     
     </div>
 
+
 <div class="row">
-    <div class="col-lg-10 col-md-10">
-        <div class="panel panel-default">
+    <div class="col-md-5">
+        <div class="panel panel-primary">
             <div class="panel-heading">
-                Open cases for @ViewBag.User
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-check-square fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div>Total Fulfilled Requests</div>
+                        <div class="huge" aria-label="Total fulfilled Requests value">@ViewBag.full</div>
+
+                    </div>
+                </div>
             </div>
-            <div class="panel-body">
+            <a href="@Url.Action("All_Fulfilled_Requests", "DRC")" aria-label="Link to Fulfilled Requests">
+                <div class="panel-footer">
+                    <span class="pull-left">This is the number of Fulfilled cases in the system</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-list-alt fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div>Total Other Requests</div>
+                        <div class="huge" aria-label="Other Requests value">@ViewBag.other</div>
+
+                    </div>
+                </div>
+            </div>
+            <a href="@Url.Action("All_Other_Requests", "DRC")" aria-label="Link to Other Requests">
+                <div class="panel-footer">
+                    <span class="pull-left">This is the number with the status of "Other"</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div class="row">
+    <div class="col-lg-10 col-md-10" >
+        <div class="panel panel-default" >
+            <div class="panel-heading">
+             <h2 style="font-size:150%">   Open cases for @ViewBag.User</h2>
+            </div>
+            <div class="panel-body" style="height:500px; overflow-y:auto;">
                 @Html.Action("UserTasks", "DRC")
             </div>
             <div class="panel-footer">
@@ -72,7 +145,51 @@
         </div>
     </div>
 
-
+    <div id="dialog" title="Confirmation" class="modal">
+       @TempData["Rm"]
+    </div>
 
 </div>
+@section tables {
+
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('.MyTable').DataTable({
+            searching: false,
+            "paging": false,
+            info: false
+
+        });
+
+        var message = '@message';
+        if (message) {
+            $("#dialog").dialog({
+
+                modal: true,
+                resizable: false,
+                position: {
+                    my: 'center',
+                    
+                },
+                buttons: {
+                    Ok: function () {
+                        width: 550,
+                        $(this).dialog("close"); //closing on Ok click
+                        //var e = $.Event('keypress');
+                        ///e.which = 13; // Character 'A'
+                        //$(this).trigger(e);
+                    }
+                }
+            });
+        };
+        //alert(message);
+        
+    });
+
+
+    </script>
+}
 

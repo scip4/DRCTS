@@ -6,6 +6,7 @@
     <link rel="shortcut icon" href="https://www.transportation.gov/sites/dot.gov/themes/dot/favicon.ico" type="image/vnd.microsoft.icon" />
     <title>@ViewBag.Title</title>
      @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/calendar")
     @Styles.Render("~/Content/metis")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/docs.css" rel="stylesheet" />
@@ -44,28 +45,29 @@
         <div class="row">
 
             <div class="col-md-3">
-                <p class="lead">DRC App Name</p>
+                <p class="lead"></p>
                 <div class="list-group">
                    <!-- <a href="#" class="list-group-item active">Category 1</a>
                     <a href="#" class="list-group-item">Category 2</a>
                     <a href="#" class="list-group-item">Category 3</a> -->
-                    <ul class="nav" id="side-menu">
+                  
+                    @if (Request.IsAuthenticated)
+                    {
+                          <ul class="nav" id="side-menu">
 
-                        <li >
-                            <a href="index.html" class="list-group-item"><i class="fa fa-home fa-fw"></i> Home</a>
+                        <li>
+                            <a href="@Url.Action("Index", "DRC")" class="list-group-item"><i class="fa fa-home fa-fw"></i> Home</a>
                         </li>
-                        <li >
-                            <a href="forms.html" class="list-group-item"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                        <li>
+                            <a href="@Url.Action("AddRequest", "DRC")" class="list-group-item"><i class="fa fa-edit fa-fw"></i> Form</a>
                         </li>
                         <li>
                             <a href="#" class="list-group-item"><i class="fa fa-table fa-fw"></i> Reports<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li class="list-group-item">
-                                    <a href="flot.html" >Flot Charts</a>
+                                    @Html.ActionLink("Test Report 1", "SummaryReport", "DRC")
                                 </li>
-                                <li class="list-group-item">
-                                    <a href="morris.html" >Morris.js Charts</a>
-                                </li>
+                                
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
@@ -83,7 +85,7 @@
                             </li>
                         }
                     </ul>
-
+                    }
 
 
 
@@ -124,6 +126,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/metis")
+    @Scripts.Render("~/bundles/calendar")
     @Scripts.Render("~/bundles/startmin")
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
 
@@ -146,5 +149,7 @@
     }
     <script src="~/Scripts/session.warning.js"></script>
     @RenderSection("scripts", required: false)
+    @RenderSection("crip", required: false)
+    @RenderSection("tables", required: false)
 </body>
 </html>

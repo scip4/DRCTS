@@ -1,0 +1,274 @@
+﻿@model IEnumerable<DRCTS.Models.ResultsResult>
+
+
+<div class="table-responsive">
+
+    <table id="MyTable" class="MyTable table table-striped table-bordered table-hover largeTable">
+        <thead>
+            <tr>
+                <th>
+                    Case ID
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OA)
+                </th>
+
+
+                <th>
+                   Employee Last Name
+                </th>
+                <th>
+                   Employee First Name
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Position)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Grade)
+                </th>
+                <th>
+                    Employee Phone
+                </th>
+                <th>
+                    Employee Email
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Disability)
+                </th>
+                <th>
+                    Supervisor Last Name
+                </th>
+                <th>
+                    Supervisor First Name
+                </th>
+                <th>
+                    Supervisor Email
+                </th>
+                <th>
+                    Supervisor Phone
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    Date Request Received
+                                </th>
+                <th>
+                    COWA Date
+                </th>
+                <th>
+                    Quarter Received
+                </th>
+                <th>
+                    Date Completed
+                </th>
+                <th>
+                    Date Fulfilled
+                </th>
+                <th>
+                    DRC Request Type
+                </th>
+                <th>
+                    DRC Status
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OC)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Source)
+                </th>
+                <th>
+                    Requested MD715
+                </th>
+                <th>
+                    End MD715
+                </th>
+                <th>
+                    Analyst Assigned
+                </th>
+                <th>
+                    Describe Provided Accommodation
+                </th>
+                <th>
+                   Time Frame Today
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Notes)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Comments)
+                </th>
+
+                <th>
+                    Created By
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Purchasing)
+                </th>
+                <th>
+                    PR Number
+                </th>
+                <th>
+                    PR Amount
+                </th>
+                <th>
+                    Updated By
+                </th>
+                <th>
+                    Created Date
+                </th>
+                <th>
+                    Updated Date
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+
+                        @Html.ActionLink(item.CaseID.ToString(), "Edit", new { id = item.ID })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OA)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeLastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeFirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Position)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Grade)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeePhone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Disability)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SupervisorLastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SupervisorFirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SupervisorEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SupervisorPhone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @if (@item.DateRequestReceived.HasValue)
+                        {
+                             @item.DateRequestReceived.Value.ToShortDateString()
+                            }
+                    </td>
+                    <td>
+                        @if (@item.COWADate.HasValue)
+                        {
+                        @item.COWADate.Value.ToShortDateString()
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QuarterReceived)
+                    </td>
+                    <td>
+                        @if (@item.DateCompleted.HasValue)
+                        {
+                        @item.DateCompleted.Value.ToShortDateString()
+                        }
+                    </td>
+                    <td>
+                        @if (item.DateFulfilled.HasValue)
+                        {
+                        @item.DateFulfilled.Value.ToShortDateString()
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DRCRequestType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DRCStatus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Source)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RequestedMD715)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndMD715)
+                    </td>
+                    <td>
+                        @Html.Action("UserName", "DRC", new { id = item.AnalystAssigned })
+                        
+                        
+                    </td>
+                    <td>
+    @Html.DisplayFor(modelItem => item.ProvidedAccom)
+</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TFToday)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Notes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Comments)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedBy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Purchasing)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PRNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UpdatedBy)
+                    </td>
+                    <td>
+                        @if(item.CreatedDate.HasValue) {
+
+                        @item.CreatedDate.Value.ToShortDateString()
+                        }
+                    </td>
+                    <td>
+                    @if (item.UpdatedDate.HasValue)
+                        {
+                        @item.UpdatedDate.Value.ToShortDateString()
+                        }
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+

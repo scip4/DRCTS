@@ -2,6 +2,35 @@
 @{
     var total = Model.Sum(a => a.Total);
     var faa = Model.Sum(a => a.FAA);
+    var percentfaa = (decimal)(100 * faa) / (total == 0 ? total + 1 : total);
+    var fhwa = Model.Sum(a => a.FHWA);
+    var percentfhwa = (decimal)(100 * fhwa) / (total == 0 ? total + 1 : total);
+    var fmcsa = Model.Sum(a => a.FMCSA);
+    var percentfmcsa = (decimal)(100 * fmcsa) / (total == 0 ? total + 1 : total);
+    var fra = Model.Sum(a => a.FRA);
+    var percentfra = (decimal)(100 * fra) / (total == 0 ? total + 1 : total);
+    var fta = Model.Sum(a => a.FTA);
+    var percentfta = (decimal)(100 * fta) / (total == 0 ? total + 1 : total);
+    var marad = Model.Sum(a => a.MARAD);
+    var percentmarad = (decimal)(100 * marad) / (total == 0 ? total + 1 : total);
+    var nhtsa = Model.Sum(a => a.NHTSA);
+    var percentnhtsa = (decimal)(100 * nhtsa) / (total == 0 ? total + 1 : total);
+    var oig = Model.Sum(a => a.OIG);
+    var percentoig = (decimal)(100 * oig) / (total == 0 ? total + 1 : total);
+    var ost = Model.Sum(a => a.OST);
+    var percentost = (decimal)(100 * ost) / (total == 0 ? total + 1 : total);
+    var phmsa = Model.Sum(a => a.PHMSA);
+    var percentphmsa = (decimal)(100 * phmsa) / (total == 0 ? total + 1 : total);
+    var rita = Model.Sum(a => a.RITA);
+    var percentrita = (decimal)(100 * rita) / (total == 0 ? total + 1 : total);
+    var slsdc = Model.Sum(a => a.SLSDC);
+    var percentslsdc = (decimal)(100 * slsdc) / (total == 0 ? total + 1 : total);
+    var stb = Model.Sum(a => a.STB);
+    var percentstb = (decimal)(100 * stb) / (total == 0 ? total + 1 : total);
+    var uscg = Model.Sum(a => a.USCG);
+    var percentuscg = (decimal)(100 * uscg) / (total == 0 ? total + 1 : total);
+    var volpe = Model.Sum(a => a.VOLPE);
+    var percentvolpe = (decimal)(100 * volpe) / (total == 0 ? total + 1 : total);
 
 }
 <style>
@@ -24,7 +53,7 @@ background-color: lightblue;
   font: bold;
     }
 </style>
-<table class="table">
+<table class="table" id="ServiceReport">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ServiceType)
@@ -85,6 +114,7 @@ background-color: lightblue;
 {
     <tr>
         <td>
+        
             @Html.DisplayFor(modelItem => item.ServiceType)
         </td>
         <td>
@@ -135,51 +165,58 @@ background-color: lightblue;
         <td>
             @Html.DisplayFor(modelItem => item.Total)
         </td>
-        <td>@{ var percentComplete = (int)(100 * item.Total) / total;
-        }
-        @percentComplete %</td>
+        <td>@{
+            var percentComplete = (decimal)(100 * item.Total) / (total == 0 ? total + 1 : total);
+            /* if (total > 0)
+             {
+                 percentComplete = (decimal)(100 * item.Total) / total;
+             }*/
+
+            @percentComplete.ToString("0.00")
+            }
+       </td>
     </tr>
 }
     <tfoot>
         <tr class="tfo">
             <td>Total</td>
             <td>@faa</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>@fhwa</td>
+            <td>@fmcsa</td>
+            <td>@fra</td>
+            <td>@fta</td>
+            <td>@marad</td>
+            <td>@nhtsa</td>
+            <td>@oig</td>
+            <td>@ost</td>
+            <td>@phmsa</td>
+            <td>@rita</td>
+            <td>@slsdc</td>
+            <td>@stb</td>
+            <td>@uscg</td>
+            <td>@volpe</td>
+            <td>@total</td>
             <td></td>
 
         </tr>
         <tr class="spider">
             <td>Percent of all Requests</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>@percentfaa.ToString("0.00")%</td>
+            <td>@percentfhwa.ToString("0.00")%</td>
+            <td>@percentfmcsa.ToString("0.00")%</td>
+            <td>@percentfra.ToString("0.00")%</td>
+            <td>@percentfta.ToString("0.00")%</td>
+            <td>@percentmarad.ToString("0.00")%</td>
+            <td>@percentnhtsa.ToString("0.00")%</td>
+            <td>@percentoig.ToString("0.00")%</td>
+            <td>@percentost.ToString("0.00")%</td>
+            <td>@percentphmsa.ToString("0.00")%</td>
+            <td>@percentrita.ToString("0.00")%</td>
+            <td>@percentslsdc.ToString("0.00")%</td>
+            <td>@percentstb.ToString("0.00")%</td>
+            <td>@percentuscg.ToString("0.00")%</td>
+            <td>@percentvolpe.ToString("0.00")%</td>
+            <td>100%</td>
             <td></td>
 
         </tr>

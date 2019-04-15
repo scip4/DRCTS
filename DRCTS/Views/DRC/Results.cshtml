@@ -1,0 +1,248 @@
+﻿@model IEnumerable<DRCTS.Models.tDRCRequest>
+
+@{
+    ViewBag.Title = "Results";
+}
+
+<h2>Results</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="table-responsive">
+
+    <table id="MyTable" class="MyTable table table-striped table-bordered table-hover largeTable">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.OA)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CaseID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeLastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeFirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Position)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Grade)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeePhone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeEmail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Disability)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SupervisorLastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SupervisorFirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SupervisorPhone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateRequestReceived)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.COWADate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.QuarterReceived)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateCompleted)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateFulfilled)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DRCRequestType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DRCStatus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OC)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Source)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RequestedMD715)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EndMD715)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AnalystAssigned)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TFToday)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TFReportDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReportInOut)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Notes)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Comments)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.deleted)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedBy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Purchasing)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PRNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UpdatedBy)
+                </th>
+                <th></th>
+            </tr>
+            </thead><tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CaseID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeLastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeFirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Position)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Grade)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeePhone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Disability)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SupervisorLastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SupervisorFirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SupervisorPhone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateRequestReceived)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.COWADate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QuarterReceived)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateCompleted)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateFulfilled)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DRCRequestType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DRCStatus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Source)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RequestedMD715)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndMD715)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AnalystAssigned)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TFToday)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TFReportDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReportInOut)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Notes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Comments)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.deleted)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedBy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Purchasing)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PRNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UpdatedBy)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>

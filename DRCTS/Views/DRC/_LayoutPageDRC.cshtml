@@ -32,7 +32,7 @@
     <script src="https://www.transportation.gov/sites/dot.gov/files/js/js_1laR-7cTy8flhiykBJ9ymUsrmDhAzMBGtr-ZI2Vm9Fk.js"></script>
     @Styles.Render("~/Content/fontawesome")
     @Styles.Render("~/Content/css")
-    
+    @Styles.Render("~/Content/calendar")
     @Styles.Render("~/Content/metis")
     @Scripts.Render("~/bundles/modernizr")
    
@@ -67,8 +67,17 @@
                         <div id="icons-and-search" class="clearfix">
                             <div class="header__region region region-header">
                                 <div id="block-search-form" class="block block-search first last odd" role="search">
-
-                                    @Html.Partial("_PartialIndex")
+@if (Request.IsAuthenticated)
+{
+                                    <div class="input-group custom-search-form col-md-8 pull-right">
+                                        <input type="text" class="form-control" placeholder="Search for Request...">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+}
                                  <!--   <form action="//search.usa.gov/search" method="get" id="search-block-form" accept-charset="UTF-8">
                                         <div>
                                             <div class="container-inline">
@@ -87,11 +96,11 @@
                         <div id="logo-sitename" class="clearfix">
 
 
+                           
 
 
-
-                            <a aria-hidden="true" id="home-page-logo_desktop" href="/" title="Home" rel="home" id="logo"><img src="/img/logo.png" alt="US Department of Transportation"></img></a>
-                            <a aria-hidden="true" id="home-page-logo_mobile" href="/" title="Home" rel="home" id="logo"><img src="/sites/dot.gov/themes/dot/images/mobile_logo_small.png" alt="US Department of Transportation"></img></a>
+                            <a aria-hidden="true" id="home-page-logo_desktop" href="/" title="Home" rel="home" id="logo"><img src="~/img/logo.png" alt="US Department of Transportation" /></a>
+                            
 
 
 
@@ -168,7 +177,18 @@
                                                 -->
                                                 <div id="section_nav" class="accordion_menu">
                                                     <ul class="nav" id="side-menu">
-
+                                                        <!--<li class="sidebar-search">
+                                                            <div class="input-group custom-search-form">
+                                                                <input type="text" class="form-control" placeholder="Search for Request...">
+                                                                <span class="input-group-btn">
+                                                                    <button class="btn btn-primary" type="button">
+                                                                        <i class="fa fa-search"></i>
+                                                                    </button>
+                                                                </span>
+                                                            </div>
+                                                        </li>-->
+                                                      @if (Request.IsAuthenticated)
+                                                      {
                                                         <li>
                                                             <a href="@Url.Action("Index", "DRC")"><i class="fa fa-home fa-fw"></i> Home</a>
                                                         </li>
@@ -178,25 +198,26 @@
                                                         <li>
                                                             <a href="#"><i class="fa fa-table fa-fw"></i> Reports<span class="fa arrow"></span></a>
                                                             <ul class="nav nav-second-level">
-                                                                <li>
+                                                               <!--<li>
                                                                 @Html.ActionLink("Test Report 1", "ReportTest", "DRC")
-                                                                </li>
+                                                                </li>--> 
                                                                 <li>
-                                                                    @Html.ActionLink("Test Report 2", "SummaryReport", "DRC")
+                                                                    @Html.ActionLink("Test Report 1", "SummaryReport", "DRC")
                                                                 </li>
                                                             </ul>
                                                             <!-- /.nav-second-level -->
                                                         </li>
+                                                      }
                                                         <!-- <li>
                                                             <a href="tables.html"><i class="fa fa-table fa-fw"></i> Reports</a>
                                                         </li>-->
-                                                        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                                                        @if (Request.IsAuthenticated && User.IsInRole("DRCAdmin"))
                                                     {
                                                             <li>
                                                                 <a href="#"><i class="fa fa-sun-o fa-fw"></i> Admin<span class="fa arrow"></span></a>
                                                                 <ul class="nav nav-second-level">
-                                                                    <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
-                                                                    <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                                                                    <li>@Html.ActionLink("Roles", "Index", "RolesAdmin")</li>
+                                                                    <li>@Html.ActionLink("Users", "Index", "UsersAdmin")</li>
                                                                 </ul>
                                                             </li>
                                                                 }
@@ -305,6 +326,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    
     @Scripts.Render("~/bundles/metis")
     @Scripts.Render("~/bundles/startmin")
     
@@ -329,6 +351,9 @@
 }
     <script src="~/Scripts/session.warning.js"></script>
     @RenderSection("scripts", required: false)
+    @RenderSection("crip", required: false)
+    @RenderSection("tables", required: false)
+    @RenderSection("nSearch", required: false)
 </body>
 </html>
 

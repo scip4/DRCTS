@@ -1,0 +1,166 @@
+﻿
+@{
+    ViewBag.Title = "Analyst Report";
+}
+
+
+
+<div class="row">
+    <div class="col-md-10">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+               <h1>Disability Resource Center - Reasonable Accommodation Report</h1> 
+            </div>
+            <div class="panel-body">
+                <p>
+                    On this page you can view a report of reasonable accommodations by analyst. Also you can filter this data by fiscal year and quarter.
+                </p>
+            </div>
+            <!--<div class="panel-footer">
+                Panel Footer
+            </div>-->
+        </div>
+    </div>
+</div>
+<hr />
+<br />
+
+<div class="container col-md-12">
+    <div class="form-group row">
+        <div class="col-md-4">
+            @Html.Label("Fiscal Year", htmlAttributes: new { @class = "control-label" })
+            @Html.DropDownList("Fiscal_Year", ViewBag.dSource as SelectList, "Select One", new { htmlAttributes = new { @class = "form-control" } })
+
+        </div>
+        <div class="col-md-5">
+            @Html.Label("Quarter", htmlAttributes: new { @class = "control-label" })
+            @Html.DropDownList("Quarter", ViewBag.dSource2 as SelectList, "Select One", new { htmlAttributes = new { @class = "form-control" } })
+
+        </div>
+       <!-- <div class="col-md-2">
+            <button type="button" class="btn btn-info btn-sm" id="all" onclick="saveFile()" data-toggle="modal" data-target="#cost"><i class="fa fa-file-excel-o"></i> Export Full Report</button>
+        </div>-->
+
+    </div>
+    <br /><br />
+    <div class="row">
+        <div class="col-lg-11 col-md-11">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="panel-title pull-left"><h2 style="font-size:125%">
+    <i class="fa fa-table"></i> Number of Reasonable Accommodation By Analyst</h2>
+</div>
+                    <div class="panel-title pull-right"><button type="button" onclick="saveAnalystReport()" class="btn btn-info btn-sm" data-toggle="modal" id="service" data-target="#cost"><i class="fa fa-file-excel-o"></i> Export section</button></div>
+                    <div class="clearfix"></div>
+                </div>
+                <div id="container1" style="overflow-x:auto">
+                    @Html.Action("RAbyUser", "DRC", new { year = ViewBag.fyyear })
+                </div>
+
+
+                <div class="panel-footer">
+
+                </div>
+            </div>
+        </div>
+
+
+       
+    </div>
+    <a href="@Url.Action("Index", "DRC")"><i class="fa fa-home fa-fw"></i> Back to Home</a>
+    </div>
+    @section tables {
+
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+
+            table, td, th {
+                border: 1px solid black;
+            }
+
+            th {
+                background-color: #42444e;
+                color: white;
+            }
+        </style>
+
+        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"> </script>
+        <script type="text/javascript">
+ $(document).ready(function () {
+        $('.MyTable').DataTable();
+    }); </script>
+
+        <script type="text/javascript">
+    function updateReport(year) {
+        $.get("RAbyUser?year=" + year, function (data) {
+            $('#container1').html(data);
+        });
+        $.get("Disability_Report?year=" + year, function (data) {
+            $('#container2').html(data);
+        });
+        $.get("Status_Report?year=" + year, function (data) {
+            $('#container3').html(data);
+        });
+        $.get("MD715Report?year=" + year, function (data) {
+            $('#container4').html(data);
+        });
+    };
+
+
+
+    $(function () {
+        $('#Fiscal_Year').on("change", function () {
+            var year = $(this).val();
+            
+            if ($("#Quarter option:selected").val() != 0) {
+                year = year + "-" + $("#Quarter option:selected").val();
+            }
+            //alert(year + "-" + $("#Quarter option:selected").val());
+            //alert(year);
+            updateReport(year);
+
+
+        });
+        $('#Quarter').on("change", function () {
+            var year = $("#Fiscal_Year option:selected").val();
+            if ($("#Quarter option:selected").val() != 0) {
+                year = year + "-" + $("#Quarter option:selected").val();
+            }
+
+           // alert(year);
+            updateReport(year);
+
+
+        });
+
+
+
+
+
+
+    });
+
+   
+    function saveAnalystReport() {
+
+
+
+        var table = $("#AnalystReport").tableToJSON();
+
+        //alert("Fiscal_Year");
+        var data1 = table;
+
+        var today = new Date();
+        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        var opts = [{ sheetid: 'Analyst Report', header: true }];
+        var res = alasql('SELECT INTO XLSX("AnalystReportFY' + $("#Fiscal_Year option:selected").val() + "-QT" + $("#Quarter option:selected").val() + "-" + date + '.xlsx",?) FROM ?',
+                         [opts, [data1]]);
+    }
+
+   
+        </script>
+
+    }

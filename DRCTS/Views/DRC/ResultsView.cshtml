@@ -1,0 +1,66 @@
+﻿@model IEnumerable<DRCTS.Models.tDRCRequest>
+
+        <div class="table-responsive">
+
+            <table id="MyTable" class="MyTable table table-striped table-bordered table-hover largeTable">
+                <thead>
+                    <tr>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.CaseID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OA)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.EmployeeLastName)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Disability)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.DRCStatus)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DRCRequestType)
+                        </th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+            {
+            <tr>
+
+                <td>
+                    @Html.ActionLink(item.CaseID.ToString(), "Edit", new { id = item.ID })
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OA)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeLastName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Disability)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.DRCStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DRCRequestType)
+                    </td>
+               
+                </tr>
+            }
+                </tbody>
+                @Html.Hidden("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </table>
+        </div>

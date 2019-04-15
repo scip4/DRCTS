@@ -4,13 +4,30 @@
     ViewBag.Title = "Index2";
 }
 
-<h2>Index2</h2>
+<div class="row">
+    <div class="col-md-10">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2>Disability Reasource Center - Manage Users</h2>
+            </div>
+            <div class="panel-body">
+                <p>
+                    Use this page to edit existing or create new users for the application.
+                </p>
+            </div>
+            <!--<div class="panel-footer">
+                Panel Footer
+            </div>-->
+        </div>
+    </div>
+</div>
+<br />
+<hr />
+
+
 
 <p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<p>
-    @Html.ActionLink("Create User test", "CreateUser")
+    @Html.ActionLink("Create User", "CreateUser")
 </p>
 <div id="users_div" class="panel-body">
     <div class="table-responsive">

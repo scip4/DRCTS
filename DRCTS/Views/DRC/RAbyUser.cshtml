@@ -1,0 +1,101 @@
+﻿@model IEnumerable<DRCTS.Models.RAAnylistResult>
+@{
+    var total = Model.Sum(a => a.Total);
+    var tNew = Model.Sum(a => a.New);
+   
+    var tOpen = Model.Sum(a => a.Open);
+    
+    var tOther = Model.Sum(a => a.Other);
+   
+    var tFull = Model.Sum(a => a.Fulfilled);
+   
+}
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    table, td, th {
+        border: 1px solid black;
+    }
+
+    .tfo {
+        font-weight: bolder;
+        color: black;
+        font: bold;
+    }
+
+    .spider {
+        background-color: lightblue;
+        color: black;
+        font: bold;
+    }
+</style>
+<table class="table" id="AnalystReport">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.New)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Open)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Other)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fulfilled)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th>Percentage</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.New)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Open)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Other)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fulfilled)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @{
+                    var percentComplete = (decimal)(100 * item.Total) / (total == 0 ? total + 1 : total);
+                    /* if (total > 0)
+                     {
+                         percentComplete = (decimal)(100 * item.Total) / total;
+                     }*/
+
+                    @percentComplete.Value.ToString("0.00")
+                }
+            </td>
+        </tr>
+    }
+    <tfoot>
+        <tr class="tfo">
+            <td>Total</td>
+            <td>@tNew</td>
+            <td>@tOpen</td>
+            <td>@tOther</td>
+            <td>@tFull</td>
+            <td>@total</td>
+            </tr>
+        </tfoot>
+</table>

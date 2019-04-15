@@ -1,0 +1,863 @@
+﻿@model DRCTS.Models.searchModel
+
+@{
+    ViewBag.Title = "SearchForm";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <style>
+        .my-div{
+  
+ /* margin: 0 auto;
+  position: inherit;
+  width: 10%;
+ */
+ white-space: -moz-pre-wrap; /* Firefox */
+white-space: -o-pre-wrap; /* Opera */
+white-space: pre-wrap; /* Chrome */
+word-wrap: break-word; /* IE */
+}
+#searchlist ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#searchlist li {
+  display: inline-block;
+}
+
+    </style>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h2>Disability Resource Center - Search Requests</h2>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        Use this page to search for requests by data entered. 
+                    </p>
+                </div>
+                <!--<div class="panel-footer">
+                    Panel Footer
+                </div>-->
+            </div>
+        </div>
+    </div>
+    <br />
+
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="row">
+            <div class="col-md-10">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="panel-title pull-left">Search Criteria</div>
+                        <div class="panel-title pull-right">
+                            
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body main66" >
+                        <!-- Nav tabs -->
+                     
+                        <ul class="nav nav-tabs">
+                          <!--  <ul id="searchlist">-->
+                            <li class="active">
+                                <a href="#emp">Organization Employee/Applicant</a>
+
+                            </li>
+
+                            <li>
+                                <a href="#home">Request Information</a>
+                            </li>
+                            <li>
+                                <a href="#settings">DRC Information </a>
+                            </li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content3 content" >
+                            <br />
+                            <div class="tab-pane3 fade3 active in" id="emp">
+
+                                <div class="containe5r">
+                                    <div class="table-responsive">
+                                        <div class="col-md-11 form-group-sm">
+                                            <fieldset>
+                                                <h2>Organization Employee/Applicant</h2>
+                                                <div class="form-group row">
+                                                    <div class="col-md-3">
+                                                        @Html.LabelFor(model => model.OA, htmlAttributes: new { @class = "control-label" })
+                                                        @Html.DropDownListFor(model => model.OA, ViewBag.OACodes as SelectList, "Equal to", new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.OA, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        @Html.LabelFor(model => model.Source, htmlAttributes: new { @class = "control-label" })
+                                                        @Html.DropDownListFor(model => model.Source, ViewBag.dSource as SelectList, "Equal to", new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Source, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group row">
+                                                    <div class="col-md-3">
+                                                        @Html.LabelFor(model => model.EmployeeFirstName, htmlAttributes: new { @class = "control-label" })
+                                                        @Html.EditorFor(model => model.EmployeeFirstName, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.EmployeeFirstName, "", new { @class = "text-danger" })
+                                                    </div>
+
+
+
+                                                    <div class="col-md-3">
+                                                        @Html.LabelFor(model => model.EmployeeLastName, htmlAttributes: new { @class = "control-label" })
+
+                                                        @Html.EditorFor(model => model.EmployeeLastName, new { htmlAttributes = new { @class = "style = \"width: 50px\", form-control " } })
+                                                        @Html.ValidationMessageFor(model => model.EmployeeLastName, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        @Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label" })
+
+                                                        @Html.EditorFor(model => model.Position, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        @Html.LabelFor(model => model.Grade, htmlAttributes: new { @class = "control-label" })
+
+                                                        @Html.EditorFor(model => model.Grade, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Grade, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+
+
+
+                                                <div class="form-group row">
+                                                    <div class="col-md-3">
+                                                        @Html.LabelFor(model => model.EmployeePhone, htmlAttributes: new { @class = "control-label" })
+
+                                                        @Html.EditorFor(model => model.EmployeePhone, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.EmployeePhone, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        @Html.LabelFor(model => model.EmployeeEmail, htmlAttributes: new { @class = "control-label" })
+
+                                                        @Html.EditorFor(model => model.EmployeeEmail, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.EmployeeEmail, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <div class="col-md-3">
+                                                        @Html.LabelFor(model => model.SupervisorLastName, htmlAttributes: new { @class = "control-label" })
+
+                                                        @Html.EditorFor(model => model.SupervisorLastName, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.SupervisorLastName, "", new { @class = "text-danger" })
+
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        @Html.LabelFor(model => model.SupervisorFirstName, htmlAttributes: new { @class = "control-label" })
+
+                                                        @Html.EditorFor(model => model.SupervisorFirstName, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.SupervisorFirstName, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        @Html.LabelFor(model => model.SupervisorEmail, htmlAttributes: new { @class = "control-label" })
+
+                                                        @Html.EditorFor(model => model.SupervisorEmail, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.SupervisorEmail, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        @Html.LabelFor(model => model.SupervisorPhone, htmlAttributes: new { @class = "control-label" })
+
+                                                        @Html.EditorFor(model => model.SupervisorPhone, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.SupervisorPhone, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                            </fieldset>
+                                        </div>
+</div>
+                                   
+
+                                      
+      
+                            </div>
+                                </div>
+                            <div class="tab-pane3 fade3 " id="home">
+                                <div class="container5">
+                                    <div class="table-responsive">
+                                        <div class="col-md-11 form-group-sm">
+                                            <fieldset>
+                                                <h2>Request Information</h2>
+                                                <div class="form-group row">
+                                                    <div class="col-md-3">
+                                                        @Html.LabelFor(model => model.CaseID, htmlAttributes: new { @class = "control-label" })
+                                                        @Html.EditorFor(model => model.CaseID, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.CaseID, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-md-2">
+                                                        @Html.LabelFor(model => model.DRCRequestType, htmlAttributes: new { @class = "control-label " })
+                                                        @Html.DropDownListFor(model => model.DRCRequestType, ViewBag.drcReq as SelectList, "Equal to", new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.DRCRequestType, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                    <div class="col-md-2"></div>
+                                                        <div class="col-md-2">
+                                                            @Html.LabelFor(model => model.Disability, htmlAttributes: new { @class = "control-label" })
+                                                            @Html.DropDownListFor(model => model.Disability, ViewBag.dCodes as SelectList, "Equal to", new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.Disability, "", new { @class = "text-danger" })
+                                                        </div>
+
+                                                    </div>
+                                                <div class="form-group row">
+                                                    <div class="col-md-2">
+                                                        @Html.LabelFor(model => model.DRCStatus, htmlAttributes: new { @class = "control-label" })
+                                                        @Html.DropDownListFor(model => model.DRCStatus, ViewBag.dstat as SelectList, "Equal to", new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })<br />
+                                                    </div>
+                                                    <div class="col-md-2"></div>
+                                                    <div class="col-md-2">
+                                                        @Html.LabelFor(model => model.OC, htmlAttributes: new { @class = "control-label " })
+                                                        @Html.DropDownListFor(model => model.OC, ViewBag.cstatus as SelectList, "Equal to", new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.OC, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-md-4">
+                                                        @Html.LabelFor(model => model.RequestedMD715, htmlAttributes: new { @class = "control-label" })
+                                                        @Html.DropDownListFor(model => model.RequestedMD715, ViewBag.MD715 as SelectList, "Equal to", new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.RequestedMD715, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="col-md-2"></div>
+                                                    <div class="col-md-5">
+                                                        @Html.LabelFor(model => model.EndMD715, htmlAttributes: new { @class = "control-label" })
+                                                        @Html.DropDownListFor(model => model.EndMD715, ViewBag.eMD715 as SelectList, "Equal to", new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.EndMD715, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+
+
+
+                                                    <div class="col-md-4" style="display:inline-block; vertical-align:top">
+
+                                                        @Html.Label("Date Request option", htmlAttributes: new { @class = "control-label ", @for="dr1" }) 
+                                                        @Html.DropDownList("dr1", ViewBag.drange as SelectList, "Select Option", new { htmlAttributes = new { @class = "form-control" } })
+
+                                                    </div>
+                                                    <div class="col-md-4">
+
+                                                        @Html.LabelFor(model => model.DateRequestReceived, htmlAttributes: new { @class = "control-label" })
+
+                                                        <div class='input-group input-group-sm date' id='datetimepicker6'>
+                                                            @Html.EditorFor(model => model.DateRequestReceived, new { htmlAttributes = new { @class = "form-control" } })
+                                                            <span class="input-group-addon">
+                                                                <span class="fa fa-calendar"></span>
+                                                            </span>
+                                                        </div>
+                                                        @Html.ValidationMessageFor(model => model.DateRequestReceived, "", new { @class = "text-danger" })
+                                                        <!--  @Html.CheckBox("drr", new { htmlAttributes = new { @class = "form-control" } })
+                          @Html.Label("Date Range", htmlAttributes: new { @class = "control-label", @for = "drr" })-->
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <div id="ed1">
+                                                            @Html.LabelFor(model => model.endDateRequestReceived, htmlAttributes: new { @class = "control-label" })
+                                                            <div class='input-group input-group-sm date' id='datetimepicker6a'>
+                                                                @Html.EditorFor(model => model.endDateRequestReceived, new { htmlAttributes = new { @class = "form-control" } })
+                                                                <span class="input-group-addon">
+                                                                    <span class="fa fa-calendar"></span>
+                                                                </span>
+                                                            </div>
+                                                            <div class="pull-left">
+                                                                @Html.Label("FY", htmlAttributes: new { @class = "control-label", @for = "fydc" })
+                                                                @Html.DropDownList("fydc", ViewBag.fsyear as SelectList, "Select Fiscal Year", new { htmlAttributes = new { @class = "form-control" } })
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <div class="col-md-4" style="display:inline-block; vertical-align:top">
+
+                                                        @Html.Label("COWA date option", htmlAttributes: new { @class = "control-label ", @for = "dr2" }) 
+                                                        @Html.DropDownList("dr2", ViewBag.drange as SelectList, "Select Option", new { htmlAttributes = new { @class = "form-control" } })
+
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.LabelFor(model => model.COWADate, htmlAttributes: new { @class = "control-label " })
+                                                        <div class='input-group input-group-sm date' id='datetimepicker7'>
+                                                            @Html.EditorFor(model => model.COWADate, new { htmlAttributes = new { @class = "form-control" } })
+                                                            <span class="input-group-addon">
+                                                                <span class="fa fa-calendar"></span>
+                                                            </span>
+                                                        </div>
+                                                        @Html.ValidationMessageFor(model => model.COWADate, "", new { @class = "text-danger" })
+                                                        <!--@Html.CheckBox("cow", new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.Label("Date Range", htmlAttributes: new { @class = "control-label", @for = "cow" })-->
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <div id="ed2">
+                                                            @Html.LabelFor(model => model.endCOWADate, htmlAttributes: new { @class = "control-label " })
+                                                            <div class='input-group input-group-sm date' id='datetimepicker7a'>
+                                                                @Html.EditorFor(model => model.endCOWADate, new { htmlAttributes = new { @class = "form-control" } })
+                                                                <span class="input-group-addon">
+                                                                    <span class="fa fa-calendar"></span>
+                                                                </span>
+                                                            </div>
+                                                            <div class="pull-left">
+                                                                @Html.Label("FY", htmlAttributes: new { @class = "control-label", @for = "fycowa" })
+                                                                @Html.DropDownList("fycowa", ViewBag.fsyear as SelectList, "Select Fiscal Year", new { htmlAttributes = new { @class = "form-control", @onchangeevent = "gfg" } })
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-md-4" style="display:inline-block; vertical-align:top">
+                                                        <label id="dflabel2" for="dr4" class="control-label">Date Fulfilled Option</label>
+
+                                                        @Html.DropDownList("dr4", ViewBag.drange as SelectList, "Select Option", new { htmlAttributes = new { @class = "form-control" } })
+
+                                                    </div>
+                                                    <div class="col-md-4">
+
+                                                        @Html.LabelFor(model => model.DateFulfilled, htmlAttributes: new { @class = "control-label " })
+                                                        <div class='input-group input-group-sm date' id='datetimepicker9'>
+                                                            @Html.EditorFor(model => model.DateFulfilled, new { htmlAttributes = new { @class = "form-control" } })
+                                                            <span class="input-group-addon">
+                                                                <span class="fa fa-calendar"></span>
+                                                            </span>
+                                                        </div>
+
+                                                        @Html.ValidationMessageFor(model => model.DateFulfilled, "", new { @class = "text-danger" })
+
+
+                                                    </div>
+
+                                                    <div id="ed5" class="col-md-4" style="display:inline-block; vertical-align:top">
+
+                                                        @Html.LabelFor(model => model.endDateFulfilled, htmlAttributes: new { @class = "control-label " })
+                                                        <div class='input-group input-group-sm date' id='datetimepicker9a'>
+                                                            @Html.EditorFor(model => model.endDateFulfilled, new { htmlAttributes = new { @class = "form-control" } })
+                                                            <span class="input-group-addon">
+                                                                <span class="fa fa-calendar"></span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="pull-left">
+                                                            <label id="dflabel3" for="fydf" class="control-label">FY</label>
+                                                            @Html.DropDownList("fydf", ViewBag.fsyear as SelectList, "Select Fiscal Year", new { htmlAttributes = new { @class = "form-control", @onchangeevent = "gfg" } })
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+
+
+                                              
+
+
+                                                <div class="form-group row">
+                                                    <div class="col-md-4" style="display:inline-block; vertical-align:top">
+
+                                                        @Html.Label("Date completed option", htmlAttributes: new { @class = "control-label ", @for = "dr3" })
+                                                        @Html.DropDownList("dr3", ViewBag.drange as SelectList, "Select Option", new { htmlAttributes = new { @class = "form-control" } })
+
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.LabelFor(model => model.DateCompleted, htmlAttributes: new { @class = "control-label " })
+                                                        <div class='input-group input-group-sm date' id='datetimepicker8'>
+                                                            @Html.EditorFor(model => model.DateCompleted, new { htmlAttributes = new { @class = "form-control" } })
+                                                            <span class="input-group-addon">
+                                                                <span class="fa fa-calendar"></span>
+                                                            </span>
+                                                        </div>
+                                                        @Html.ValidationMessageFor(model => model.DateCompleted, "", new { @class = "text-danger" })
+                                                        <!-- @Html.CheckBox("dc", new { htmlAttributes = new { @class = "form-control" } })
+                         @Html.Label("Date Range", htmlAttributes: new { @class = "control-label", @for = "dc" })-->
+                                                    </div>
+
+
+                                                    <div class="col-md-4">
+                                                        <div id="ed3">
+                                                            @Html.LabelFor(model => model.endDateCompleted, htmlAttributes: new { @class = "control-label " })
+                                                            <div class='input-group input-group-sm date' id='datetimepicker8a'>
+                                                                @Html.EditorFor(model => model.endDateCompleted, new { htmlAttributes = new { @class = "form-control" } })
+                                                                <span class="input-group-addon">
+                                                                    <span class="fa fa-calendar"></span>
+                                                                </span>
+                                                            </div>
+                                                            <div class="pull-left">
+                                                                @Html.Label("FY", htmlAttributes: new { @class = "control-label", @for = "fyrq" })
+                                                                @Html.DropDownList("fyrq", ViewBag.fsyear as SelectList, "Select Fiscal Year", new { htmlAttributes = new { @class = "form-control", @onchangeevent = "gfg" } })
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+
+                                                <div class="form-group row">
+                                                    <div class="col-md-3">
+                                                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label" }) (Keyword)
+
+                                                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-md-3" style="display:inline-block; vertical-align:top">
+                                                        @Html.LabelFor(model => model.Purchasing, htmlAttributes: new { @class = "control-label" })
+                                                        @Html.DropDownListFor(model => model.Purchasing, ViewBag.purch as SelectList, "Equal to", new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Purchasing, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="col-md-3" style="display:inline-block; vertical-align:top">
+                                                        @Html.LabelFor(model => model.PRNumber, htmlAttributes: new { @class = "control-label" })
+                                                        @Html.EditorFor(model => model.PRNumber, new { htmlAttributes = new { @class = "form-control col-md-2" } })
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="form-group row">
+                                                    <div class="col-md-3">
+                                                        @Html.Label("PR Amount option", htmlAttributes: new { @class = "control-label", @for = "amOption" })
+                                                        <br />
+                                                        @Html.DropDownListFor(model => model.amOption, ViewBag.option as SelectList, "Select Option", new { htmlAttributes = new { @class = "form-control" } })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label " })<br />
+
+
+
+                                                        <div class="input-group date">
+                                                            @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control col-md-2" } })
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+
+
+
+
+                                            </fieldset>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                        <div class="tab-pane3 fade3" id="settings">
+                                            <div class="container5">
+                                                <div class="table-responsive">
+                                                    <div class="col-md-11 form-group-sm">
+                                                        <fieldset>
+                                                            <h2>DRC Information</h2>
+                                                            <div class="form-group row">
+                                                                <div class="col-md-6">
+                                                                    @Html.LabelFor(model => model.deleted, htmlAttributes: new { @class = "control-label" })
+                                                                    @Html.CheckBoxFor(model => model.deleted, new { htmlAttributes = new { @class = "form-control" } })
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row">
+                                                                <div class="col-md-3">
+                                                                    @Html.LabelFor(model => model.AnalystAssigned, htmlAttributes: new { @class = "control-label" })
+                                                                    @Html.DropDownListFor(model => model.AnalystAssigned, ViewBag.Analyst as SelectList, "Equal to", new { htmlAttributes = new { @class = "form-control" } })
+                                                                    @Html.ValidationMessageFor(model => model.AnalystAssigned, "", new { @class = "text-danger" })
+                                                                </div>
+                                                                <div class="col-sm-1"> &nbsp;</div>
+                                                                <div class="col-md-3">
+                                                                    @Html.LabelFor(model => model.CreatedBy, htmlAttributes: new { @class = "control-label" })
+                                                                    @Html.DropDownListFor(model => model.CreatedBy, ViewBag.Analyst as SelectList, "Equal to", new { htmlAttributes = new { @class = "form-control" } })
+                                                                    @Html.ValidationMessageFor(model => model.CreatedBy, "", new { @class = "text-danger" })
+                                                                </div>
+                                                                <div class="col-sm-1"> &nbsp;</div>
+                                                                <div class="col-md-3">
+                                                                    @Html.LabelFor(model => model.UpdatedBy, htmlAttributes: new { @class = "control-label" })
+                                                                    @Html.DropDownListFor(model => model.UpdatedBy, ViewBag.Analyst as SelectList, "Select Option", new { htmlAttributes = new { @class = "form-control" } })
+                                                                    @Html.ValidationMessageFor(model => model.UpdatedBy, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-md-6">
+                                                                    @Html.LabelFor(model => model.Notes, htmlAttributes: new { @class = "control-label" })<br />
+                                                                    @Html.DropDownListFor(model => model.Notes, ViewBag.nCodes as SelectList, "Equal to", new { htmlAttributes = new { @class = "form-control" } })
+                                                                    @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })<br />
+                                                                </div>
+                                                                <div class="col-sm-1"> &nbsp;</div>
+                                                                <div class="col-md-4">
+                                                                    @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label" }) (Keyword)
+
+                                                                    @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
+                                                                    @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-md-3">
+                                                                    @Html.Label("Time frame option", htmlAttributes: new { @class = "control-label", @for = "TFoption" })
+                                                                    <br />
+                                                                    @Html.DropDownListFor(model => model.TFoption, ViewBag.option as SelectList, "Select Option", new { htmlAttributes = new { @class = "form-control" } })
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    @Html.LabelFor(model => model.TFToday, htmlAttributes: new { @class = "control-label " })<br />
+
+
+
+                                                                    <div class="input-group date">
+                                                                        @Html.EditorFor(model => model.TFToday, new { htmlAttributes = new { @class = "form-control col-md-2" } })
+
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+
+                                                        </fieldset>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <!-- /.panel-body -->
+                                        <div class="panel-footer">
+                                            <button type="submit" class="btn btn-success btn-group-sm"><i class="fa fa-search"></i> Search</button>
+                                        </div>
+
+                                        <!-- /.panel -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        <br />
+
+                                        }
+
+
+                                        @section nSearch
+    {
+
+                                            <style>
+                                                                                         .input-group-addon {
+                                                                                             /*min-height:3px;
+                                                max-height:10px;*/
+                                                                                             text-align: left;
+                                                                                         }
+
+                                                                                         .content {
+                                                                                             display: block;
+                                                                                             overflow: auto;
+                                                                                         }
+
+                                                                                         .main {
+                                                                                             max-width: 800px;
+                                                                                         }
+                                            </style>
+
+                                            <script type="text/javascript">
+                                                $(document).ready(function () {
+
+                                                    $("#EmployeePhone").inputmask({ "mask": "(999) 999-9999" }); //specifying options
+                                                    $("#SupervisorPhone").inputmask({ "mask": "(999) 999-9999" }); //specifying options
+                                                    $("#Amount").inputmask("currency", { radixPoint: '.' });
+                                                    $("#DateRequestReceived").inputmask({
+                                                        alias: "mm/dd/yyyy",
+                                                        placeholder: "mm/dd/yyyy hh:mm:ss xm",
+                                                    });
+                                                    $("#COWADate").inputmask({
+                                                        alias: "mm/dd/yyyy",
+                                                        placeholder: "mm/dd/yyyy hh:mm:ss xm",
+                                                    });
+                                                    $("#DateFulfilled").inputmask({
+                                                        alias: "mm/dd/yyyy",
+                                                        placeholder: "mm/dd/yyyy hh:mm:ss xm",
+                                                    });
+                                                    $("#DateCompleted").inputmask({
+                                                        alias: "mm/dd/yyyy",
+                                                        placeholder: "mm/dd/yyyy hh:mm:ss xm",
+                                                    });
+                                                    $("#endDateCompleted").inputmask({
+                                                        alias: "mm/dd/yyyy",
+                                                        placeholder: "mm/dd/yyyy hh:mm:ss xm",
+                                                    });
+                                                    $("#endDateRequestReceived").inputmask({
+                                                        alias: "mm/dd/yyyy",
+                                                        placeholder: "mm/dd/yyyy hh:mm:ss xm",
+                                                    });
+                                                    $("#endCOWADate").inputmask({
+                                                        alias: "mm/dd/yyyy",
+                                                        placeholder: "mm/dd/yyyy hh:mm:ss xm",
+                                                    });
+                                                    $("#endDateFulfilled").inputmask({
+                                                        alias: "mm/dd/yyyy",
+                                                        placeholder: "mm/dd/yyyy hh:mm:ss xm",
+                                                    });
+                                                });
+
+
+                                                $(function onchangeevent(a) {
+                                                    // $('#lblSelected').append("Search value: " + a)
+                                                    // alert(a);
+                                                }); function nTest(field, svalue) {
+                                                    //$('#lblSelected').append("Search value: " + $('#EmployeeLastName').val()) //$('#lblSelected').val($(svalue).val()) var test = $(svalue).val();
+                                                    // alert($('#lblSelected').val().length);
+                                                    if ($('#lblSelected').val().length == 0) {
+                                                        $('#lblSelected').append("Search Values: <br>" + field + " value: " + test);
+                                                    } else {
+                                                        $('#lblSelected').append(" " + field + " value: " + test);
+                                                    }
+                                                };
+
+
+
+                                                function getFiscalY(d) {
+                                                    var fiscalYear = d - 1;
+                                                    var fy1 = '10/1/' + fiscalYear;
+                                                    var fy2 = '9/30/' + d;
+                                                };
+
+                                            </script>
+
+
+                                            <script type="text/javascript">
+ $(function () {
+     /*$('#datetimepicker6').datetimepicker({
+         format: 'MM/DD/YYYY',
+         allowInputToggle: true
+     });
+     $('#datetimepicker6a').datetimepicker({
+         format: 'MM/DD/YYYY',
+         allowInputToggle: true,
+         useCurrent: false //Important! See issue #1075
+     });
+     $('#datetimepicker7').datetimepicker({
+         format: 'MM/DD/YYYY',
+         allowInputToggle: true
+
+     });
+     $('#datetimepicker7a').datetimepicker({
+         format: 'MM/DD/YYYY',
+         allowInputToggle: true,
+         useCurrent: false //Important! See issue #1075
+     });
+     $('#datetimepicker8').datetimepicker({
+         format: 'MM/DD/YYYY',
+         allowInputToggle: true
+     });
+     $("#datetimepicker6").on("dp.change", function (e) {
+         $('#datetimepicker6a').data("DateTimePicker").minDate(e.date);
+     });
+     $("#datetimepicker6a").on("dp.change", function (e) {
+         $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+     });
+     $("#datetimepicker7").on("dp.change", function (e) {
+         $('#datetimepicker7a').data("DateTimePicker").minDate(e.date);
+     });
+     $("#datetimepicker7a").on("dp.change", function (e) {
+         $('#datetimepicker7').data("DateTimePicker").maxDate(e.date);
+     });
+     $("#datetimepicker8").on("dp.change", function (e) {
+         $('#datetimepicker8a').data("DateTimePicker").minDate(e.date);
+     });
+     $("#datetimepicker8a").on("dp.change", function (e) {
+         $('#datetimepicker8').data("DateTimePicker").maxDate(e.date);
+     });
+
+     $("#datetimepicker9").on("dp.change", function (e) {
+         $('#datetimepicker9a').data("DateTimePicker").minDate(e.date);
+     });
+     $("#datetimepicker9a").on("dp.change", function (e) {
+         $('#datetimepicker9').data("DateTimePicker").maxDate(e.date);
+     });
+     */
+     $("#ed1").hide();
+     $("#ed2").hide();
+     $("#ed3").hide();
+     $("#ed5").hide();
+     /* $("#drr").click(function () {
+          if ($(this).is(":checked")) {
+              $("#ed1").show();
+          } else {
+              $("#ed1").hide();
+          }
+      });
+      $("#cow").click(function () {
+          if ($(this).is(":checked")) {
+              $("#ed2").show();
+          } else {
+              $("#ed2").hide();
+          }
+      });
+      $("#dc").click(function () {
+          if ($(this).is(":checked")) {
+              $("#ed3").show();
+          } else {
+              $("#ed3").hide();
+          }
+      });
+      $("#df").click(function () {
+          if ($(this).is(":checked")) {
+              $("#ed5").show();
+          } else {
+              $("#ed5").hide();
+          }
+      });*/
+     $("#dr4").on("change", function () {
+
+
+         if ($("#dr4 option:selected").text() == "Between") {
+             //$("#dflabel").show();
+             $("#ed5").show();
+         } else {
+             $("#ed5").hide();
+             //$("#dflabel").hide();
+         }
+     });
+     $("#dr3").on("change", function () {
+
+
+         if ($("#dr3 option:selected").text() == "Between") {
+             //$("#dflabel").show();
+             $("#ed3").show();
+         } else {
+             $("#ed3").hide();
+             //$("#dflabel").hide();
+         }
+     });
+     $("#dr2").on("change", function () {
+
+
+         if ($("#dr2 option:selected").text() == "Between") {
+             //$("#dflabel").show();
+             $("#ed2").show();
+         } else {
+             $("#ed2").hide();
+             //$("#dflabel").hide();
+         }
+     });
+     $("#dr1").on("change", function () {
+
+
+         if ($("#dr1 option:selected").text() == "Between") {
+             //$("#dflabel").show();
+             $("#ed1").show();
+         } else {
+             $("#ed1").hide();
+             //$("#dflabel").hide();
+         }
+     });
+     $('#fydc').on("change", function () {
+         var dc = $("#fydc option:selected").val();
+         var fiscalYear = dc - 1;
+
+         var fy1 = '10/1/' + fiscalYear;
+         var fy2 = '9/30/' + dc;
+         $('#DateRequestReceived').val(fy1);
+         $('#endDateRequestReceived').val(fy2);
+     })
+     $('#fycowa').on("change", function () {
+         var dc = $("#fycowa option:selected").val();
+         var fiscalYear = dc - 1;
+
+         var fy1 = '10/1/' + fiscalYear;
+         var fy2 = '9/30/' + dc;
+         $('#COWADate').val(fy1);
+         $('#endCOWADate').val(fy2);
+     })
+     $('#fyrq').on("change", function () {
+         var dc = $("#fyrq option:selected").val();
+         var fiscalYear = dc - 1;
+
+         var fy1 = '10/1/' + fiscalYear;
+         var fy2 = '9/30/' + dc;
+         $('#DateCompleted').val(fy1);
+         $('#endDateCompleted').val(fy2);
+     })
+
+     $('#fydf').on("change", function () {
+         var dc = $("#fydf option:selected").val();
+         var fiscalYear = dc - 1;
+
+         var fy1 = '10/1/' + fiscalYear;
+         var fy2 = '9/30/' + dc;
+         $('#DateFulfilled').val(fy1);
+         $('#endDateFulfilled').val(fy2);
+     })
+     $('#Purchasing').on("change", function () {
+
+         if ($("#Purchasing option:selected").val() == 1) {
+             $("#pr").show();
+         } else {
+             $("#pr").hide();
+         }
+     })
+     $("#test").hide();
+ }); </script>
+                                        }

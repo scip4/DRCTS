@@ -30,6 +30,14 @@ namespace IdentitySample.Models
         public string LastName { get; set; }
         
     }
+    public class AuditLogViewModel
+    {
+        [Display(Name = "Audit Type")]
+        public string AuditType { get; set; }
+        [Display(Name = "User Name")]
+        public string UserName { get; set; }
+
+    }
     public class EditUserViewModel
     {
         public string Id { get; set; }

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.625" name="DRCTSClasses">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 10.75" name="DRCTSClasses">
   <DataContextMoniker Name="/DRCTSClassesDataContext" />
   <nestedChildShapes>
     <classShape Id="cac3ca94-0e6a-49ce-9b74-505321eae87d" absoluteBounds="3, 0.625, 2, 1.1939925130208333">
@@ -38,16 +38,34 @@
         <elementListCompartment Id="808c1cad-e49d-431b-a551-2b30639bd50c" absoluteBounds="6.89, 4.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="e2bf1fb7-8343-4085-a1f2-f2d82a33cf8a" absoluteBounds="4.5, 5.375, 2, 1.1939925130208333">
-      <DataClassMoniker Name="/DRCTSClassesDataContext/MD715Code" />
+    <classShape Id="2614fe74-72e9-4f7e-996b-3f3e71985b3e" absoluteBounds="2.875, 5.625, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/DRCTSClassesDataContext/AMD715Code" />
       <nestedChildShapes>
-        <elementListCompartment Id="d55a3dad-779e-4e84-a3e8-375cd8629422" absoluteBounds="4.515, 5.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="fcddceeb-3de5-4c33-9fdb-32fb665c78d4" absoluteBounds="2.89, 6.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="387bbb5c-6745-48b6-9901-ec9dbe28fd2f" absoluteBounds="0.5, 0.5, 2, 7.9245426432291648">
+    <classShape Id="f3860c5c-b07b-4fe6-b06d-2204c17cb78e" absoluteBounds="6.125, 4.125, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/DRCTSClassesDataContext/GradeCode" />
+      <nestedChildShapes>
+        <elementListCompartment Id="38bb3d40-9c56-466c-9049-4d89206785fa" absoluteBounds="6.14, 4.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="150967c3-3b57-4466-976a-32c20d1ad1ff" absoluteBounds="0.75, 1, 2, 9.4629541015625">
       <DataClassMoniker Name="/DRCTSClassesDataContext/tDRCRequest" />
       <nestedChildShapes>
-        <elementListCompartment Id="4023171a-2f70-4c1e-9db7-9677fd955a67" absoluteBounds="0.51499999999999968, 0.96, 1.9700000000000002, 7.3645426432291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="f2188be1-ee93-43ca-9bd8-4becd4bb59ce" absoluteBounds="0.765, 1.46, 1.9700000000000002, 8.9029541015625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="29c87082-a137-48f6-b89a-0f4dec9f536e" absoluteBounds="3.625, 7.25, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DRCTSClassesDataContext/MD715Code" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fa5f819f-4110-499b-826f-813282f1337f" absoluteBounds="3.64, 7.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dffdb081-3cf0-42ef-9370-536b765e6d6d" absoluteBounds="0.875, 0.5, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/DRCTSClassesDataContext/PurchasingCode" />
+      <nestedChildShapes>
+        <elementListCompartment Id="09b299ff-5846-4f9c-99b9-0e35472a34a4" absoluteBounds="0.89, 0.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

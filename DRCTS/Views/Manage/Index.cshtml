@@ -17,7 +17,7 @@
                 @Html.ActionLink("Pick a password", "SetPassword")
             }
         </p>
-        <p>
+       <!-- <p>
             Phone Number: @(Model.PhoneNumber ?? "None") [
             @if (Model.PhoneNumber != null)
             {
@@ -31,7 +31,7 @@
             }
             ]
         </p>
-        <p>
+       <p>
             External Logins: @Model.Logins.Count
             @Html.ActionLink("[Manage]", "ManageLogins")
         </p>
@@ -70,6 +70,6 @@
                     <input type="submit" value="Remember Browser" class="btn btn-default"/>
                 </p>
             </form>
-        }
+        }--> 
     </div>
 </div>

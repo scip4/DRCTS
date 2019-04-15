@@ -14,7 +14,7 @@ using DRCTS.Models;
 
 namespace IdentitySample.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "DRCAdmin")]
     public class UsersAdminController : Controller
     {
         drctsRepository drcRepo = new drctsRepository();
@@ -230,8 +230,11 @@ namespace IdentitySample.Controllers
             {
                 return HttpNotFound();
             }
-
             var userRoles = await UserManager.GetRolesAsync(user.Id);
+            SelectList test = new SelectList(await drcRepo.RoleDRC(), "Name", "Name");
+
+           
+            
 
             return View(new EditUserViewModel()
             {
@@ -247,25 +250,34 @@ namespace IdentitySample.Controllers
                 WorkPhone = user.WorkNumber,
                 PostalCode = user.PostalCode,
                 Email = user.Email,
-
-                RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem()
-                {
-                    Selected = userRoles.Contains(x.Name),
-                    Text = x.Name,
-                    Value = x.Name
-                })
-            });
+               RolesList = test.ToList().Select(x => new SelectListItem()
+               {
+                   Selected = userRoles.Contains(x.Value),
+                   Text = x.Text,
+                   Value = x.Value
+               })
+           
+        });
         }
+        /* RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem()
+             {
+                 Selected = userRoles.Contains(x.Name),
+                 Text = x.Name,
+                 Value = x.Name
+             })
+             */
 
         //
         // POST: /Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "UserName,Id,Email,FirstName,LastName,WorkNumber,Address,City,State,PostalCode,")] EditUserViewModel editUser, params string[] selectedRole)
+        public async Task<ActionResult> Edit([Bind(Include = "UserName,Id,Email,FirstName,LastName,WorkPhone,Organization, JobTitle, Address,City,State,PostalCode,")] EditUserViewModel editUser, params string[] selectedRole)
         {
+            var user = await UserManager.FindByIdAsync(editUser.Id);
+            var userRoles = await UserManager.GetRolesAsync(user.Id);
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindByIdAsync(editUser.Id);
+                
                 if (user == null)
                 {
                     return HttpNotFound();
@@ -280,8 +292,9 @@ namespace IdentitySample.Controllers
                 user.WorkNumber = editUser.WorkPhone;
                 user.FirstName = editUser.FirstName;
                 user.LastName = editUser.LastName;
+                
 
-                var userRoles = await UserManager.GetRolesAsync(user.Id);
+
 
                 selectedRole = selectedRole ?? new string[] { };
 
@@ -290,7 +303,28 @@ namespace IdentitySample.Controllers
                 if (!result.Succeeded)
                 {
                     ModelState.AddModelError("", result.Errors.First());
-                    return View();
+                    return View(new EditUserViewModel()
+                    {
+                        Id = user.Id,
+                        UserName = user.UserName,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        Address = user.Address,
+                        City = user.City,
+                        State = user.State,
+                        JobTitle = user.JobTitle,
+                        Organization = user.Organization,
+                        WorkPhone = user.WorkNumber,
+                        PostalCode = user.PostalCode,
+                        Email = user.Email,
+
+                        RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem()
+                        {
+                            Selected = userRoles.Contains(x.Name),
+                            Text = x.Name,
+                            Value = x.Name
+                        })
+                    });
                 }
                 result = await UserManager.RemoveFromRolesAsync(user.Id, userRoles.Except(selectedRole).ToArray<string>());
 
@@ -339,12 +373,22 @@ namespace IdentitySample.Controllers
                 {
                     return HttpNotFound();
                 }
-                var result = await UserManager.DeleteAsync(user);
-                if (!result.Succeeded)
+                //var result = await UserManager.DeleteAsync(user);
+                try
                 {
-                    ModelState.AddModelError("", result.Errors.First());
+                    await drcRepo.DeleteUser(id);
+                    
+                }
+                catch
+                {
+                    ModelState.AddModelError("Delete", "Unable to delete user");
                     return View();
                 }
+                /*if (!result.Succeeded)
+                {
+                    ModelState.AddModelError("", result.Errors.First());
+                    
+                }*/
                 return RedirectToAction("Index");
             }
             return View();

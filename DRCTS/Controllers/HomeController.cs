@@ -10,7 +10,9 @@ namespace SessionTimeout.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+
+            //return View();
+            return RedirectToAction("Index", "DRC");
         }
 
         public ActionResult About()

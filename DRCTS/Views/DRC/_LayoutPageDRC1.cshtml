@@ -3,13 +3,15 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - DRC Tracking System</title>
     
     
    @Styles.Render("~/Content/fontawesome")
        @Styles.Render("~/Content/Swatch-SP")
         @Styles.Render("~/Content/startmin")
     @Styles.Render("~/Content/metis") 
+   
+    @Styles.Render("~/Content/calendar")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/textarea.css" rel="stylesheet" />
     <link href="~/Content/docs.css" rel="stylesheet" />
@@ -23,26 +25,66 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("DRC Tracking System", "Index", "Home", null, new { @class = "navbar-brand" })
+               <!-- @Html.ActionLink("DRC Tracking System", "Index", "DRC", null, new { @class = "navbar-brand" }) -->
+                <a aria-hidden="true" id="home-page-logo_desktop" href="/" title="Home" rel="home" id="logo"><img src="~/img/logo.png" alt="US Department of Transportation" /></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                    <!-- <li><i class="fa fa-home"></i>@Html.ActionLink("Home", "Index", "DRC")</li>
                     <li><i class="fa fa-file"></i>@Html.ActionLink("DRC Form", "AddRequest", "DRC")</li>
                     <li><i class="fa fa-file-excel-o"></i>@Html.ActionLink("DRC Reports", "Contact", "DRC")</li> -->
+                    @if (Request.IsAuthenticated)
+                    {
+
                     <li><a href="@Url.Action("Index", "DRC")"><i class="fa fa-home fa-fw"></i> Home</a></li>
                     <li>
                         <a href="@Url.Action("AddRequest", "DRC")"><i class="fa fa-edit fa-fw"></i> Form</a>
                     </li>
-                    <li>
-                        <a href="#"><i class="fa fa-table fa-fw"></i> Reports<span class="fa arrow"></span></a>
-                        
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-table fa-fw"></i> Reports</a>
+                        <ul class="dropdown-menu dropdown-user">
+                          <!--  <li>
+                                @Html.ActionLink("Test Report 1", "ReportTest", "DRC")
+                            </li>-->
+                            <li>
+                                @Html.ActionLink("Test Report 1", "SummaryReport", "DRC")
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
                     </li>
-                   <li>@Html.Partial("_PartialIndex")</li>
-
-                </ul>
-               
-                @Html.Partial("_LoginPartial")
+                        if (Request.IsAuthenticated && User.IsInRole("DRCAdmin"))
+                        {
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-sun-o fa-fw"></i>Administration</a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                @Html.ActionLink("Roles", "Index", "RolesAdmin")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Users", "Index", "UsersAdmin")
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                        }
+                    }
+ </ul>
+                <div class="row">
+                    
+                <div class="input-group custom-search-form">
+                  @if (Request.IsAuthenticated)
+                  {  <input type="text" class="form-control" placeholder="Search for Request...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                  }
+                    @Html.Partial("_LoginPartial3")
+                </div>
+                    
+                    </div>
+                    
             </div>
         </div>
     </div>
@@ -58,16 +100,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/metis")
     @Scripts.Render("~/bundles/startmin")
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
-
-    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function () {
-        $('.MyTable').DataTable();
-    });
-
-
-    </script>
+    @Scripts.Render("~/bundles/calendar")
     @if (Request.IsAuthenticated)
     {
         <script type="text/javascript">
@@ -79,5 +112,7 @@
     }
     <script src="~/Scripts/session.warning.js"></script>
     @RenderSection("scripts", required: false)
+    @RenderSection("crip", required: false)
+    @RenderSection("tables", required: false)
 </body>
 </html>

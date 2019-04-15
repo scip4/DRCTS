@@ -1,0 +1,250 @@
+﻿@model IEnumerable<DRCTS.Models.MD715ReportResult>
+
+@{
+    var total = Model.Sum(a => a.Total);
+    var faa = Model.Sum(a => a.FAA);
+    var percentfaa = (decimal)(100 * faa) / (total == 0 ? total + 1 : total);
+    var fhwa = Model.Sum(a => a.FHWA);
+    var percentfhwa = (decimal)(100 * fhwa) / (total == 0 ? total + 1 : total);
+    var fmcsa = Model.Sum(a => a.FMCSA);
+    var percentfmcsa = (decimal)(100 * fmcsa) / (total == 0 ? total + 1 : total);
+    var fra = Model.Sum(a => a.FRA);
+    var percentfra = (decimal)(100 * fra) / (total == 0 ? total + 1 : total);
+    var fta = Model.Sum(a => a.FTA);
+    var percentfta = (decimal)(100 * fta) / (total == 0 ? total + 1 : total);
+    var marad = Model.Sum(a => a.MARAD);
+    var percentmarad = (decimal)(100 * marad) / (total == 0 ? total + 1 : total);
+    var nhtsa = Model.Sum(a => a.NHTSA);
+    var percentnhtsa = (decimal)(100 * nhtsa) / (total == 0 ? total + 1 : total);
+    var oig = Model.Sum(a => a.OIG);
+    var percentoig = (decimal)(100 * oig) / (total == 0 ? total + 1 : total);
+    var ost = Model.Sum(a => a.OST);
+    var percentost = (decimal)(100 * ost) / (total == 0 ? total + 1 : total);
+    var phmsa = Model.Sum(a => a.PHMSA);
+    var percentphmsa = (decimal)(100 * phmsa) / (total == 0 ? total + 1 : total);
+    var rita = Model.Sum(a => a.RITA);
+    var percentrita = (decimal)(100 * rita) / (total == 0 ? total + 1 : total);
+    var slsdc = Model.Sum(a => a.SLSDC);
+    var percentslsdc = (decimal)(100 * slsdc) / (total == 0 ? total + 1 : total);
+    var stb = Model.Sum(a => a.STB);
+    var percentstb = (decimal)(100 * stb) / (total == 0 ? total + 1 : total);
+    var uscg = Model.Sum(a => a.USCG);
+    var percentuscg = (decimal)(100 * uscg) / (total == 0 ? total + 1 : total);
+    var volpe = Model.Sum(a => a.VOLPE);
+    var percentvolpe = (decimal)(100 * volpe) / (total == 0 ? total + 1 : total);
+
+}
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    table, td, th {
+        border: 1px solid black;
+    }
+
+    .tfo {
+        font-weight: bolder;
+        color: black;
+        font: bold;
+    }
+
+    .spider {
+        background-color: lightblue;
+        color: black;
+        font: bold;
+    }
+</style>
+<table class="table" id="MD715Report">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MD715Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FAA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FHWA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FMCSA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FRA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FTA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MARAD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NHTSA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OIG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OST)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHMSA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RITA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SLSDC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USCG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VOLPE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th>Percentage</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @{ var rText = "";
+                    if (Html.DisplayFor(modelItem => item.MD715Category).ToString() == "In_Progress")
+                    {
+                        rText = "In Progress";
+                    }
+                    else if (Html.DisplayFor(modelItem => item.MD715Category).ToString() == "Out_of_DRC_Scope")
+                    {
+                        rText = "Out of DRC Scope";
+                    }
+                    else if (Html.DisplayFor(modelItem => item.MD715Category).ToString() == "Video_Phone")
+                    {
+                        rText = "Video Phone";
+                    }
+                    else if (Html.DisplayFor(modelItem => item.MD715Category).ToString() == "Note_Taking")
+                    {
+                        rText = "Note Taking";
+                    }
+                    else
+                    {
+                        rText = Html.DisplayFor(modelItem => item.MD715Category).ToString();
+                    }
+
+                }
+                @rText
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FAA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FHWA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FMCSA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FRA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FTA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MARAD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NHTSA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OIG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OST)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PHMSA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RITA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SLSDC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.STB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.USCG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VOLPE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @{
+                    var percentComplete = (decimal)(100 * item.Total) / (total == 0 ? total + 1 : total);
+                   /* if (total > 0)
+                    {
+                        percentComplete = (decimal)(100 * item.Total) / total;
+                    }*/
+
+                    @percentComplete.ToString("0.00")
+                }
+            </td>
+        </tr>
+                    }
+    <tfoot>
+        <tr class="tfo">
+            <td>Total</td>
+            <td>@faa</td>
+            <td>@fhwa</td>
+            <td>@fmcsa</td>
+            <td>@fra</td>
+            <td>@fta</td>
+            <td>@marad</td>
+            <td>@nhtsa</td>
+            <td>@oig</td>
+            <td>@ost</td>
+            <td>@phmsa</td>
+            <td>@rita</td>
+            <td>@slsdc</td>
+            <td>@stb</td>
+            <td>@uscg</td>
+            <td>@volpe</td>
+            <td>@total</td>
+            <td></td>
+
+
+        </tr>
+        <tr class="spider">
+            <td>Percent of all Requests</td>
+            <td>@percentfaa.ToString("0.00")%</td>
+            <td>@percentfhwa.ToString("0.00")%</td>
+            <td>@percentfmcsa.ToString("0.00")%</td>
+            <td>@percentfra.ToString("0.00")%</td>
+            <td>@percentfta.ToString("0.00")%</td>
+            <td>@percentmarad.ToString("0.00")%</td>
+            <td>@percentnhtsa.ToString("0.00")%</td>
+            <td>@percentoig.ToString("0.00")%</td>
+            <td>@percentost.ToString("0.00")%</td>
+            <td>@percentphmsa.ToString("0.00")%</td>
+            <td>@percentrita.ToString("0.00")%</td>
+            <td>@percentslsdc.ToString("0.00")%</td>
+            <td>@percentstb.ToString("0.00")%</td>
+            <td>@percentuscg.ToString("0.00")%</td>
+            <td>@percentvolpe.ToString("0.00")%</td>
+            <td>100%</td>
+            <td></td>
+
+        </tr>
+    </tfoot>
+
+</table>

@@ -1,0 +1,366 @@
+﻿
+@{
+    ViewBag.Title = "Summary Report";
+}
+
+
+<div class="row">
+    <div class="col-md-10">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+               <h1> Disability Resource Center - Quarterly and Annual Reports</h1>
+            </div>
+            <div class="panel-body">
+                <p>
+                    On this page you can view reports for requests by reasonable accommodations, status, disability and MD715 category. Also you can filter this data by fiscal year and quarter.
+                </p>
+            </div>
+            <!--<div class="panel-footer">
+                Panel Footer
+            </div>-->
+        </div>
+    </div>
+</div>
+
+<hr />
+<br />
+
+<div class="container col-md-12">
+<div class="form-group row">
+    <div class="col-md-4">
+        @Html.Label("Fiscal Year", htmlAttributes: new { @class = "control-label" })
+        @Html.DropDownList("Fiscal_Year", ViewBag.dSource as SelectList, "Select One", new { htmlAttributes = new { @class = "form-control" } })
+       
+    </div>
+    <div class="col-md-5">
+        @Html.Label("Quarter", htmlAttributes: new { @class = "control-label" })
+        @Html.DropDownList("Quarter", ViewBag.dSource2 as SelectList, "Select One", new { htmlAttributes = new { @class = "form-control" } })
+
+    </div>
+    <div class="col-md-2">
+        <button type="button" class="btn btn-info btn-sm" id="all" onclick="saveFile()" data-toggle="modal" data-target="#cost"><i class="fa fa-file-excel-o"></i> Export Full Report</button>
+    </div>
+
+</div>
+<br /><br />
+<div class="row">
+    <div class="col-lg-11 col-md-11">
+        <div class="panel panel-primary" >
+            <div class="panel-heading">
+                <div class="panel-title pull-left"><h2 style="font-size:125%">
+                    <i class="fa fa-table"></i> Number of New Reasonable Accommodation Requests Received for Each OA</h2>
+                </div>
+                <div class="panel-title pull-right"><button type="button" onclick="saveServiceReport()" class="btn btn-info btn-sm" data-toggle="modal" id="service" data-target="#cost"><i class="fa fa-file-excel-o"></i> Export section</button></div>
+                <div class="clearfix"></div>
+</div>
+           <div id="container1" style="overflow-x:auto">
+               @Html.Action("Service_Report", "DRC", new { year = ViewBag.fyyear })
+           </div>
+               
+           
+            <div class="panel-footer">
+
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+    <div class="row">
+        <div class="col-lg-11 col-md-11">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="panel-title pull-left"><h2 style="font-size:125%">
+    <i class="fa fa-table"></i> Number Of New Requests by Disability for Each OA
+</h2>
+</div>
+                    <div class="panel-title pull-right"><button type="button" onclick="saveDisabilityReport()" class="btn btn-info btn-sm" data-toggle="modal" data-target="#cost"><i class="fa fa-file-excel-o"></i> Export section</button></div>
+                    <div class="clearfix"></div>
+                </div>
+                <div id="container2" style="overflow-x:auto">
+                    @Html.Action("Disability_Report", "DRC", new { year = ViewBag.fyyear })
+                </div>
+
+
+                <div class="panel-footer">
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="row">
+        <div class="col-lg-11 col-md-11">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="panel-title pull-left"><h2 style="font-size:125%">
+    <i class="fa fa-table"></i>  Total Number of RA Services by Status worked on for Each OA
+</h2>
+</div>
+                    <div class="panel-title pull-right"><button type="button" id="statusReport" onclick="saveStatusReport()" class="btn btn-info btn-sm" data-toggle="modal" data-target="#cost"><i class="fa fa-file-excel-o"></i> Export section</button></div>
+                    <div class="clearfix"></div>
+                </div>
+                <div id="container3" style="overflow-x:auto">
+                    @Html.Action("Status_Report", "DRC", new { year = ViewBag.fyyear })
+                </div>
+
+
+                <div class="panel-footer">
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+   
+
+
+
+
+
+    <div class="row">
+        <div class="col-lg-11 col-md-11">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="panel-title pull-left"><h2 style="font-size:125%">
+    <i class="fa fa-table"></i>MD715 Categories When Received </h2>
+</div>
+                    <div class="panel-title pull-right"><button type="button" class="btn btn-info btn-sm" onclick="saveMD715Report()" data-toggle="modal" data-target="#cost"><i class="fa fa-file-excel-o"></i> Export section</button></div>
+                    <div class="clearfix"></div>
+                </div>
+                <div id="container5" style="overflow-x:auto">
+                    
+                    @Html.Action("ReqMD715Report", "DRC", new { year = ViewBag.fyyear })
+                </div>
+
+
+                <div class="panel-footer">
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="row">
+        <div class="col-lg-11 col-md-11">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="panel-title pull-left">
+                        <h2 style="font-size:125%">
+                            <i class="fa fa-table"></i>MD715 Categories When completed by DRC
+                        </h2>
+                    </div>
+                    <div class="panel-title pull-right"><button type="button" class="btn btn-info btn-sm" onclick="saveReqMD715Report()" data-toggle="modal" data-target="#cost"><i class="fa fa-file-excel-o"></i> Export section</button></div>
+                    <div class="clearfix"></div>
+                </div>
+                <div id="container4" style="overflow-x:auto">
+                    @Html.Action("MD715Report", "DRC", new { year = ViewBag.fyyear })
+                </div>
+
+
+                <div class="panel-footer">
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <a href="@Url.Action("Index", "DRC")"><i class="fa fa-home fa-fw"></i> Back to Home</a>
+
+</div>
+
+@section tables {
+
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
+<style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+            
+        }
+        th {
+            background-color: #42444e;
+            color: white;
+        }
+        </style>
+
+        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js" > </script > <script type="text/javascript" > $(document).ready(function () {
+        $('.MyTable').DataTable();
+    }); </script >
+
+<script type="text/javascript">
+    function updateReport(year) {
+        $.get("Service_Report?year=" + year, function (data) {
+            $('#container1').html(data);
+        });
+        $.get("Disability_Report?year=" + year, function (data) {
+            $('#container2').html(data);
+        });
+        $.get("Status_Report?year=" + year, function (data) {
+            $('#container3').html(data);
+        });
+        $.get("ReqMD715Report?year=" + year, function (data) {
+            $('#container5').html(data);
+        });
+       
+        $.get("MD715Report?year=" + year, function (data) {
+            $('#container4').html(data);
+        });
+    };
+    
+    
+    
+    $(function () {
+        $('#Fiscal_Year').on("change", function () {
+            var year = $(this).val();
+            if ($("#Quarter option:selected").val() != 0) {
+                year = year + "-" + $("#Quarter option:selected").val();
+            }
+          //  alert(year + "-" + $("#fiscalQt option:selected").val());
+            
+            updateReport(year);
+            
+            
+        });
+        $('#Quarter').on("change", function () {
+            var year = $("#Fiscal_Year option:selected").val();
+            if ($("#Quarter option:selected").val() != 0) {
+                year = year + "-" + $("#Quarter option:selected").val();
+            }
+            //var year = $("#Fiscal_Year option:selected").val() + "-" + $(this).val();
+           
+           
+            updateReport(year);
+
+
+        });
+
+
+
+
+       
+        
+    });
+
+    function saveFile() {
+   
+
+        
+        var table = $("#ServiceReport").tableToJSON();
+        var table2 = $("#DisabilityReport").tableToJSON();
+        var table3 = $("#StatusReport").tableToJSON();
+        var table4 = $("#ReqMD715Report").tableToJSON();
+        var table5 = $("#MD715Report").tableToJSON();
+        //alert(JSON.stringify(table));
+        var data1 = table;
+        var data2 = table2;
+        var data3 = table3;
+        var data4 = table4;
+        var data5 = table5;
+        var today = new Date();
+        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+       // alert($("#Fiscal_Year option:selected").val() + "-QT" + $("#Quarter option:selected").val() + "-" + date + ".xlsx");
+        var opts = [{ sheetid: 'Service Report', header: true }, { sheetid: 'Disability Report', header: false }, { sheetid: 'Status Report', header: false }, { sheetid: 'Requested MD715 Report', header: false }, { sheetid: 'MD715 Report', header: false }];
+        var res = alasql('SELECT INTO XLSX("SummaryReportFY' + $("#Fiscal_Year option:selected").val()+ "-QT" +$("#Quarter option:selected").val()+ "-" + date +'.xlsx",?) FROM ?',
+                         [opts, [data1, data2, data3, data4, data5]]);
+    }
+    function saveStatusReport() {
+
+
+
+        var table = $("#StatusReport").tableToJSON();
+       
+        //alert(JSON.stringify(table));
+        var data1 = table;
+       
+        var today = new Date();
+        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        var opts = [{ sheetid: 'Status Report', header: true }];
+        var res = alasql('SELECT INTO XLSX("StatusReportFY' + $("#Fiscal_Year option:selected").val() + "-QT" + $("#Quarter option:selected").val() + "-" + date + '.xlsx",?) FROM ?',
+                         [opts, [data1]]);
+    }
+
+    function saveMD715Report() {
+
+
+
+        var table = $("#MD715Report").tableToJSON();
+
+        //alert(JSON.stringify(table));
+        var data1 = table;
+
+        var today = new Date();
+        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        var opts = [{ sheetid: 'MD715 Report', header: true }];
+        var res = alasql('SELECT INTO XLSX("MD715ReportFY' + $("#Fiscal_Year option:selected").val() + "-QT" + $("#Quarter option:selected").val() + "-" + date + '.xlsx",?) FROM ?',
+                         [opts, [data1]]);
+    }
+
+    function saveReqMD715Report() {
+
+
+
+        var table = $("#ReqMD715Report").tableToJSON();
+
+        //alert(JSON.stringify(table));
+        var data1 = table;
+
+        var today = new Date();
+        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        var opts = [{ sheetid: 'Requested MD715 Report', header: true }];
+        var res = alasql('SELECT INTO XLSX("ReqMD715ReportFY' + $("#Fiscal_Year option:selected").val() + "-QT" + $("#Quarter option:selected").val() + "-" + date + '.xlsx",?) FROM ?',
+                         [opts, [data1]]);
+    }
+    function saveDisabilityReport() {
+
+
+
+        var table = $("#DisabilityReport").tableToJSON();
+
+        //alert(JSON.stringify(table));
+        var data1 = table;
+
+        var today = new Date();
+        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        var opts = [{ sheetid: 'Disability Report', header: true }];
+        var res = alasql('SELECT INTO XLSX("DisabilityReportFY' + $("#Fiscal_Year option:selected").val() + "-QT" + $("#Quarter option:selected").val() + "-" + date + '.xlsx",?) FROM ?',
+                         [opts, [data1]]);
+    }
+    function saveServiceReport() {
+
+
+
+        var table = $("#ServiceReport").tableToJSON();
+
+        //alert(JSON.stringify(table));
+        var data1 = table;
+
+        var today = new Date();
+        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        var opts = [{ sheetid: 'Service Report', header: true }];
+        var res = alasql('SELECT INTO XLSX("ServiceReportFY' + $("#Fiscal_Year option:selected").val() + "-QT" + $("#Quarter option:selected").val() + "-" + date + '.xlsx",?) FROM ?',
+                         [opts, [data1]]);
+    }
+</script> 
+
+        }
+    

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DOCR" Class="EmpDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=hq-mp-dot-05.ost.dot.gov;Initial Catalog=DOCR;User ID=iComp_462" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="EmpConnection" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Employee" Member="Employees">
+    <Type Name="Employee">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EmployeeID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EmployeeFirstName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EmployeeLastName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EmployeeEmail" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.DOCR_Employee" Method="DOCR_Employee">
+    <Parameter Name="EmployeeID" Parameter="employeeID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="EmployeeFirstName" Parameter="employeeFirstName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="EmployeeLastName" Parameter="employeeLastName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="EmployeeEmail" Parameter="employeeEmail" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DOCR_getAllEmployee" Method="DOCR_getAllEmployee">
+    <ElementType Name="DOCR_getAllEmployeeResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EmployeeFirstName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EmployeeLastName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EmployeeEmail" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DOCR_getEmployee" Method="DOCR_getEmployee">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <ElementType Name="DOCR_getEmployeeResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EmployeeFirstName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EmployeeLastName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EmployeeEmail" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DOCR_getEmployeeEM" Method="DOCR_getEmployeeEM">
+    <Parameter Name="EmployeeEmail" Parameter="employeeEmail" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="DOCR_getEmployeeEMResult">
+      <Column Name="eid" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DOCR_UpdateEmployee" Method="DOCR_UpdateEmployee">
+    <Parameter Name="EmployeeID" Parameter="employeeID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="EmployeeFirstName" Parameter="employeeFirstName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="EmployeeLastName" Parameter="employeeLastName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="EmployeeEmail" Parameter="employeeEmail" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DOCR_EmployeeNA" Method="DOCR_EmployeeNA">
+    <Parameter Name="EmployeeID" Parameter="employeeID" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="EmployeeFirstName" Parameter="employeeFirstName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="EmployeeLastName" Parameter="employeeLastName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="EmployeeEmail" Parameter="employeeEmail" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

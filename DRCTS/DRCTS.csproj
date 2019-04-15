@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,30 +49,72 @@
       <HintPath>..\packages\DevMagicFake.1.0.0.0\lib\net40\DevMagicFake.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EmailValidation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EmailValidation.1.0.3\lib\net45\EmailValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Faker.NET4, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Faker.Net.1.0.3\lib\net40\Faker.NET4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.1.5, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.1.2.3\lib\2.0\Ionic.Zip.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mail4Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mail4Net.1.0.0\lib\Mail4Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.4.12\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI, Version=1.2.3.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.1.2.3\lib\2.0\NPOI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PublicHoliday, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PublicHoliday.1.8.0\lib\net40\PublicHoliday.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="RazorEngine, Version=3.2.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.2.0\lib\net40\RazorEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleExcelExport, Version=0.0.1.7, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleExcelExport.0.0.1.7\lib\net35\SimpleExcelExport.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -113,6 +156,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -178,8 +222,11 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DRCController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JSController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -204,13 +251,21 @@
       <DependentUpon>DRCTSClasses.dbml</DependentUpon>
     </Compile>
     <Compile Include="Models\drctsRepository.cs" />
+    <Compile Include="Models\EmpDataClasses.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmpDataClasses.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\IdrctsRepository.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RequestViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -405,6 +460,7 @@
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\docs.css" />
+    <Content Include="Content\easy-autocomplete.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\metisMenu.css" />
@@ -412,7 +468,50 @@
     <Content Include="Content\morris.css" />
     <Content Include="Content\Reports.css" />
     <Content Include="Content\startmin.css" />
+    <Content Include="Content\tableexport.css" />
+    <Content Include="Content\tableexport.min.css" />
     <Content Include="Content\textarea.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\timeline.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -427,13 +526,23 @@
     <Content Include="Content\DataTables\css\semanticui.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="img\csv.svg" />
+    <Content Include="img\icsv.png" />
+    <Content Include="img\itxt.png" />
+    <Content Include="img\ixls.png" />
+    <Content Include="img\ixlsx.png" />
     <Content Include="img\logo.png" />
+    <Content Include="img\txt.svg" />
+    <Content Include="img\xls.svg" />
+    <Content Include="img\xlsx.svg" />
     <Content Include="Instruction\Instruction.txt" />
     <Content Include="Models\DRCTSClasses.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DRCTSClasses.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
@@ -520,10 +629,32 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\peopletest.json" />
+    <Content Include="Models\EmpDataClasses.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>EmpDataClasses.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\PublishProfiles\Default Settings %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings %284%29.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
+    <None Include="Properties\PublishProfiles\deploytest.pubxml" />
+    <None Include="Properties\PublishProfiles\drctest.pubxml" />
+    <None Include="Properties\PublishProfiles\homeLayout.pubxml" />
+    <None Include="Properties\PublishProfiles\Layout.pubxml" />
     <None Include="Properties\PublishProfiles\Main.pubxml" />
     <None Include="Properties\PublishProfiles\Main2.pubxml" />
     <None Include="Properties\PublishProfiles\main3.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\FileSaver.js" />
+    <Content Include="Scripts\FileSaver.min.js" />
     <Content Include="Scripts\flot-data.js" />
     <Content Include="Scripts\flot\excanvas.min.js" />
     <Content Include="Scripts\flot\jquery.colorhelpers.js" />
@@ -543,6 +674,42 @@
     <Content Include="Scripts\flot\jquery.flot.threshold.js" />
     <Content Include="Scripts\flot\jquery.flot.time.js" />
     <Content Include="Scripts\flot\jquery.flot.tooltip.min.js" />
+    <Content Include="Scripts\inputmask\bindings\inputmask.binding.js" />
+    <Content Include="Scripts\inputmask\bindings\inputmask.binding.min.js" />
+    <Content Include="Scripts\inputmask\dependencyLibs\inputmask.dependencyLib.jqlite.js" />
+    <Content Include="Scripts\inputmask\dependencyLibs\inputmask.dependencyLib.jqlite.min.js" />
+    <Content Include="Scripts\inputmask\dependencyLibs\inputmask.dependencyLib.jquery.js" />
+    <Content Include="Scripts\inputmask\dependencyLibs\inputmask.dependencyLib.jquery.min.js" />
+    <Content Include="Scripts\inputmask\dependencyLibs\inputmask.dependencyLib.js" />
+    <Content Include="Scripts\inputmask\dependencyLibs\inputmask.dependencyLib.min.js" />
+    <Content Include="Scripts\inputmask\global\document.js" />
+    <Content Include="Scripts\inputmask\global\document.min.js" />
+    <Content Include="Scripts\inputmask\global\window.js" />
+    <Content Include="Scripts\inputmask\global\window.min.js" />
+    <Content Include="Scripts\inputmask\inputmask.date.extensions.js" />
+    <Content Include="Scripts\inputmask\inputmask.date.extensions.min.js" />
+    <Content Include="Scripts\inputmask\inputmask.extensions.js" />
+    <Content Include="Scripts\inputmask\inputmask.extensions.min.js" />
+    <Content Include="Scripts\inputmask\inputmask.js" />
+    <Content Include="Scripts\inputmask\inputmask.min.js" />
+    <Content Include="Scripts\inputmask\inputmask.numeric.extensions.js" />
+    <Content Include="Scripts\inputmask\inputmask.numeric.extensions.min.js" />
+    <Content Include="Scripts\inputmask\inputmask.phone.extensions.js" />
+    <Content Include="Scripts\inputmask\inputmask.phone.extensions.min.js" />
+    <Content Include="Scripts\inputmask\inputmask.regex.extensions.js" />
+    <Content Include="Scripts\inputmask\inputmask.regex.extensions.min.js" />
+    <Content Include="Scripts\inputmask\jquery.inputmask.js" />
+    <Content Include="Scripts\inputmask\jquery.inputmask.min.js" />
+    <Content Include="Scripts\inputmask\phone-codes\phone-be.js" />
+    <Content Include="Scripts\inputmask\phone-codes\phone-be.min.js" />
+    <Content Include="Scripts\inputmask\phone-codes\phone-nl.js" />
+    <Content Include="Scripts\inputmask\phone-codes\phone-nl.min.js" />
+    <Content Include="Scripts\inputmask\phone-codes\phone-ru.js" />
+    <Content Include="Scripts\inputmask\phone-codes\phone-ru.min.js" />
+    <Content Include="Scripts\inputmask\phone-codes\phone-uk.js" />
+    <Content Include="Scripts\inputmask\phone-codes\phone-uk.min.js" />
+    <Content Include="Scripts\inputmask\phone-codes\phone.js" />
+    <Content Include="Scripts\inputmask\phone-codes\phone.min.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
@@ -550,6 +717,12 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery.easy-autocomplete.js" />
+    <Content Include="Scripts\jquery.inputmask.bundle.js" />
+    <Content Include="Scripts\jquery.inputmask.bundle.min.js" />
+    <Content Include="Scripts\jquery.tabletojson.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -557,20 +730,31 @@
     <Content Include="Scripts\metisMenu.js" />
     <Content Include="Scripts\metisMenu.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\morris-data.js" />
     <Content Include="Scripts\morris.min.js" />
     <Content Include="Scripts\raphael.min.js" />
+    <Content Include="Scripts\RequestScript.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\session.warning.js" />
     <Content Include="Scripts\startmin.js" />
+    <Content Include="Scripts\tableexport.js" />
+    <Content Include="Scripts\tableexport.min.js" />
+    <Content Include="Scripts\xlsx.core.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -626,13 +810,29 @@
     <Content Include="Views\DRC\Index1.cshtml" />
     <Content Include="Views\Shared\_LoginPartial3.cshtml" />
     <Content Include="Views\Account\_LoginLayout.cshtml" />
-    <Content Include="Views\DRC\AddRequest.cshtml" />
+    <Content Include="Views\DRC\Add_Request.cshtml" />
     <Content Include="Views\DRC\UserTasks.cshtml" />
     <Content Include="Views\DRC\ReportsTest.cshtml" />
     <Content Include="Views\DRC\EditRequest.cshtml" />
     <Content Include="Views\DRC\Edit.cshtml" />
-    <Content Include="Views\DRC\ServiceReport.cshtml" />
-    <Content Include="Views\DRC\SummaryReport.cshtml" />
+    <Content Include="Views\DRC\Service_Report.cshtml" />
+    <Content Include="Views\DRC\Summary_Report.cshtml" />
+    <Content Include="Views\DRC\Disability_Report.cshtml" />
+    <Content Include="Views\DRC\Status_Report.cshtml" />
+    <Content Include="Views\DRC\MD715Report.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\DRC\Searchresults.cshtml" />
+    <Content Include="Views\DRC\SearchForm.cshtml" />
+    <Content Include="Views\DRC\Results.cshtml" />
+    <Content Include="Views\DRC\QuickSearch.cshtml" />
+    <Content Include="Views\DRC\ResultsView.cshtml" />
+    <Content Include="Views\DRC\CustomColumns.cshtml" />
+    <Content Include="Views\DRC\CustomResultsView.cshtml" />
+    <Content Include="Views\DRC\CustomRView.cshtml" />
+    <Content Include="Views\DRC\Analyst_Report.cshtml" />
+    <Content Include="Views\DRC\RAbyUser.cshtml" />
+    <Content Include="Views\DRC\NotFound.cshtml" />
+    <Content Include="Views\DRC\ReqMD715Report.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -654,6 +854,9 @@
     <EmbeddedResource Include="Migrations\201706222121375_newOne.resx">
       <DependentUpon>201706222121375_newOne.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Models\EmpDataClasses.dbml.layout">
+      <DependentUpon>EmpDataClasses.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

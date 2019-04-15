@@ -7,22 +7,29 @@
             <tr>
 
                 <th>
-                    @Html.DisplayNameFor(model => model.CaseID)
+                    Case ID
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.OA)
                 </th>
-               
                 <th>
-                    @Html.DisplayNameFor(model => model.EmployeeLastName)
+                    Employee First Name
+                </th>
+                <th>
+                    Employee Last Name
                 </th>
                 
                 <th>
                     @Html.DisplayNameFor(model => model.Disability)
                 </th>
-
                 <th>
-                    @Html.DisplayNameFor(model => model.DRCStatus)
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                   Date Request Received
+                </th>
+                <th>
+                  DRC Status
                 </th>
 
             </tr>
@@ -39,7 +46,9 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.OA)
                     </td>
-                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeFirstName)
+                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.EmployeeLastName)
                     </td>
@@ -47,10 +56,16 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Disability)
                     </td>
-
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @item.DateRequestReceived.Value.ToShortDateString()
+                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.DRCStatus)
                     </td>
+                    
 
                 </tr>
             }

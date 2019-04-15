@@ -1,9 +1,8 @@
-﻿body {
-}
+﻿
 textarea {
     max-width: 1580px;
 }
-
+/*
 body {
   color: #666;
   font: 14px/24px "Open Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", Sans-Serif;
@@ -44,4 +43,4 @@ tr:last-child td:first-child {
 }
 tr:last-child td:last-child {
   border-bottom-right-radius: 6px;
-}
+}*/

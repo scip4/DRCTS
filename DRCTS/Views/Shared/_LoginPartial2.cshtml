@@ -13,11 +13,11 @@
             <li class="menu-10197"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>-->
             <li class="dropdown menu-10244 first">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> @User.Identity.GetUserName() <b class="caret"></b>
+                    <i class="fa fa-user fa-fw"></i> @User.Identity.GetUserName() <!--<b class="caret"></b>-->
                 </a>
                 <ul class="dropdown-menu dropdown-user">
                     <li> @Html.ActionLink("User Profile", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @style = "color:#000000;" })</li>
-
+                       
                     <li class="divider"></li>
                     <li>
                         <a href="javascript:document.getElementById('logoutForm').submit()" style="color: black"><i class="fa fa-sign-out fa-fw"></i> Logout</a>

@@ -71,13 +71,19 @@ namespace IdentitySample.Controllers
             {
                 return View(model);
             }
-
+            IsDeleteUserResult du = new IsDeleteUserResult();
+            if(du.deleted == true)
+            {
+                ModelState.AddModelError("", "Your account has been Deactivated.");
+                return View(model);
+            }
             // This doen't count login failures towards lockout only two factor authentication
             // To enable password failures to trigger lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: true);
             switch (result)
             {
                 case SignInStatus.Success:
+                    
                     drcrepo.lAccess(model.UserName);
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
@@ -191,6 +197,17 @@ namespace IdentitySample.Controllers
         }
 
         //
+        public void ResetEmail(string email, string sub, string bodyMain)
+        {
+           
+            var from = "DRCInbox@dot.gov";
+            var to = email;
+            var subject = sub;
+            var body = bodyMain;
+            var client = new System.Net.Mail.SmtpClient("skyland-.startlogic.com", 587);
+            client.Credentials = new System.Net.NetworkCredential("support@skyland-technologies.com", "Pa33word");
+            client.Send(from, to, subject, body);
+        }
         // POST: /Account/ForgotPassword
         [HttpPost]
         [AllowAnonymous]
@@ -199,8 +216,9 @@ namespace IdentitySample.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindByNameAsync(model.Email);
-                if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                var username = drcrepo.getUserNameByEmail(model.Email);
+                var user = await UserManager.FindByNameAsync(username);
+                if (user == null) // || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
                     // Don't reveal that the user does not exist or is not confirmed
                     return View("ForgotPasswordConfirmation");
@@ -208,7 +226,8 @@ namespace IdentitySample.Controllers
 
                 var code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
+                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
+                ResetEmail(model.Email, "DRC Tracking System: Reset Password (DO NOT REPLY)", "Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
                 ViewBag.Link = callbackUrl;
                 return View("ForgotPasswordConfirmation");
             }
@@ -244,7 +263,9 @@ namespace IdentitySample.Controllers
             {
                 return View(model);
             }
-            var user = await UserManager.FindByNameAsync(model.Email);
+            var username = drcrepo.getUserNameByEmail(model.Email);
+            var user = await UserManager.FindByNameAsync(username);
+           
             if (user == null)
             {
                 // Don't reveal that the user does not exist
